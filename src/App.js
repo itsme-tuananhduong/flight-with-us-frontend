@@ -1,5 +1,8 @@
-import { Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Suspense } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import BoxCard from "./components/BoxCard/BoxCard";
+import Post from "./components/Posts/Post";
+import CustomerCare from "./components/CustomerCare/CustomerCare.jsx";
 
 const App = () => {
   const token = false;
@@ -31,6 +34,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <nav>Navbar</nav>
+      <CustomerCare />
+      <BoxCard />
+      {/* <Post /> */}
       <main>
         <Suspense fallback={<div>Loading...</div>}>{routes}</Suspense>
       </main>
