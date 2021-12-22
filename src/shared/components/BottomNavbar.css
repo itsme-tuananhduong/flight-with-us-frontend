@@ -1,0 +1,53 @@
+.bottom-navbar {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: -50px;
+  background: #fff;
+  transition: bottom 0.15s;
+  box-shadow: none;
+}
+
+.bottom-nav-link {
+  display: flex;
+}
+
+.bottom-nav-link__item {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bottom-nav-link__item svg {
+  color: #888;
+  fill: #888;
+}
+
+/* Dark Mode */
+.bottom-navbar.dark {
+  background: #424242;
+}
+
+.bottom-navbar.dark .bottom-nav-link__item svg {
+  color: #fff;
+  fill: #fff;
+}
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+  .bottom-navbar {
+    bottom: 0;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .bottom-navbar {
+    bottom: -50px;
+    box-shadow: none;
+  }
+}
