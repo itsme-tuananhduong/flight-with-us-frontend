@@ -1,0 +1,418 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  background: #fff;
+}
+
+.brand-search {
+  display: flex;
+  align-items: center;
+  width: 246px;
+}
+
+.brand {
+  width: 50px;
+  margin: 5px 25px;
+}
+
+.brand:hover {
+  cursor: pointer;
+}
+
+.brand svg {
+  fill: #24a8d8;
+}
+
+.search-box {
+  position: relative;
+  min-width: 50px;
+  width: 350px;
+}
+
+.search-box input {
+  font-size: 14px;
+  width: 100%;
+  padding: 12px;
+  padding-right: 36px;
+  background: #f3f3f3;
+  border: none;
+  border-radius: 20px;
+  margin-right: 25px;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+}
+
+.search-box .search-icon svg {
+  fill: #424242;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link__item {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.nav-link__item:hover {
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+.nav-link__item p {
+  font-size: 0.8rem;
+}
+
+.nav-link__item.active {
+  color: #24a8d8;
+  border-bottom: 2px solid #24a8d8;
+}
+
+.nav-link__item.active .icon svg {
+  fill: #24a8d8;
+}
+
+.icon {
+  width: 60px;
+  position: relative;
+  padding: 5px 12px;
+  z-index: 2;
+}
+
+.icon svg {
+  width: 25px;
+}
+
+.icon::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 25px;
+  height: 25px;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: #c2f9ff;
+}
+
+.user-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 25px;
+}
+
+.control {
+  padding: 10px;
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2px;
+  transition: 0.25s ease-in-out;
+  position: relative;
+}
+
+.control:hover {
+  background: #f3f3f3;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+
+.control:hover .tooltip {
+  display: block;
+}
+
+.control svg {
+  color: #757575;
+  fill: #757575;
+}
+
+.control.user {
+  background: #c0c0c0;
+  transition: 0.25s ease-in-out;
+  position: relative;
+}
+
+.control.user input {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.control.user input:checked + .dropbox {
+  display: block;
+  opacity: 1;
+}
+
+.control.user:hover {
+  box-shadow: 0 0 5px #c0c0c0;
+  transition: 0.25s ease-in-out;
+}
+
+.control.messenger svg {
+  fill: #24a8d8;
+}
+
+.control.user svg {
+  fill: #fff;
+}
+
+.tooltip {
+  display: none;
+  color: #fff;
+  background: #757575;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  white-space: nowrap;
+  position: absolute;
+  top: 50px;
+}
+
+.dropbox {
+  display: none;
+  opacity: 0;
+  width: 360px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #c0c0c0;
+  top: 50px;
+  right: 10px;
+  position: absolute;
+  transition: opacity 5s ease-in-out;
+  overflow: hidden;
+  background: #fff;
+}
+
+.dropbox hr {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #f3f3f3;
+}
+
+.dropbox-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+}
+
+.dropbox-item.user:hover {
+  background: #fff;
+}
+
+.dropbox-item.user p {
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  width: 80%;
+}
+
+.dropbox-item.user p span {
+  font-size: 12px;
+}
+
+.dropbox-item.user .user-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #c0c0c0;
+  margin: 5px auto;
+}
+
+.dropbox-item.user .user-icon svg {
+  fill: #fff !important;
+}
+
+.dropbox-item:hover {
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+.dropbox-item.options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+}
+
+.dropbox-item svg {
+  width: 25px;
+  margin: 5px;
+  color: #757575;
+  fill: #757575 !important;
+}
+
+.dropbox-item p {
+  font-size: 14px;
+  width: 85%;
+}
+
+.dropbox-item p span {
+  font-size: 11px;
+  font-weight: lighter;
+}
+
+.dropbox-item__option {
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.dropbox-item__option:hover {
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+.dropbox-item__option svg {
+  margin-right: 10px;
+}
+
+/* Dark Mode */
+.navbar.dark {
+  color: #fff;
+  background: #424242;
+}
+
+.navbar.dark .search-box input {
+  color: #fff;
+  background: #212121;
+  caret-color: #fff;
+}
+
+.navbar.dark .search-box input::placeholder {
+  color: #888;
+}
+
+.navbar.dark .search-box .search-icon svg {
+  fill: #fff;
+}
+
+.navbar.dark .nav-link__item:hover {
+  background: #212121;
+}
+
+.navbar.dark .icon::before {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.navbar.dark .icon svg {
+  fill: #fff;
+}
+
+.navbar.dark .control svg {
+  color: #fff;
+  fill: #fff;
+}
+
+.navbar.dark .control.messenger svg {
+  fill: #24a8d8;
+}
+
+.navbar.dark .control.user svg {
+  fill: #212121;
+}
+
+.navbar.dark .control.user {
+  background: #888;
+}
+
+.navbar.dark .control:hover {
+  background: #888;
+}
+
+.navbar.dark .dropbox {
+  background: #424242;
+  box-shadow: none;
+}
+
+.navbar.dark .dropbox hr {
+  border: 1px solid #888;
+}
+
+.navbar.dark .dropbox-item {
+  color: #fff;
+  background: #424242;
+}
+
+.navbar.dark .dropbox-item:hover {
+  background: #888;
+}
+
+.navbar.dark .dropbox-item.options:hover {
+  background: #424242;
+}
+
+.navbar.dark .dropbox-item svg {
+  color: #fff;
+  fill: #fff !important;
+}
+
+.navbar.dark .dropbox-item.user .user-icon {
+  background: #888;
+}
+
+.navbar.dark .dropbox-item.user .user-icon svg {
+  fill: #212121 !important;
+}
+
+.navbar.dark .dropbox-item__option:hover {
+  background: #888;
+}
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    order: 1;
+  }
+
+  .nav-link {
+    order: 3;
+    margin: 0 auto;
+  }
+
+  .user-control {
+    order: 2;
+  }
+
+  .control.messenger,
+  .control.user {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+}

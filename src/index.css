@@ -1,14 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  /* Font Family */
+  font-family: 'Mulish', sans-serif;
+  user-select: none;
 }
 
 a {
   text-decoration: none;
 }
 
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #000;
+}
+
 ul {
   list-style: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+  body::before {
+    top: calc(-10vh);
+    right: -50vw;
+    width: 200vw;
+    height: 600px;
+  }
 }
