@@ -1,8 +1,14 @@
 import { Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import BoxCard from "./components/BoxCard/BoxCard";
-import Post from "./components/Posts/Post";
-import CustomerCare from "./components/CustomerCare/CustomerCare.jsx";
+// import BoxCard from "./components/BoxCard/BoxCard";
+// import CustomerCare from "./components/CustomerCare/CustomerCare.jsx";
+// import FormSearch from "./components/FormSearch/FormSearch";
+// import UserInfo from "./components/UserInfo/UserInfo";
+// import SignIn from "./pages/SignIn/SignIn";
+// import SignUp from "./pages/SignUp/SignUp"
+// import BoxNguoiThanhToan from "./components/BoxNguoiThanhToan/BoxNguoiThanhToan";
+import HinhThucThanhToan from './components/BoxHinhThucThanhToan/HinhThucThanhToan';
+
 
 const App = () => {
   const token = false;
@@ -34,9 +40,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <nav>Navbar</nav>
-      <CustomerCare />
+      {/* <FormSearch /> */}
+      {/* <BoxNguoiThanhToan/> */}
+      {/* <CustomerCare />
       <BoxCard />
-      {/* <Post /> */}
+      <UserInfo/> */}
+      {/* <SignIn/>
+      <SignUp/> */}
+      <HinhThucThanhToan/>
       <main>
         <Suspense fallback={<div>Loading...</div>}>{routes}</Suspense>
       </main>
