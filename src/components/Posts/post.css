@@ -1,0 +1,100 @@
+.post-container {
+  width: 82%;
+  padding: 20px;
+  margin: 0 auto;
+  box-shadow: 3px 2px 5px rgba(0, 0, 0, 0.07), -3px -2px 5px rgba(0, 0, 0, 0.07);
+  line-height: 1.6;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.post-title {
+  color: #000000da;
+  font-size: 3.4rem;
+  font-weight: 500;
+}
+.post-time {
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 16px;
+  margin-top: 5px;
+}
+.post-title-2 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #000000de;
+  display: block;
+  margin: 16px 0;
+  font-weight: 450;
+}
+.post-container img {
+  margin: 30px auto;
+  display: block;
+  height: 530px;
+  width: 530px;
+  padding-bottom: 50px;
+}
+.content {
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.77);
+}
+.content-1 {
+  margin: 16px 0;
+}
+.post-list {
+  list-style: disc;
+  padding-left: 40px;
+  margin: 16px 0;
+}
+.post-container a {
+  color: #24a8d8;
+  font-weight: 500;
+}
+.post-btn {
+  width: 82%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-bottom: 150px;
+}
+.post-btn-top,
+.post-btn-back {
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  background-color: #24a8d8;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.25 ease;
+}
+.post-btn-top {
+  margin-left: 30px;
+}
+.post-btn-top:hover,
+.post-btn-back:hover {
+  opacity: 0.8;
+}
+.post-btn-icon {
+  fill: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 600px) {
+  .post-container {
+    width: 92%;
+  }
+  .post-container img {
+    height: 70%;
+    width: 70%;
+  }
+}
+@media (max-width: 960px) and (min-width: 600px) {
+  .post-container img {
+    height: 40%;
+    width: 60%;
+  }
+}
