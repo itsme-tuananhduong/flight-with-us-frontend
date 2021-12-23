@@ -13,7 +13,7 @@ const Result = () => {
     <React.Fragment>
       <Navbar />
       <div className={theme === 'dark' ? 'result-page dark' : 'result-page'}>
-        result
+        <div className="result-wrapper">result</div>
       </div>
       <BottomNavbar />
     </React.Fragment>

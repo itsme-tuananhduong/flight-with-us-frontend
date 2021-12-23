@@ -1,7 +1,6 @@
 .formSearch-container {
-  width: 82%;
   margin: 0 auto;
-  padding: 8px;
+  margin-bottom: 16px;
   z-index: 2;
 }
 .formSearch-header {
@@ -10,7 +9,6 @@
   width: 100%;
   justify-content: space-between;
   padding: 12px 0;
-  flex-wrap: wrap;
 }
 .formSearch-header-title {
   font-size: 2.4rem;
@@ -25,6 +23,7 @@
   border-radius: 99px;
   text-transform: none;
   background-color: #0ac46b;
+  white-space: nowrap;
 }
 .formSearch-header-btn:hover {
   background-color: #07894a;
@@ -57,6 +56,7 @@
   padding: 12px 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   display: none;
+  border-radius: 10px;
 }
 .formSearch-main.active {
   display: block;
@@ -144,7 +144,8 @@
 .formSearch-container .part2 .form-field:nth-child(2) {
   width: 57%;
 }
-::placeholder {
+/* fix */
+.formSearch-container .form-input::placeholder {
   color: #cccccc;
   font-size: 1.6rem;
 }
@@ -463,6 +464,10 @@
 }
 
 @media (max-width: 600px) {
+  .formSearch-header {
+    flex-wrap: wrap;
+  }
+
   .formSearch-container {
     width: 93%;
   }

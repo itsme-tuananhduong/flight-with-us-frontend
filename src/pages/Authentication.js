@@ -1,12 +1,20 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../shared/context/ThemeProvider';
 
+import LoginForm from '../components/FormAuth/LoginForm';
+import RegisterForm from '../components/FormAuth/Register';
 import './Authentication.css';
 
 const Authentication = () => {
   const { theme } = useContext(ThemeContext);
+
+  const [loginMode, setLoginMode] = useState(true);
+
+  const authModeToggler = () => {
+    setLoginMode(!loginMode);
+  };
 
   return (
     <div
@@ -48,7 +56,13 @@ const Authentication = () => {
               </p>
             </div>
           </div>
-          <div className="auth-form">auth form</div>
+          <div className="auth-form">
+            {loginMode ? (
+              <LoginForm authModeToggler={authModeToggler} />
+            ) : (
+              <RegisterForm authModeToggler={authModeToggler} />
+            )}
+          </div>
         </div>
         <div className="footer">
           <div className="footer-options">
@@ -86,7 +100,13 @@ const Authentication = () => {
                     </g>
                   </svg>
                 </div>
-                <span>Google Play</span>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.hahalolo.android.social&hl=vi&gl=US"
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                >
+                  <span>Google Play</span>
+                </a>
               </div>
               <div className="download-item">
                 <div className="download-icon">
@@ -115,7 +135,13 @@ const Authentication = () => {
                     </g>
                   </svg>
                 </div>
-                <span>App Store</span>
+                <a
+                  href="https://apps.apple.com/vn/app/hahalolo/id1437417120?l=vi"
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                >
+                  <span>App Store</span>
+                </a>
               </div>
             </div>
             <div className="languages">
