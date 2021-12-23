@@ -9,7 +9,7 @@ const Admin = () => {
 
   return (
     <div className={theme === 'dark' ? 'admin-page dark' : 'admin-page'}>
-      admin
+      <div className="admin-wrapper">admin</div>
     </div>
   );
 };

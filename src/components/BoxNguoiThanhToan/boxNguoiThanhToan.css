@@ -6,11 +6,12 @@
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   padding: 20px;
   margin: 0 auto;
-  border-radius: 8px;
+  margin-bottom: 16px;
+  border-radius: 10px;
 }
 .BoxNguoiThanhToan_container::before {
   position: absolute;
-  content: "";
+  content: '';
   width: 30px;
   height: 30px;
   border-radius: 50%;

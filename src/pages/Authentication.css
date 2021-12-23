@@ -14,6 +14,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .main-content {
@@ -78,9 +80,7 @@
 }
 
 .auth-form {
-  background: coral;
   width: 500px;
-  height: 500px;
 }
 
 .footer {
@@ -109,7 +109,7 @@
 
 .download-item:hover {
   cursor: pointer;
-  background: #f3f3f3;
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .download-item svg {
@@ -134,7 +134,7 @@
 
 .languages .language:hover {
   cursor: pointer;
-  background: #f3f3f3;
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .languages .language.active {
@@ -147,7 +147,7 @@
 
 .languages svg:hover {
   cursor: pointer;
-  background: #f3f3f3;
+  background: rgba(0, 0, 0, 0.04);
   border-radius: 15px;
 }
 
@@ -160,11 +160,6 @@
 }
 
 /* Dark Mode */
-
-.authentication-page.dark .svg-background {
-  background-color: #212121;
-}
-
 .authentication-page.dark .intro-content {
   color: #fff;
 }
@@ -178,7 +173,7 @@
 }
 
 .authentication-page.dark .download-item:hover {
-  background: #424242;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .authentication-page.dark .download-item svg {
@@ -190,7 +185,7 @@
 }
 
 .authentication-page.dark .languages .language:hover {
-  background: #424242;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .authentication-page.dark .languages .language.last {
@@ -198,7 +193,7 @@
 }
 
 .authentication-page.dark .languages svg:hover {
-  background: #424242;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .authentication-page.dark .copyright {
@@ -211,6 +206,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 32px 0;
   }
 
   .intro {
