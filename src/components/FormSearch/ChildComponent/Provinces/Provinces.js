@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useCallback } from 'react';
-
+import React, { useRef, useEffect, useCallback,useContext } from 'react';
+import { ThemeContext } from '../../../../shared/context/ThemeProvider';
 import './Provinces.css';
 
 function Provinces({ showBoxProvinder, setShowBoxProvinder, onKetqua }) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const handleClick = (e, t) => {
     const provin = e.target.innerHTML;
     onKetqua(provin);
@@ -36,7 +37,7 @@ function Provinces({ showBoxProvinder, setShowBoxProvinder, onKetqua }) {
   return (
     <>
       {showBoxProvinder ? (
-        <div className="background-pro">
+        <div className={theme === 'dark' ?"background-pro dark":"background-pro"}>
           <div
             className="overlay-pro"
             onClick={closeModal}

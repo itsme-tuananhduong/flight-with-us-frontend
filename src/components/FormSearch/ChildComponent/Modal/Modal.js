@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useCallback } from 'react';
-
+import React, { useRef, useEffect, useCallback ,useContext} from 'react';
+import { ThemeContext } from '../../../../shared/context/ThemeProvider';
 import './Modal.css';
 
 function Modal({ showModal, setShowModal }) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const modalRef = useRef();
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
@@ -27,7 +28,7 @@ function Modal({ showModal, setShowModal }) {
   return (
     <>
       {showModal ? (
-        <div className="modal_container">
+        <div className={theme === 'dark' ?"modal_container dark":"modal_container"}>
           <div
             className="modal-overlay"
             onClick={closeModal}

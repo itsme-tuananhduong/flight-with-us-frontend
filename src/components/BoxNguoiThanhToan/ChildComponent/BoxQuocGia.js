@@ -1,6 +1,6 @@
 import React,{ useRef, useEffect, useCallback } from 'react'
 
-function BoxQuocGia({showQuocGia,setShowQuocGia}) {
+function BoxQuocGia({showQuocGia,setShowQuocGia,getValueNational}) {
 
     const modalRef = useRef();
     const closeModal = (e) => {
@@ -23,52 +23,54 @@ function BoxQuocGia({showQuocGia,setShowQuocGia}) {
       return () => document.removeEventListener("keydown", keyPress);
     }, [keyPress]);
   
+    const handleNational=(e)=>{
+      getValueNational(e.target.innerHTML)
+      setShowQuocGia(false)
+    }
+
     return (
         <>
         
         {
             showQuocGia?(
-                <div className='madienthoai'>
+                <div className='quocgia'>
                     <div className="overlay" onClick={closeModal}
                     ref={modalRef}></div>
                     <div className='option-list-mdt' >
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/ve.png" alt="" />HaNoi(+67)
-        
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                        United Kingdom
                         </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/vu.png" alt="" /> Vanuatu(+678)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                            Vanuatu
                         </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/uz.png" alt="" />Uzbekistan(+998)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                            Uzbekistan
                         </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/uy.png" alt="" />Uruguay(+598)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                            Uruguay
                         </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/us.png" alt="" />United States(+1)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                            United States
                         </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/vn.png" alt="" /> VietNam(+7)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                          VietNam
                         </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/tk.png" alt="" /> Tokelau(+690)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                          Tokelau
                         </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/tr.png" alt="" /> Turkey(+90)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                          Turkey
                         </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/to.png" alt="" /> Tonga(+676)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                        Thailand
                         </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/tv.png" alt="" /> Tuvalu(+688)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                        Tuvalu
                         </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/ua.png" alt="" /> Ukraine(+380)
+                        <span className="option-list-mdt-item" onClick={handleNational}>
+                          Ukraine
                         </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/gb.png" alt="" /> United KingDom(+44)
-                        </span>
+                  
                       </div>
                 </div>
 

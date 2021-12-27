@@ -1,15 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
+@import "react-datepicker/dist/react-datepicker.css";
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   user-select: none;
 }
 
 a {
   text-decoration: none;
+}
+html{
+  scroll-behavior: smooth;
 }
 
 a:link,

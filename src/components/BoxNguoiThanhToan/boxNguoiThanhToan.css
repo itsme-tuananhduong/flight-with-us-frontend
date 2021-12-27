@@ -8,15 +8,23 @@
   margin: 0 auto;
   margin-bottom: 16px;
   border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
 }
 .BoxNguoiThanhToan_container::before {
   position: absolute;
-  content: '';
+  content: "";
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #bfe3f0;
+  background-color: #c2f9ff;
   z-index: -1;
+  left: 12px;
+  top: 17px;
+}
+.BoxNguoiThanhToan_container.dark::before {
+  background-color: #515151;
 }
 .option1,
 .option2,
@@ -32,7 +40,7 @@
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
   outline: none;
-  font-size: 1.6rem;
+  font-size: 1rem;
   border: none;
   border-bottom: 2px solid #eaeaea;
 }
@@ -64,7 +72,7 @@
   pointer-events: none;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
-  font-size: 1.6rem;
+  font-size: 1rem;
 }
 
 .BoxNguoiThanhToan_container .form-input:not(:placeholder-shown) + .form-label,
@@ -73,7 +81,7 @@
   display: inline-block;
   background-color: #ffffff;
   color: #24a8d8;
-  font-size: 1.2rem;
+  font-size: 0.75rem;
 }
 .isvalid .form-input {
   border-bottom-color: red;
@@ -88,22 +96,22 @@
 }
 .message-error {
   color: red;
-  font-size: 1.2rem;
+  font-size: 0.75rem;
   padding-top: 5px;
   position: absolute;
   bottom: -19px;
   left: 0;
 }
 .BoxNguoiThanhToan-title {
-  font-size: 2rem;
+  font-size: 1.25rem;
   margin-bottom: 36px;
 }
 .BoxNguoiThanhToan-checkbox {
-  font-size: 1.6rem;
+  font-size: 1rem;
   margin-left: 8px;
 }
 .bntt-checkbox {
-  font-size: 2rem;
+  font-size: 1.25rem;
   width: 17px;
   height: 17px;
   cursor: pointer;
@@ -170,7 +178,7 @@
 .option-list-mdt-item {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
   padding: 8px 5px;
 }
 .option-list-mdt-item:hover {
@@ -182,8 +190,12 @@
   object-fit: cover;
   margin-right: 10px;
 }
-.madienthoai {
+.madienthoai,
+.quocgia {
   position: absolute;
+}
+.quocgia .option-list-mdt {
+  width: 350px;
 }
 .overlay {
   position: fixed;
@@ -194,6 +206,110 @@
   z-index: 4;
   left: 0;
 }
+.input-checkbox {
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.input-checkbox label {
+  cursor: pointer;
+  display: flex;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+.input-checkbox label::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  border: 0.05em solid black;
+}
+.input-checkbox input[type="checkbox"]:checked + label::before {
+  content: "\002714";
+  background-color: #24a4d8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+/* dark mode */
+.BoxNguoiThanhToan_container.dark {
+  background-color: #424242;
+}
+.BoxNguoiThanhToan_container.dark .form-input {
+  border-bottom: 1px solid white;
+  background-color: #424242;
+  color: white;
+}
+
+.BoxNguoiThanhToan_container.dark .form-input:hover {
+  border-bottom: 2px solid white;
+}
+
+.BoxNguoiThanhToan_container.dark .form-input:focus {
+  border-color: #24a8d8;
+}
+
+.BoxNguoiThanhToan_container.dark .form-label {
+  color: #bababa;
+}
+.BoxNguoiThanhToan_container.dark
+  .form-input:not(:placeholder-shown)
+  + .form-label,
+.BoxNguoiThanhToan_container.dark .form-input:focus + .form-label {
+  background-color: #424242;
+}
+.BoxNguoiThanhToan_container.dark .BoxNguoiThanhToan-title,
+.BoxNguoiThanhToan_container.dark .BoxNguoiThanhToan-checkbox,
+.BoxNguoiThanhToan_container.dark .option-list-mdt-item,
+.BoxNguoiThanhToan_container.dark .label-checkbox {
+  color: #fff;
+}
+.BoxNguoiThanhToan_container.dark .option-list-mdt-item:hover {
+  background-color: #515151;
+}
+.BoxNguoiThanhToan_container.dark .option-list-mdt {
+  background-color: #424242;
+}
+.BoxNguoiThanhToan_container.dark .arrow-icon {
+  fill: #fff;
+}
+.BoxNguoiThanhToan_container.dark .arrow-btn {
+  background-color: #424242;
+}
+.BoxNguoiThanhToan_container.dark .arrow-btn:hover {
+  background-color: #515151;
+}
+.BoxNguoiThanhToan_container.dark .input-checkbox label::before {
+  background-color: #424242;
+  border: 2px solid #fff;
+}
+.BoxNguoiThanhToan_container.dark
+  .input-checkbox
+  input[type="checkbox"]:checked
+  + label::before {
+  border: 2px solid #424242;
+}
+/* responsive */
+@media (max-width: 960px) and (min-width: 601px) {
+  .BoxNguoiThanhToan_container .option2 {
+    flex-direction: column;
+  }
+  .BoxNguoiThanhToan_container {
+    width: 100%;
+  }
+  .form-field.email {
+    width: 100%;
+  }
+  .option3-1 {
+    display: flex;
+  }
+}
 @media (max-width: 600px) {
   .option1,
   .option2,
@@ -203,6 +319,9 @@
     flex-direction: column;
   }
   .BoxNguoiThanhToan_container {
-    width: 92%;
+    width: 100%;
+  }
+  .form-field.email {
+    width: 100%;
   }
 }

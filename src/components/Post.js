@@ -1,15 +1,21 @@
-import React from 'react';
+import React,{useContext,useRef} from 'react';
+import { ThemeContext } from '../shared/context/ThemeProvider';
+
 
 import './Post.css';
 
 function Post({ card, back }) {
+  const myRef = useRef(null)
   const { id, cardImage, cardTitle, cartContent } = card[0];
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const executeScroll = () => myRef.current.scrollIntoView()  
   const goback = () => {
     back();
   };
   return (
-    <div>
-      <div className="post-container">
+    <div ref={myRef}>
+      <div className={theme === 'dark' ?"post-container dark":"post-container"} >
         <div>
           <b className="post-title">{cardTitle}</b>
           <p className="post-time">19/11/2021</p>
@@ -57,7 +63,7 @@ function Post({ card, back }) {
           <p className="content-1">
             Cập nhật các quy định kiểm soát dịch bệnh tại các địa phương trong
             nước:
-            <a href="https://www.vietnamairlines.com/vn/vi/vietnam-airlines/press-room/travel-advisory/2021/0514-VI-Cap-nhat-quy-dinh-kiem-soat-dich-benh-trong-nuoc?fbclid=IwAR3NOErgDONeZppxktfyq6fjmimxq1POVgMp-vckcZInJVjuOh3OYSdOsEo">
+            <a href="https://www.vietnamairlines.com/vn/vi/vietnam-airlines/press-room/travel-advisory/2021/0514-VI-Cap-nhat-quy-dinh-kiem-soat-dich-benh-trong-nuoc?fbclid=IwAR3NOErgDONeZppxktfyq6fjmimxq1POVgMp-vckcZInJVjuOh3OYSdOsEo" className='title-link'>
               tại đây
             </a>
           </p>
@@ -72,12 +78,12 @@ function Post({ card, back }) {
           <p className="content-1">Tổng đài đặt vé : 1900 57 12 48</p>
           <p className="content-1">
             Website đặt vé:
-            <a href="https://flight.hahalolo.com/">VÉ MÁY BAY HAHALOLO</a>
+            <a href="https://flight.hahalolo.com/" className='title-link' >VÉ MÁY BAY HAHALOLO</a>
           </p>
           <p>
             Website hỗ trợ:
             <a href="https://www.hahalolo.com/u/chamsockhachhang">
-              <b>TRUNG TÂM CHĂM SÓC KHÁCH HÀNG HAHALOLO</b>
+              <b className='title-link'>TRUNG TÂM CHĂM SÓC KHÁCH HÀNG HAHALOLO</b>
             </a>
           </p>
         </div>
@@ -110,7 +116,7 @@ function Post({ card, back }) {
             </g>
           </svg>
         </span>
-        <span className="post-btn-top">
+        <span onClick={executeScroll} className="post-btn-top">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

@@ -1,8 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import BoxPassenger from './ChildComponent/BoxPassenger';
 import Provinces from './ChildComponent/Provinces/Provinces';
-import { DatePicker } from 'antd';
-import moment from 'moment';
+import DatePicker from "react-datepicker";
 
 function TimKiemNhieuChang({ setSendData }) {
   const [tabProvinces, setTabProvinces] = useState(null);
@@ -11,6 +10,10 @@ function TimKiemNhieuChang({ setSendData }) {
   const [checkAddflight, setCheckAddflight] = useState(false);
   const [passenger, setPassenger] = useState({ adult: 1, child: 0, baby: 0 });
   const [checkHind, setCheckHind] = useState(false);
+  const [startDate1, setStartDate1] = useState(new Date());
+  const [startDate2, setStartDate2] = useState(new Date());
+  const [startDate3, setStartDate3] = useState(new Date());
+
 
   const [departure1, setDeparture1] = useState('');
   const [departure2, setDeparture2] = useState('');
@@ -24,9 +27,6 @@ function TimKiemNhieuChang({ setSendData }) {
   const [timeTab2, setTimeTab2] = useState('');
   const [timeTab3, setTimeTab3] = useState('');
 
-  const handleOnchangeTimeTab1 = (date, dateString) => setTimeTab1(dateString);
-  const handleOnchangeTimeTab2 = (date, dateString) => setTimeTab2(dateString);
-  const handleOnchangeTimeTab3 = (date, dateString) => setTimeTab3(dateString);
 
   const handleOnchangeInput = (e) => console.log(e);
   const handleChuyenDoiTab1 = () => {
@@ -48,9 +48,7 @@ function TimKiemNhieuChang({ setSendData }) {
     setDestination3(diem1);
   };
 
-  function disabledDate(current) {
-    return current && current < moment().startOf('day');
-  }
+
   // gửi dữ liệu
   const handleData = () => {
     const data = {
@@ -302,13 +300,12 @@ function TimKiemNhieuChang({ setSendData }) {
                   </g>
                 </g>
               </svg>
-              <DatePicker
-                bordered={false}
-                placeholder="Nhập ngày"
-                className="form-input border"
-                format="DD-MM-YYYY"
-                disabledDate={disabledDate}
-                onChange={handleOnchangeTimeTab1}
+  {/* handleDate */}
+  <DatePicker 
+                selected={startDate1} 
+                onChange={date => setStartDate1(date)} 
+                className="form-input"
+                minDate={new Date()}
               />
               <label htmlFor="name" className="form-label">
                 Ngày đi
@@ -551,13 +548,12 @@ function TimKiemNhieuChang({ setSendData }) {
                   </g>
                 </g>
               </svg>
-              <DatePicker
-                bordered={false}
-                placeholder="Nhập ngày"
-                className="form-input border"
-                format="DD-MM-YYYY"
-                disabledDate={disabledDate}
-                onChange={handleOnchangeTimeTab2}
+          {/* handleDate */}
+          <DatePicker 
+                selected={startDate2} 
+                onChange={date => setStartDate2(date)} 
+                className="form-input"
+                minDate={new Date()}
               />
               <label htmlFor="name" className="form-label">
                 Ngày đi
@@ -804,14 +800,13 @@ function TimKiemNhieuChang({ setSendData }) {
                     </g>
                   </g>
                 </svg>
-                <DatePicker
-                  bordered={false}
-                  placeholder="Nhập ngày"
-                  className="form-input border"
-                  format="DD-MM-YYYY"
-                  disabledDate={disabledDate}
-                  onChange={handleOnchangeTimeTab3}
-                />
+          {/* handleDate */}
+          <DatePicker 
+                selected={startDate3} 
+                onChange={date => setStartDate3(date)} 
+                className="form-input"
+                minDate={new Date()}
+              />
                 <label htmlFor="name" className="form-label">
                   Ngày đi
                 </label>

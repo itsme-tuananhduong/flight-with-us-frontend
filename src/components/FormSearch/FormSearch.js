@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import Modal from './ChildComponent/Modal/Modal';
 import TimKhiemKhuHoi from './TimKhiemKhuHoi';
 import TimKiemNhieuChang from './TimKiemNhieuChang';
 import TimKiemMotChieu from './TimKiemMotChieu';
+import { ThemeContext } from '../../shared/context/ThemeProvider';
 
-import './FormSearch.css';
+import './formSearch.css';
+
 
 function FormSearch() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [tab, setTab] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [sendData, setSendData] = useState({});
 
   return (
     <div>
-      <div className="formSearch-container">
+      <div className={theme === 'dark' ?"formSearch-container dark":"formSearch-container"}>
         <div className="formSearch-header">
           <div>
             <h3 className="formSearch-header-title">

@@ -199,6 +199,9 @@
 .authentication-page.dark .copyright {
   color: #f3f3f3;
 }
+.authentication-page.dark .download-item span{
+  color: #fff;
+}
 
 /* Responsive */
 @media screen and (max-width: 960px) {

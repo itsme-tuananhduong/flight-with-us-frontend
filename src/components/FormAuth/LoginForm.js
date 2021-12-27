@@ -1,15 +1,18 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState,useContext} from 'react';
+import { ThemeContext } from '../../shared/context/ThemeProvider';
 
 import './FormAuth.css';
 
 function LoginForm(props) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [checkPass, setCheckPass] = useState(false);
 
   return (
     <Fragment>
-      <div className="container_main-form">
+      <div className={theme === 'dark' ?"container_main-form dark":"container_main-form"}>
         <div className="container_main-form-content">
           <h3 className="title">Đăng Nhập</h3>
           <div className="form-field">
@@ -22,7 +25,7 @@ function LoginForm(props) {
             />
             <label htmlFor="name" className="form-label">
               Email hoặc Số điện thoại
-              <span className="dausao">*</span>
+              <span className="star">*</span>
             </label>
           </div>
           <div className="form-field">
@@ -34,7 +37,7 @@ function LoginForm(props) {
               onChange={(e) => setPassword(e.target.value)}
             />
             <label htmlFor="name" className="form-label">
-              Mật khẩu <span className="dausao">*</span>
+              Mật khẩu <span className="star">*</span>
             </label>
             {password !== '' && !checkPass ? (
               <div className="showPassword" onClick={() => setCheckPass(true)}>

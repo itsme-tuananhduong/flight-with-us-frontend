@@ -1,43 +1,46 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useContext } from 'react';
+import { ThemeContext } from '../../shared/context/ThemeProvider';
 
 import './FormAuth.css';
 
 function RegisterForm(props) {
+const { theme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <Fragment>
-      <div className="container_main-form">
+      <div className={theme === 'dark' ?"container_main-form dark":"container_main-form"}>
         <div className="container_main-form-content">
           <h3 className="title">Đăng kí</h3>
           <div className="user">
             <div className="form-field">
               <input type="text" className="form-input" placeholder=" " />
               <label htmlFor="name" className="form-label">
-                Tên <span className="dausao">*</span>
+                Tên <span className="star">*</span>
               </label>
             </div>
             <div className="form-field">
               <input type="text" className="form-input" placeholder=" " />
               <label htmlFor="name" className="form-label">
-                Họ <span className="dausao">*</span>
+                Họ <span className="star">*</span>
               </label>
             </div>
           </div>
           <div className="form-field">
             <input type="text" className="form-input" placeholder=" " />
             <label htmlFor="name" className="form-label">
-              Điện thoại hoặc Email <span className="dausao">*</span>
+              Điện thoại hoặc Email <span className="star">*</span>
             </label>
           </div>
           <div className="form-field">
             <input type="text" className="form-input" placeholder=" " />
             <label htmlFor="name" className="form-label">
-              Mật khẩu <span className="dausao">*</span>
+              Mật khẩu <span className="star">*</span>
             </label>
           </div>
           <div className="form-field">
             <input type="text" className="form-input" placeholder=" " />
             <label htmlFor="name" className="form-label">
-              Nhập lại mật khẩu <span className="dausao">*</span>
+              Nhập lại mật khẩu <span className="star">*</span>
             </label>
           </div>
           <button className="btn-login">Đăng kí</button>
