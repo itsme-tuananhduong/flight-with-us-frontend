@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from "react";
-import BoxPassenger from "./ChildComponent/BoxPassenger";
-import Provinces from "./ChildComponent/Provinces/Provinces";
-import DatePicker from "react-datepicker";
+import React, { Fragment, useState } from 'react';
+import BoxPassenger from './ChildComponent/BoxPassenger';
+import Provinces from './ChildComponent/Provinces/Provinces';
+import DatePicker from 'react-datepicker';
 
 function TimKhiemKhuHoi({ setSendData }) {
   const [checkInDate, setCheckInDate] = useState(new Date());
@@ -13,9 +13,9 @@ function TimKhiemKhuHoi({ setSendData }) {
   const [checkHind, setCheckHind] = useState(false);
 
   const [passenger, setPassenger] = useState({ adult: 1, child: 0, baby: 0 });
-  const [departure, setDeparture] = useState("");
-  const [destination, setDestination] = useState("");
-  const [timeTab, setTimeTab] = useState("");
+  const [departure, setDeparture] = useState('');
+  const [destination, setDestination] = useState('');
+  const [timeTab, setTimeTab] = useState('');
 
   const handleCheckInDate = (e) => {
     setCheckInDate(e);
@@ -44,7 +44,7 @@ function TimKhiemKhuHoi({ setSendData }) {
   };
   return (
     <Fragment>
-      <div className={"formSearch-main active"}>
+      <div className={'formSearch-main active'}>
         <div className='form-priamry'>
           <div className='part1'>
             <div className='form-field'>
@@ -285,7 +285,7 @@ function TimKhiemKhuHoi({ setSendData }) {
                 </g>
               </svg>
               {/* handleDate */}
-              <div style={{ display: "flex" }}>
+              <div style={{ display: 'flex' }}>
                 <DatePicker
                   selected={checkInDate}
                   minDate={new Date()}
@@ -354,11 +354,11 @@ function TimKhiemKhuHoi({ setSendData }) {
                 onChange={handleOnchangeInput}
                 value={
                   passenger.adult +
-                  " người lớn, " +
+                  ' người lớn, ' +
                   passenger.child +
-                  " trẻ em, " +
+                  ' trẻ em, ' +
                   passenger.baby +
-                  " em bé "
+                  ' em bé '
                 }
                 onClick={() => setShowBoxPassenger((e) => !e)}
               />
@@ -433,7 +433,7 @@ function TimKhiemKhuHoi({ setSendData }) {
               Tìm kiếm vé rẻ trong tháng
             </label>
           </div>
-          <span className='label-checkbox' onClick={handleData}>
+          <span className='submit-form-btn' onClick={handleData}>
             Tìm Kiếm
           </span>
         </div>
