@@ -1,0 +1,587 @@
+.SearchByMonth-container {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  top: 62px;
+  padding-top: 40px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+.SearchByMonth-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-content p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 10px 0;
+}
+.header-user {
+  display: flex;
+  align-items: center;
+}
+.header-user span {
+  font-size: 1rem;
+}
+.header-btn {
+  padding: 11px 16px;
+  background-color: #24a4d8;
+  border-radius: 99px;
+  color: #fff;
+  cursor: pointer;
+}
+.header-btn:hover {
+  background-color: #197597;
+  text-transform: none;
+}
+.SearchByMonth-main {
+  width: 920px;
+}
+.main-flight {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  background-color: #24a4d8;
+  padding: 16px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+}
+.main-flight .main-flight-title {
+  font-size: 1.25rem;
+  color: rgb(255, 255, 255, 0.6);
+  margin-bottom: 7px;
+  font-weight: 500;
+}
+.container-main {
+  display: flex;
+}
+/* test */
+.info-flight {
+  width: 296px;
+  height: 335px;
+  background-color: #197597;
+  margin-left: 16px;
+  margin-top: 13px;
+  border-radius: 8px;
+}
+/*  */
+.main-flight-province {
+  font-size: 1rem;
+  color: rgb(255, 255, 255, 0.6);
+  margin-bottom: 5px;
+}
+.main-flight-time {
+  font-size: 0.875rem;
+  color: rgb(255, 255, 255, 0.6);
+}
+.main-search {
+  width: 100%;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 16px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.07), -3px -3px 4px rgba(0, 0, 0, 0.07);
+}
+.inputInformation {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.display-Sort {
+  padding: 7px 12px;
+  border-radius: 99px;
+  border: 1px solid #505050d4;
+  position: relative;
+  cursor: pointer;
+}
+.sort-icon {
+  position: relative;
+  top: 6px;
+  fill: rgba(0, 0, 0, 0.77);
+}
+.display-Sort:hover {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.option-lish-sort {
+  width: 270px;
+  background-color: #fff;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.07), -3px -3px 5px rgba(0, 0, 0, 0.09);
+  margin-top: 5px;
+  position: absolute;
+  right: 0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  z-index: 4;
+  top: 5px;
+}
+.option-lish-item {
+  padding: 8px 10px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.85);
+  z-index: 2;
+}
+.form-field {
+  position: relative;
+  margin-right: 20px;
+}
+.form-input::placeholder {
+  color: #cccccc;
+  font-size: 1rem;
+}
+.non-cursor {
+  cursor: default;
+}
+.form-input {
+  border: none;
+  border-bottom: 2px solid #eaeaea;
+  transition: all 0.35s ease;
+  outline: none;
+  font-size: 1rem;
+  height: 50px;
+  padding: 28px 0 12px 30px;
+  color: rgba(0, 0, 0, 0.87);
+}
+.form-input:focus + .form-label {
+  color: #24a8d8;
+}
+.form-input:not(:placeholder-shown) + .form-label {
+  color: #999;
+}
+.form-label {
+  position: absolute;
+  top: 5px;
+  transform: translateY(-50%);
+  left: 0;
+  user-select: none;
+  color: #999;
+  pointer-events: none;
+  font-size: 0.75rem;
+  transition: 0.25s ease;
+}
+.form-input:hover {
+  border-bottom: 2px solid #000000de;
+}
+
+.form-input:focus {
+  border-color: #24a8d8;
+}
+.main-final {
+  margin-top: 20px;
+  width: 100%;
+}
+.final-title {
+  color: #f44336;
+  font-size: 1rem;
+  font-weight: 550;
+}
+.final-note {
+  display: flex;
+  align-items: center;
+}
+.final-note-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 10px;
+  padding: 8px 0;
+}
+.box-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  margin: 0 8px;
+}
+.box-color.min {
+  background-color: #fff1e0;
+}
+.box-color.max {
+  background-color: #c0e7ff;
+}
+.box-max,
+.box-min {
+  display: flex;
+  align-items: center;
+}
+.box-min {
+  margin-right: 8px;
+}
+.final-suggest {
+  font-size: 0.875rem;
+  padding: 8px 0;
+}
+.final-suggest span {
+  color: #ff9800;
+}
+.calendar-table {
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse;
+}
+.Calendar-container .today {
+  color: #000000de;
+  background-color: #24a4d86d;
+}
+.Calendar-container.dark .calendar-table .today {
+  background-color: #24a4d86d;
+  color: #fff;
+}
+
+.Calendar-container {
+  width: 100%;
+  padding: 30px 10px 0px;
+}
+td {
+  height: calc(100% / 7);
+  text-align: center;
+  background-color: #fff;
+  color: #000000de;
+  position: relative;
+  border: 1px solid #5050504d;
+  cursor: pointer;
+  width: calc(100% / 7);
+  z-index: 3;
+  padding: 2px;
+  position: relative;
+}
+.cell-choice.active:hover {
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.cell-choice.active.checked {
+  background-color: #c0e7ff;
+}
+.in-prev-month,
+.in-next-month {
+  opacity: 0.5;
+  visibility: hidden;
+}
+.calendar-heading {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  background-color: #24a4d8;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.header-title {
+  color: #fff;
+  font-size: 1.25rem;
+  text-align: center;
+}
+.calendar-button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.calendar-button.prev {
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+}
+.calendar-button.next {
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+}
+.button-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: #fff;
+}
+.calendar-button:active {
+  background-color: #197597;
+}
+.table-head {
+  height: 40px;
+  border: 1px solid #5050504d;
+  background-color: #fff;
+  color: #000000de;
+}
+.table-body {
+  height: 450px;
+}
+
+.cell-choice {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cell-choice span {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.cell-logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7px;
+}
+.cell-logo img {
+  width: 60px;
+  height: 25px;
+  background-color: #fff;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.airline-img img {
+  width: 78px;
+  height: 28px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.chooseAirline-box {
+  position: relative;
+}
+.chooseAirline {
+  position: absolute;
+  background-color: #fff;
+  padding: 12px;
+  width: 330px;
+  height: 276px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  right: 0;
+  z-index: 5;
+  border-radius: 8px;
+}
+.chooseAirline-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0 11px;
+}
+.checkAll span {
+  color: #24a4d8;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.checkAll span:hover {
+  text-decoration: underline;
+}
+/* check box */
+.input-checkbox {
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.input-checkbox label {
+  cursor: pointer;
+  display: flex;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+.input-checkbox label::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  border: 0.05em solid black;
+}
+.input-checkbox input[type="checkbox"]:checked + label::before {
+  content: "\002714";
+  background-color: #24a4d8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+/*  */
+.btn-chooseAirline {
+  text-align: center;
+  margin-top: 10px;
+}
+.btn-filter {
+  padding: 7px 10px;
+  color: #fff;
+  background-color: #24a4d8;
+  border-radius: 99px;
+  position: relative;
+  cursor: pointer;
+  z-index: 5;
+}
+.btn-filter:hover {
+  background-color: #197597;
+}
+.filter-icon {
+  fill: #fff;
+  position: relative;
+  top: 5px;
+  margin-right: 5px;
+}
+.td-active .disable {
+  text-align: center;
+  cursor: default;
+}
+.SearchByMonth-container.dark .td-active .disable {
+  background-color: #212121;
+}
+/* dark mode */
+
+.SearchByMonth-container.dark .calendar-table {
+  background-color: #212121;
+}
+.SearchByMonth-container.dark td {
+  background-color: #424242;
+  color: #fff;
+  border: 1px solid #505050;
+}
+.SearchByMonth-container.dark .table-head {
+  border: 1px solid #333;
+  background-color: #303030;
+  color: #fff;
+}
+.SearchByMonth-container.dark .cell-choice.active.checked {
+  background-color: #24a4d8;
+}
+.SearchByMonth-container.dark .header-content p,
+.SearchByMonth-container.dark .header-user span,
+.SearchByMonth-container.dark .header-icon-user,
+.SearchByMonth-container.dark .final-note-text,
+.SearchByMonth-container.dark .price-min,
+.SearchByMonth-container.dark .price-max,
+.SearchByMonth-container.dark .final-suggest,
+.SearchByMonth-container.dark .label-checkbox,
+.SearchByMonth-container.dark .Sort-text,
+.SearchByMonth-container.dark .display-Sort {
+  color: #fff;
+}
+.SearchByMonth-container.dark .header-icon-user {
+  color: #fff;
+}
+
+.SearchByMonth-container.dark .main-search {
+  background-color: #424242;
+}
+.SearchByMonth-container.dark .formSearch-main {
+  background-color: #424242;
+}
+.SearchByMonth-container.dark .non-cursor {
+  background-color: #212121;
+}
+
+.SearchByMonth-container.dark .sort-icon,
+.SearchByMonth-container.dark .button-icon {
+  fill: #fff;
+}
+.SearchByMonth-container.dark .formSearch-header-title {
+  color: #fff;
+}
+.SearchByMonth-container.dark .form-input::placeholder {
+  color: #cccccc;
+}
+.SearchByMonth-container.dark .form-input {
+  background-color: #424242;
+  color: #fff;
+  border-bottom: 1px solid #eaeaea;
+}
+.SearchByMonth-container.dark .form-input:hover {
+  border-bottom: 2px solid #fff;
+}
+.SearchByMonth-container.dark .input-checkbox label::before {
+  background-color: #424242;
+  border: 2px solid #fff;
+}
+.SearchByMonth-container.dark .chooseAirline {
+  background-color: #424242;
+}
+.SearchByMonth-container.dark
+  .input-checkbox
+  input[type="checkbox"]:checked
+  + label::before {
+  border: 2px solid #424242;
+}
+.SearchByMonth-container.dark .chooseAirline {
+  background-color: #424242;
+}
+.SearchByMonth-container.dark .option-lish-sort {
+  background-color: #424242;
+}
+.SearchByMonth-container.dark .option-lish-item {
+  color: #fff;
+}
+.SearchByMonth-container.dark .option-lish-item:hover {
+  background-color: #515151;
+}
+@media (max-width: 960px) {
+  .SearchByMonth-container {
+    width: 93%;
+  }
+  .SearchByMonth-header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .header-btn {
+    margin: 22px 0 10px;
+  }
+  .SearchByMonth-main {
+    width: 100%;
+  }
+  .SearchByMonth-main .cell-choice .cell-logo {
+    flex-direction: column;
+  }
+  .cell-logo img {
+    width: 100%;
+  }
+  .inputInformation {
+    flex-wrap: wrap;
+  }
+  .Sort {
+    margin-top: 10px;
+  }
+  .table-body {
+    height: 420px;
+  }
+}
+@media (max-width: 600px) {
+  .SearchByMonth-main .cell-choice .cell-logo {
+    flex-direction: column;
+  }
+  .cell-logo img {
+    width: 100%;
+  }
+  .form-input {
+    width: 100%;
+  }
+  .form-field {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .inputInformation {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cell-choice span {
+    font-size: 0.7rem;
+  }
+  .table-body {
+    height: 340px;
+  }
+}

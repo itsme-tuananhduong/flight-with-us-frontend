@@ -1,6 +1,6 @@
 import React,{ useRef, useEffect, useCallback } from 'react'
 
-function BoxTinhThanh({showTinhThanh,setShowTinhThanh}) {
+function BoxTinhThanh({showTinhThanh,setShowTinhThanh,national,getValueProvince}) {
 
     const modalRef = useRef();
     const closeModal = (e) => {
@@ -23,52 +23,67 @@ function BoxTinhThanh({showTinhThanh,setShowTinhThanh}) {
       return () => document.removeEventListener("keydown", keyPress);
     }, [keyPress]);
   
+    const provinces = [
+      {
+        nation : "VietNam",
+        province : ["Hà Nội","Thanh Hóa", "Bình Dương" , "Hồ Chí Minh" ,'Thái Bình',"Lạng Sơn",'Kiên La','Ninh Bình' ]
+      },
+      {
+        nation:"United Kingdom",
+        province:['England','Northern Ireland','Scotland','Wales']
+      },
+      {
+        nation:'Turkey',
+        province : ['Adana','Adıyaman','Afyonkarahisar','Aksaray','Ankara','Bilecik','Bilecik','Batman']
+      },
+      {
+        nation:'ThaiLand',
+        province:['Bangkok','Changwat Amnat Charoen','Changwat Ang Thong','Changwat Bueng Kan','Changwat Chumphon','Changwat Maha Sarakham']
+      },
+      {
+        nation:'Uzbekistan',
+        province:['Andijan Region','Bukhara Region','Fergana Region','Karakalpakstan','Karakalpakstan','Namangan Region','Navoiy Region']
+      },
+      {
+        nation:'Ukraine',
+        province:['Autonomous Republic of Crimea','Cherkasy Oblast','Chernihivska Oblast','Sebastopol City']
+      },
+      {
+        nation:'Tuvalu',
+        province:['Nanumanga','Nanumea','Niutao','Nui','Nukufetau','Vaitupu']
+      },
+      {
+        nation:'United States',
+        province:['Alabama','Arizona','California','Connecticut','Connecticut','Kansas']
+      },
+    {
+      nation:'Vanuatu',
+      province:['Malampa Province','Penama Province','Sanma Province','Shefa Province','Tafea Province']
+    }
+    ]
+    const handleProvinces = e=>{
+      getValueProvince(e.target.innerHTML);
+      setShowTinhThanh(false)
+    }
+
     return (
         <>
         
         {
             showTinhThanh?(
-                <div className='madienthoai'>
+                <div className='quocgia'>
                     <div className="overlay" onClick={closeModal}
                     ref={modalRef}></div>
+
                     <div className='option-list-mdt' >
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/ve.png" alt="" />HaNoi(+67)
-        
+                      {
+                        provinces.filter(x => x.nation === national).map(nation => nation.province.map((province,index) => (
+                          <span className="option-list-mdt-item" key={index} onClick={handleProvinces}>
+                            {province}
                         </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/vu.png" alt="" /> Vanuatu(+678)
-                        </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/uz.png" alt="" />Uzbekistan(+998)
-                        </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/uy.png" alt="" />Uruguay(+598)
-                        </span>
-                        <span className="option-list-mdt-item">
-                          <img src="https://media.hahalolo.com/other/flags/us.png" alt="" />United States(+1)
-                        </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/vn.png" alt="" /> VietNam(+7)
-                        </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/tk.png" alt="" /> Tokelau(+690)
-                        </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/tr.png" alt="" /> Turkey(+90)
-                        </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/to.png" alt="" /> Tonga(+676)
-                        </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/tv.png" alt="" /> Tuvalu(+688)
-                        </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/ua.png" alt="" /> Ukraine(+380)
-                        </span>
-                        <span className="option-list-mdt-item">
-                        <img  src="https://media.hahalolo.com/other/flags/gb.png" alt="" /> United KingDom(+44)
-                        </span>
+                        )))
+                      }
+                        
                       </div>
                 </div>
 

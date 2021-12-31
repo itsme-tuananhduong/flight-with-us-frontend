@@ -1,22 +1,28 @@
 .BoxHinhThucThanhToan__container .form-field {
   width: 100%;
 }
+
 .BoxHinhThucThanhToan__container {
   width: 822px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   padding: 20px;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #ffffff;
+  position: relative;
 }
 .BoxHinhThucThanhToan__container::before {
   position: absolute;
-  content: '';
+  content: "";
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #bfe3f0;
-  z-index: -1;
+  background-color: #c2f9ff;
+  left: 13px;
+  top: 19px;
+}
+.BoxHinhThucThanhToan__container.dark::before {
+  background-color: #595955;
 }
 .BoxHinhThucThanhToan__container .form-input {
   width: 100%;
@@ -25,7 +31,7 @@
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
   outline: none;
-  font-size: 1.6rem;
+  font-size: 1rem;
   border: none;
   border-bottom: 2px solid #eaeaea;
 }
@@ -57,7 +63,7 @@
   pointer-events: none;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
-  font-size: 1.6rem;
+  font-size: 1rem;
 }
 
 .BoxHinhThucThanhToan__container
@@ -68,20 +74,18 @@
   display: inline-block;
   background-color: #ffffff;
   color: #24a8d8;
-  font-size: 1.2rem;
+  font-size: 0.75rem;
 }
 .BoxHinhThucThanhToan-title {
-  font-size: 2rem;
+  font-size: 1.25rem;
   margin-bottom: 36px;
-  font-family: Mulish, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  position: relative;
 }
 .BoxHinhThucThanhToan-content {
   padding-left: 12px;
 }
 .BoxHinhThucThanhToan-content span {
-  font-size: 1.6rem;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.77);
 }
 .khung {
@@ -96,7 +100,7 @@
 }
 .khung-header .khung-title {
   color: #000000de;
-  font-weight: 500;
+  font-weight: bold;
   margin-left: 10px;
 }
 .icon-khung {
@@ -112,7 +116,7 @@
   padding-left: 32px;
 }
 .khung-display p {
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   color: rgba(0, 0, 0, 0.57);
   padding: 10px 0;
 }
@@ -130,7 +134,7 @@
   margin-left: 10px;
 }
 .display-radio {
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   width: 18px;
   height: 18px;
 }
@@ -146,4 +150,179 @@
 .Khung-Nhap1 {
   display: flex;
   align-items: center;
+}
+.ant-picker.ant-picker-borderless.form-input {
+  border-color: #eaeaea !important;
+}
+.ant-picker.ant-picker-borderless:hover {
+  border-color: #202020 !important;
+}
+.ant-picker-focused {
+  box-shadow: none;
+}
+.isvalid .form-input {
+  border-bottom-color: red;
+}
+.isvalid .form-input:hover,
+.isvalid .form-input:focus {
+  border-bottom-color: red;
+}
+.isvalid .form-input:not(:placeholder-shown) + .form-label,
+.isvalid .form-input:focus + .form-label {
+  color: red;
+}
+.message-error {
+  color: red;
+  font-size: 0.75rem;
+  padding-top: 5px;
+  position: absolute;
+  bottom: -19px;
+  left: 0;
+}
+.BoxHinhThucThanhToan__container .khung-nhap2 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.BoxHinhThucThanhToan__container .khung-nhap2 .form-field {
+  width: 30%;
+}
+.footer {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-icon {
+  fill: #24a8d8;
+  margin-right: 10px;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+.footer-content span {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.footer-content span a:hover {
+  text-decoration: underline;
+  color: #24a8d8;
+}
+.time {
+  user-select: none;
+}
+.form-label.label-time {
+  top: -5px;
+  display: inline-block;
+  color: #24a8d8;
+  font-size: 0.75rem;
+}
+.BoxHinhThucThanhToan__container .footer-btn {
+  font-size: 0.9375rem;
+  color: #ffffff;
+  padding: 11px 16px;
+  cursor: pointer;
+  border-radius: 99px;
+  text-transform: none;
+  background-color: #24a8d8;
+  user-select: none;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20px;
+  width: 20%;
+}
+.BoxHinhThucThanhToan__container .footer-btn:hover {
+  background-color: #197597;
+}
+.BoxHinhThucThanhToan__container .ant-picker-input > input {
+  color: black;
+}
+.time-icon {
+  position: absolute;
+  right: 0;
+  top: 20%;
+  color: #24a8d8;
+}
+.BoxHinhThucThanhToan__container.dark .time-icon {
+  color: #fff;
+}
+/* Dark mode */
+.BoxHinhThucThanhToan__container.dark {
+  background-color: #424242;
+}
+.BoxHinhThucThanhToan__container.dark .khung {
+  border: 1px solid #585858;
+}
+.BoxHinhThucThanhToan__container.dark .BoxHinhThucThanhToan-content span,
+.BoxHinhThucThanhToan__container.dark .khung-display p,
+.BoxHinhThucThanhToan__container.dark .khung-header .khung-title,
+.BoxHinhThucThanhToan__container.dark .footer-content span,
+.BoxHinhThucThanhToan__container.dark .BoxHinhThucThanhToan-title {
+  color: #fff;
+}
+.BoxHinhThucThanhToan__container.dark .khung-header .icon-khung {
+  fill: #fff;
+}
+.BoxHinhThucThanhToan__container.dark .form-input {
+  border-bottom: 1px solid white;
+  background-color: #424242;
+  color: white;
+}
+.BoxHinhThucThanhToan__container.dark .khung-title.active {
+  color: #24a8d8;
+}
+.BoxHinhThucThanhToan__container.dark .form-input:hover {
+  border-bottom: 2px solid white;
+}
+
+.BoxHinhThucThanhToan__container.dark .form-input:focus {
+  border-color: #24a8d8;
+}
+
+.BoxHinhThucThanhToan__container.dark .form-label {
+  color: #bababa;
+}
+.BoxHinhThucThanhToan__container.dark .icon-khung:active {
+  background-color: #eaeaea;
+}
+.BoxHinhThucThanhToan__container.dark .icon-khung:hover {
+  background-color: #555;
+}
+.BoxHinhThucThanhToan__container.dark
+  .form-input:not(:placeholder-shown)
+  + .form-label,
+.BoxHinhThucThanhToan__container.dark .form-input:focus + .form-label {
+  background-color: #424242;
+}
+
+@media (max-width: 960px) and (min-width: 601px) {
+  .BoxHinhThucThanhToan__container {
+    width: 100%;
+  }
+  .BoxHinhThucThanhToan__container .Khung-Nhap1 {
+    flex-direction: column;
+  }
+  .BoxHinhThucThanhToan__container .khung-nhap2 .form-field {
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .BoxHinhThucThanhToan__container {
+    width: 100%;
+  }
+  .BoxHinhThucThanhToan__container .khung-nhap2,
+  .BoxHinhThucThanhToan__container .Khung-Nhap1 {
+    flex-direction: column;
+  }
+  .BoxHinhThucThanhToan__container .khung-nhap2 .form-field {
+    width: 100%;
+  }
+  .BoxHinhThucThanhToan__container .footer-btn {
+    width: 100%;
+  }
+  .BoxHinhThucThanhToan__container .footer-icon {
+    width: 30px;
+    height: 30px;
+  }
 }

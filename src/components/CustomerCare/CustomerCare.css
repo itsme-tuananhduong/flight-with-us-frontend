@@ -37,15 +37,15 @@
 .customerCare__introduce--text {
   color: rgba(0, 0, 0, 0.54);
   margin-bottom: 10px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 500;
   display: block;
   width: 100%;
 }
-.customerCare__switchboard--phone,
-.customerCare__introduce--link {
+.customerCare-component .customerCare__switchboard--phone,
+.customerCare-component .customerCare__introduce--link {
   color: #24a8d8;
-  font-size: 1.6rem;
+  font-size: 1rem;
   display: block;
   width: 100%;
   font-weight: bold;
@@ -86,9 +86,17 @@
     margin-top: 20px;
   }
   .customerCare-component {
-    width: 93%;
+    width: 100%;
   }
   .customerCare__avatar img {
     top: -38px;
   }
+}
+/* dark mode */
+.customerCare-component.dark .customerCare__switchboard--text,.customerCare-component.dark .customerCare__introduce--text{
+  color: #fff;
+}
+
+.customerCare-component.dark{
+  background-color: #424242;
 }

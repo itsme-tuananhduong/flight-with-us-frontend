@@ -1,0 +1,417 @@
+.SearchByWeek-container {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  top: 62px;
+  padding-top: 40px;
+}
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+.SearchByWeek-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-user {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+.header-user span {
+  font-size: 1rem;
+}
+.header-btn {
+  padding: 11px 16px;
+  background-color: #24a4d8;
+  border-radius: 99px;
+  color: #fff;
+  cursor: pointer;
+}
+.header-btn:hover {
+  background-color: #197597;
+  text-transform: none;
+}
+.header-content p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 10px 0;
+}
+.SearchByWeek-main {
+  width: 100%;
+}
+.main-flight {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  background-color: #24a4d8;
+  padding: 16px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+}
+.main-flight .main-flight-title {
+  font-size: 1.25rem;
+  color: rgb(255, 255, 255, 1);
+  margin-bottom: 7px;
+  font-weight: 500;
+}
+.main-flight-province {
+  font-size: 1rem;
+  color: rgb(255, 255, 255, 1);
+  margin-bottom: 5px;
+}
+.main-flight-time {
+  font-size: 0.875rem;
+  color: rgb(255, 255, 255, 1);
+}
+.calendar-week .calendar-button {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 0;
+  z-index: 1;
+}
+.calendar-week .calendar-button:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.calendar-week .calendar-button:active {
+  background-color: #eaeaea;
+}
+.calendar-week {
+  width: 100%;
+  height: 74px;
+  position: relative;
+  background-color: #fff;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  padding: 9px 0;
+}
+.calendar-week .calendar-button.prev {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.calendar-week .calendar-button.next {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.button-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: #333;
+  cursor: pointer;
+}
+.list-date {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+.date-item {
+  text-align: center;
+  font-size: 1rem;
+  color: #000000;
+  padding: 12px 11px;
+  border-right: 1px solid #ccc;
+  width: calc(100% / 7);
+}
+.date-item-price {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #000000;
+  width: calc(100% / 7);
+  height: 100%;
+  position: relative;
+  padding: 10px 0;
+  border-right: 1px solid #eaeaea;
+  font-weight: 600;
+  cursor: pointer;
+}
+.date-item-price:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.date-item-price.active {
+  color: #24a4d8;
+}
+.date-item-price.active::after {
+  position: absolute;
+  content: "";
+  width: 101%;
+  height: 3px;
+  background-color: #24a4d8;
+  bottom: -3px;
+}
+.date-item-price span {
+  font-size: 1rem;
+}
+.date-item-price p {
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+.disibale {
+  opacity: 0.5;
+}
+.main-filter {
+  width: 100%;
+  height: 137px;
+  background-color: #fff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.btn-filter-search {
+  padding: 8px 12px;
+  border: 1px solid #eaeaea;
+  border-radius: 99px;
+  cursor: pointer;
+}
+.btn-filter-search:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.main-sort,
+.filter-plane-ticket {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+  align-items: center;
+}
+.filter-plane-ticket {
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 5px;
+}
+.btn-filter-search {
+  font-size: 0.875rem;
+}
+.display-Sort-week {
+  border: 1px solid #eaeaea;
+  padding: 8px 10px;
+  border-radius: 99px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.Sort-text-week {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.SearchByWeek-footer {
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 8px;
+}
+.noFlight-container {
+  margin-top: 40px;
+}
+.noFlight-img {
+  width: 100%;
+  margin-bottom: 44px;
+}
+.noFlight-img img {
+  margin: 0 auto;
+  display: block;
+  width: 320px;
+  height: 248px;
+  object-fit: cover;
+}
+.noFlight-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.noFlight-content h4 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.noFlight-content p {
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+.noFlight-content span {
+  padding: 10px 22px;
+  color: #fff;
+  background-color: #24a4d8;
+  border-radius: 99px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.noFlight-content span:hover {
+  background-color: #197597;
+}
+.ticketBox-container {
+  width: 100%;
+  background-color: #24a4d8;
+}
+.chooseTicket {
+  position: fixed;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+  background-color: #fff;
+  width: 1183px;
+  height: 70px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  padding: 0 12px;
+}
+
+.chooseTicket-price {
+  display: flex;
+  align-items: center;
+}
+.sum-money {
+  font-size: 1.25rem;
+  font-weight: 00;
+}
+.color-red {
+  font-size: 1.5rem;
+  color: red;
+  margin: 0 10px;
+}
+.note {
+  font-size: 0.875rem;
+}
+.content {
+  font-size: 1rem;
+}
+.quanlity {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0 3px;
+}
+.btn-put {
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 99px;
+  margin-left: 8px;
+  color: #ccc;
+}
+.btn-put.active {
+  color: #fff;
+  background-color: #ff9800;
+  cursor: pointer;
+}
+.btn-put.active:hover {
+  background-color: #f57c00;
+}
+/* Dark mode */
+.SearchByWeek-container.dark,
+.SearchByWeek-container.dark .date-item-price,
+.SearchByWeek-container.dark .date-item,
+.SearchByWeek-container.dark .option-lish-item,
+.SearchByWeek-container.dark.note,
+.SearchByWeek-container.dark .content {
+  color: #fff;
+}
+.SearchByWeek-container.dark .quanlity {
+  color: red;
+}
+.SearchByWeek-container.dark .option-lish-item:hover {
+  background-color: #515151;
+}
+.SearchByWeek-container.dark .date-item-price.active,
+.SearchByWeek-container.dark .btn-filter-search {
+  color: #24a4d8;
+}
+.SearchByWeek-container.dark .btn-filter-search {
+  border: 1px solid #24a4d8;
+}
+.SearchByWeek-container.dark .btn-filter-search:hover {
+  background-color: rgba(36, 164, 216, 0.07);
+}
+.SearchByWeek-container.dark .display-Sort-week:hover {
+  background-color: #515151;
+}
+.SearchByWeek-container.dark .calendar-week,
+.SearchByWeek-container.dark .main-filter,
+.SearchByWeek-container.dark .option-lish-sort,
+.SearchByWeek-container.dark .SearchByWeek-footer,
+.SearchByWeek-container.dark .chooseTicket {
+  background-color: #424242;
+}
+.SearchByWeek-container.dark .button-icon,
+.SearchByWeek-container.dark .sort-icon {
+  fill: #fff;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+  .SearchByWeek-container {
+    width: 93%;
+  }
+  .chooseTicket {
+    width: 90%;
+  }
+}
+@media (max-width: 960px) {
+  .calendar-week {
+    overflow-x: auto;
+    box-sizing: content-box;
+    overflow-y: hidden;
+    width: 100%;
+  }
+  .list-date {
+    width: 1200px;
+  }
+  .calendar-button {
+    display: none;
+  }
+  .SearchByWeek-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .main-flight {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .chooseTicket {
+    flex-direction: column;
+  }
+  .chooseTicket-price {
+    align-self: flex-start;
+    padding: 15px 10px;
+  }
+  .chooseTicket-put {
+    align-self: flex-end;
+    display: block;
+    padding: 16px 10px;
+  }
+  .chooseTicket {
+    bottom: 70px;
+    height: 130px;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 600px) {
+  .SearchByWeek-container {
+    top: 114px;
+  }
+  .btn-filter-search {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  .chooseTicket-price {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .chooseTicket {
+    bottom: 70px;
+    height: 180px;
+  }
+}
