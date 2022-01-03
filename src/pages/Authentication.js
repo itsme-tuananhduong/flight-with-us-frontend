@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ThemeContext } from '../shared/context/ThemeProvider';
 
 import LoginForm from '../components/FormAuth/LoginForm';
-import RegisterForm from '../components/FormAuth/Register';
+import RegisterForm from '../components/FormAuth/RegisterForm';
 import './Authentication.css';
 
 const Authentication = () => {

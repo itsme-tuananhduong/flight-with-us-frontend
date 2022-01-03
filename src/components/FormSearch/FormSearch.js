@@ -1,12 +1,11 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from './ChildComponent/Modal/Modal';
 import TimKhiemKhuHoi from './TimKhiemKhuHoi';
 import TimKiemNhieuChang from './TimKiemNhieuChang';
 import TimKiemMotChieu from './TimKiemMotChieu';
 import { ThemeContext } from '../../shared/context/ThemeProvider';
 
-import './formSearch.css';
-
+import './FormSearch.css';
 
 function FormSearch() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -16,7 +15,13 @@ function FormSearch() {
 
   return (
     <div>
-      <div className={theme === 'dark' ?"formSearch-container dark":"formSearch-container"}>
+      <div
+        className={
+          theme === 'dark'
+            ? 'formSearch-container dark'
+            : 'formSearch-container'
+        }
+      >
         <div className="formSearch-header">
           <div>
             <h3 className="formSearch-header-title">

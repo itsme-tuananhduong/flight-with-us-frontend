@@ -1,4 +1,4 @@
-.admin-page {
+/* .admin-page {
   padding-top: 88px;
   padding-bottom: 96px;
   overflow-x: auto;
@@ -21,12 +21,12 @@
   width: 93%;
   max-width: 1230px;
   margin: 0 auto;
-}
+} */
 
 /* Dark Mode */
 
 /* Responsive */
-@media screen and (max-width: 960px) {
+/* @media screen and (max-width: 960px) {
   .admin-page {
     padding-top: 152px;
   }
@@ -43,4 +43,4 @@
   .admin-page {
     padding-top: 196px;
   }
-}
+} */

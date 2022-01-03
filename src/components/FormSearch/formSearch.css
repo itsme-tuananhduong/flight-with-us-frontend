@@ -153,6 +153,7 @@
   border: none;
   border-bottom: 2px solid #eaeaea;
   transition: all 0.35s ease;
+  transition: background 0s;
   outline: none;
   font-size: 1rem;
   height: 50px;
@@ -447,7 +448,7 @@
   bottom: -19px;
   left: 0;
 }
-.input-checkbox {
+.submit-form.input-checkbox {
   display: flex;
   align-items: center;
   z-index: 1;

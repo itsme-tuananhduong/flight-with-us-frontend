@@ -71,7 +71,7 @@ function LoginForm(props) {
             Bạn chưa có tài khoản ?{' '}
             <span className="content-text-span" onClick={props.authModeToggler}>
               {' '}
-              Đăng kí ngay tại đây
+              Đăng ký ngay tại đây
             </span>
           </p>
         </div>
