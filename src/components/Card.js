@@ -1,10 +1,9 @@
-import React, { Fragment,useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { ThemeContext } from '../shared/context/ThemeProvider';
 
 import './Card.css';
 
 function Card({ card, saveID }) {
-
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { id, cardImage, cardTitle, cartContent } = card;
   const handleID = () => {
@@ -12,16 +11,15 @@ function Card({ card, saveID }) {
   };
   return (
     <Fragment>
-      <div className={theme === 'dark' ?"card dark":'card'}>
+      <div className={theme === 'dark' ? 'card dark' : 'card'}>
         <img className="card-img-top" src={cardImage} alt="" />
         <div className="card-body">
           <div>
-          <h5 className="card-title">{cardTitle}</h5>
-          <p className="card-text">{cartContent}</p>
-
+            <h5 className="card-title">{cardTitle}</h5>
+            <p className="card-text">{cartContent}</p>
           </div>
           <p className="card-button" onClick={handleID}>
-            chi tiết
+            Chi tiết
           </p>
         </div>
       </div>

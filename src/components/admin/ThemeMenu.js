@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-import './thememenu.css';
+import './ThemeMenu.css';
 
 import { useDispatch } from 'react-redux';
 
@@ -114,19 +114,22 @@ const ThemeMenu = () => {
     <div>
       <button
         ref={menu_toggle_ref}
-        className='dropdown__toggle'
+        className="dropdown__toggle admin-btn"
         onClick={() => setActiveMenu()}
       >
-        <i className='bx bx-palette'></i>
+        <i className="bx bx-palette"></i>
       </button>
-      <div ref={menu_ref} className='theme-menu'>
+      <div ref={menu_ref} className="theme-menu">
         <h4>Theme settings</h4>
-        <button className='theme-menu__close' onClick={() => closeMenu()}>
-          <i className='bx bx-x'></i>
+        <button
+          className="theme-menu__close admin-btn"
+          onClick={() => closeMenu()}
+        >
+          <i className="bx bx-x"></i>
         </button>
-        <div className='theme-menu__select'>
+        <div className="theme-menu__select">
           <span>Choose mode</span>
-          <ul className='mode-list'>
+          <ul className="mode-list">
             {mode_settings.map((item, index) => (
               <li key={index} onClick={() => setMode(item)}>
                 <div
@@ -134,16 +137,16 @@ const ThemeMenu = () => {
                     item.id === currMode ? 'active' : ''
                   }`}
                 >
-                  <i className='bx bx-check'></i>
+                  <i className="bx bx-check"></i>
                 </div>
                 <span>{item.name}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div className='theme-menu__select'>
+        <div className="theme-menu__select">
           <span>Choose color</span>
-          <ul className='mode-list'>
+          <ul className="mode-list">
             {color_settings.map((item, index) => (
               <li key={index} onClick={() => setColor(item)}>
                 <div
@@ -151,7 +154,7 @@ const ThemeMenu = () => {
                     item.id === currColor ? 'active' : ''
                   }`}
                 >
-                  <i className='bx bx-check'></i>
+                  <i className="bx bx-check"></i>
                 </div>
                 <span>{item.name}</span>
               </li>

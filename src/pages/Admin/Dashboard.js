@@ -6,11 +6,11 @@ import Chart from 'react-apexcharts';
 
 import { useSelector } from 'react-redux';
 
-import StatusCard from '../../components/admin/StatusCard';
+import StatusCard from '../../components/Admin/StatusCard';
 
-import Table from '../../components/admin/Table';
+import Table from '../../components/Admin/Table';
 
-import Badge from '../../components/admin/Badge';
+import Badge from '../../components/Admin/Badge';
 
 import statusCards from '../../assets/JsonData/status-card-data.json';
 
@@ -166,12 +166,12 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2 className='page-header'>Dashboard</h2>
-      <div className='row'>
-        <div className='col-6'>
-          <div className='row'>
+      <h2 className="page-header">Dashboard</h2>
+      <div className="row">
+        <div className="col-6">
+          <div className="row">
             {statusCards.map((item, index) => (
-              <div className='col-6' key={index}>
+              <div className="col-6" key={index}>
                 <StatusCard
                   icon={item.icon}
                   count={item.count}
@@ -181,8 +181,8 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-        <div className='col-6'>
-          <div className='card full-height'>
+        <div className="col-6">
+          <div className="page-card full-height">
             {/* chart */}
             <Chart
               options={
@@ -197,17 +197,17 @@ const Dashboard = () => {
                     }
               }
               series={chartOptions.series}
-              type='line'
-              height='100%'
+              type="line"
+              height="100%"
             />
           </div>
         </div>
-        <div className='col-4'>
-          <div className='card'>
-            <div className='card__header'>
+        <div className="col-4">
+          <div className="page-card">
+            <div className="page-card__header">
               <h3>top customers</h3>
             </div>
-            <div className='card__body'>
+            <div className="page-card__body">
               <Table
                 headData={topCustomers.head}
                 renderHead={(item, index) => renderCusomerHead(item, index)}
@@ -215,17 +215,17 @@ const Dashboard = () => {
                 renderBody={(item, index) => renderCusomerBody(item, index)}
               />
             </div>
-            <div className='card__footer'>
-              <Link to='/'>view all</Link>
+            <div className="page-card__footer">
+              <Link to="/">view all</Link>
             </div>
           </div>
         </div>
-        <div className='col-8'>
-          <div className='card'>
-            <div className='card__header'>
+        <div className="col-8">
+          <div className="page-card">
+            <div className="page-card__header">
               <h3>latest orders</h3>
             </div>
-            <div className='card__body'>
+            <div className="page-card__body">
               <Table
                 headData={latestOrders.header}
                 renderHead={(item, index) => renderOrderHead(item, index)}
@@ -233,8 +233,8 @@ const Dashboard = () => {
                 renderBody={(item, index) => renderOrderBody(item, index)}
               />
             </div>
-            <div className='card__footer'>
-              <Link to='/'>view all</Link>
+            <div className="page-card__footer">
+              <Link to="/">view all</Link>
             </div>
           </div>
         </div>

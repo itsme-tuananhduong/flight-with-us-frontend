@@ -4,7 +4,7 @@ import moment from "moment";
 import useCalendar from "../hook/useCalendar";
 import { ThemeContext } from "../shared/context/ThemeProvider";
 
-import "./searchByMonth.css";
+import "./SearchByMonth.css";
 function SearchByMonth() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 

@@ -14,6 +14,7 @@
   display: flex;
   align-items: center;
   width: 246px;
+  padding-right: 5px;
 }
 
 .brand {
@@ -130,14 +131,13 @@
   justify-content: center;
   align-items: center;
   margin: 0 2px;
-  transition: 0.25s ease-in-out;
+  transition: background 0.25s ease-in-out;
   position: relative;
 }
 
 .control:hover {
   background: #f3f3f3;
   cursor: pointer;
-  transition: 0.25s ease-in-out;
 }
 
 .control:hover .tooltip {
@@ -151,7 +151,7 @@
 
 .control.user {
   background: #c0c0c0;
-  transition: 0.25s ease-in-out;
+  transition: box-shadow 0.25s ease-in-out;
   position: relative;
 }
 
@@ -170,7 +170,6 @@
 
 .control.user:hover {
   box-shadow: 0 0 5px #c0c0c0;
-  transition: 0.25s ease-in-out;
 }
 
 .control.messenger svg {
@@ -202,7 +201,6 @@
   top: 50px;
   right: 10px;
   position: absolute;
-  transition: opacity 5s ease-in-out;
   overflow: hidden;
   background: #fff;
 }
