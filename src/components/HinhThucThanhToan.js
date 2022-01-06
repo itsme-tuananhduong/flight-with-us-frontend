@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext } from "../shared/context/ThemeProvider";
+import React, { useContext, useState } from 'react';
+import { ThemeContext } from '../shared/context/ThemeProvider';
 
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 
-import "./HinhThucThanhToan.css";
+import './HinhThucThanhToan.css';
 
 function HinhThucThanhToan() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -14,9 +14,9 @@ function HinhThucThanhToan() {
   return (
     <div
       className={
-        theme === "dark"
-          ? "BoxHinhThucThanhToan__container dark"
-          : "BoxHinhThucThanhToan__container"
+        theme === 'dark'
+          ? 'BoxHinhThucThanhToan__container dark'
+          : 'BoxHinhThucThanhToan__container'
       }
     >
       <div>
@@ -58,7 +58,7 @@ function HinhThucThanhToan() {
               </svg>
             )}
             <span
-              className={toggleKhung ? "khung-title" : "khung-title active"}
+              className={toggleKhung ? 'khung-title' : 'khung-title active'}
             >
               Thẻ ATM hoặc iBanking của các ngân hàng
             </span>
@@ -107,7 +107,7 @@ function HinhThucThanhToan() {
                 <path d='M11.743 9.098l-5.66 5.66a.345.345 0 00.03.48.348.348 0 00.45 0l5.42-5.42 5.42 5.42a.344.344 0 00.48 0 .349.349 0 00.1-.24.349.349 0 00-.1-.24l-5.66-5.66a.344.344 0 00-.48 0z'></path>
               </svg>
             )}
-            <span className={keep ? "khung-title" : "khung-title active"}>
+            <span className={keep ? 'khung-title' : 'khung-title active'}>
               Thẻ thanh toán quốc tế (Visa/Master)
             </span>
           </div>

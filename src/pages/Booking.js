@@ -16,10 +16,10 @@ const Booking = () => {
     <React.Fragment>
       <Navbar />
       <div className={theme === 'dark' ? 'booking-page dark' : 'booking-page'}>
-        <div className="booking-wrapper">
+        <div className='booking-wrapper'>
           {/* <FlightInfoBox /> */}
-          {/* <BoxNguoiThanhToan />
-          <HinhThucThanhToan /> */}
+          <BoxNguoiThanhToan />
+          <HinhThucThanhToan />
         </div>
       </div>
       <BottomNavbar />

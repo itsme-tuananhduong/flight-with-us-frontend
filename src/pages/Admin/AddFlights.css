@@ -1,6 +1,7 @@
 .page-header {
   margin-bottom: 40px;
   text-transform: capitalize;
+  position: relative;
 }
 
 .page-card {
@@ -9,4 +10,8 @@
   background-color: var(--main-bg);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius);
+}
+
+.full-height {
+  height: 100%;
 }

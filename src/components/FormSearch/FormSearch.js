@@ -5,7 +5,7 @@ import TimKiemNhieuChang from './TimKiemNhieuChang';
 import TimKiemMotChieu from './TimKiemMotChieu';
 import { ThemeContext } from '../../shared/context/ThemeProvider';
 
-import './FormSearch.css';
+import './formSearch.css';
 
 function FormSearch() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -22,21 +22,21 @@ function FormSearch() {
             : 'formSearch-container'
         }
       >
-        <div className="formSearch-header">
+        <div className='formSearch-header'>
           <div>
-            <h3 className="formSearch-header-title">
+            <h3 className='formSearch-header-title'>
               Tìm kiếm chuyến bay cho hành trình của bạn!
             </h3>
           </div>
           <span
-            className="formSearch-header-btn"
+            className='formSearch-header-btn'
             onClick={() => setShowModal((e) => !e)}
           >
             Tra cứu đặt chỗ
           </span>
         </div>
         <Modal showModal={showModal} setShowModal={setShowModal} />
-        <div className="formSearch-btn">
+        <div className='formSearch-btn'>
           <button
             className={
               tab === 1 ? 'formSearch-btn-item active' : 'formSearch-btn-item'

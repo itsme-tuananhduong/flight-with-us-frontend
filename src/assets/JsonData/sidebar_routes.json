@@ -5,40 +5,26 @@
     "icon": "bx bx-category-alt"
   },
   {
-    "display_name": "Customers",
-    "route": "/admin/customers",
+    "display_name": "Chuyến Bay",
+    "route": "/admin/flights",
     "icon": "bx bx-user-pin"
   },
   {
-    "display_name": "Products",
-    "route": "/admin/products",
+    "display_name": "Thêm Chuyến Bay",
+    "route": "/admin/add-flight",
     "icon": "bx bx-package"
   },
   {
-    "display_name": "Orders",
-    "route": "/admin/orders",
+    "display_name": "Tài Khoản",
+    "route": "/admin/accounts",
     "icon": "bx bx-cart"
   },
   {
-    "display_name": "Analytics",
-    "route": "/admin/analytics",
+    "display_name": "Hành Khách",
+    "route": "/admin/passengers",
     "icon": "bx bx-bar-chart-alt"
   },
-  {
-    "display_name": "categories",
-    "route": "/admin/categories",
-    "icon": "bx bx-list-ol"
-  },
-  {
-    "display_name": "discount",
-    "route": "/admin/discount",
-    "icon": "bx bx-gift"
-  },
-  {
-    "display_name": "inventory",
-    "route": "/admin/inventory",
-    "icon": "bx bx-store-alt"
-  },
+
   {
     "display_name": "settings",
     "route": "/admin/settings",

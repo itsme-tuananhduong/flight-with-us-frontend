@@ -1,0 +1,113 @@
+.updateFlight {
+  width: 900px;
+  height: 400px;
+  background-color: var(--main-bg);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  padding: 20px;
+  border-radius: 8px;
+}
+.Flight-Update {
+  position: relative;
+}
+.Flight-Update-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+}
+.Flight-information {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.updateFlight-list {
+  display: flex;
+  flex-direction: column;
+}
+.updateFlight-list-item {
+  padding: 8px 0;
+  margin: 8px 0;
+}
+.updateFlight {
+  display: flex;
+  flex-direction: column;
+}
+.updateFlight > h4 {
+  margin: 10px 0 30px;
+}
+.updateFlight-list-item.code {
+  margin-bottom: 30px;
+  color: #24a8d8;
+  display: block;
+}
+.Flight-information .form-field .form-input {
+  border: none;
+  border-bottom: 1px solid var(--txt-color);
+  transition: all 0.35s ease;
+  outline: none;
+  font-size: 1rem;
+  height: 35px;
+  width: 100%;
+  color: var(--txt-color);
+  background-color: var(--main-bg);
+}
+.Flight-information .form-field .form-label {
+  position: absolute;
+  top: 60%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  user-select: none;
+  color: #999;
+  pointer-events: none;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  font-size: 1rem;
+  left: 0;
+}
+.Flight-information .form-input:not(:placeholder-shown) + .form-label,
+.Flight-information .form-input:focus + .form-label {
+  top: -5px;
+  display: inline-block;
+  background-color: var(--main-bg);
+  color: #24a8d8;
+  left: 0px;
+  font-size: 0.75rem;
+}
+.Flight-information .form-field {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin-bottom: 40px;
+}
+.btn-update-flight {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+.btn-success {
+  background-color: #24a8d8;
+  padding: 8px 22px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-success:hover {
+  background-color: #2d81b9;
+}
+.form-field.time {
+  width: 200px;
+}
+.form-field.time .form-label {
+  top: -5px;
+  font-size: 0.75rem;
+  color: #24a8d8;
+}

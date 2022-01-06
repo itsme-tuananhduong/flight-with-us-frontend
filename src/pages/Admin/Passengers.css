@@ -1,0 +1,55 @@
+.page-header {
+  margin-bottom: 40px;
+  text-transform: capitalize;
+}
+
+.page-card {
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: var(--main-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}
+.update-passenger,
+.delete-passenger {
+  padding: 5px 24px;
+  color: #fff;
+  border-radius: 5px;
+}
+.update-passenger {
+  background-color: #24a8d8;
+}
+.delete-passenger {
+  background-color: #ff0000d4;
+}
+.update-passenger:hover,
+.delete-passenger:hover {
+  opacity: 0.8;
+}
+.search-id {
+  position: relative;
+  height: 50px;
+  background-color: var(--main-bg);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+.search-id > input {
+  height: 100%;
+  width: 200px;
+  padding: 10px 60px 10px 20px;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  color: var(--txt-color);
+  background-color: var(--main-bg);
+}
+.search-id > i {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}

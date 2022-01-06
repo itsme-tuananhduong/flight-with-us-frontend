@@ -1,0 +1,78 @@
+.page-header {
+  margin-bottom: 40px;
+  text-transform: capitalize;
+}
+
+.page-card {
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: var(--main-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}
+.page-card-heading {
+  background-color: var(--main-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.AddTicket,
+.ListTicket {
+  padding: 8px 10px;
+  background-color: #24a8d8;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 10;
+}
+.deleteTicket {
+  padding: 8px 10px;
+  background-color: #ff0000de;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.AddTicket:hover,
+.ListTicket:hover {
+  background-color: #194567;
+}
+.deleteTicket:hover {
+  background-color: #ff00008e;
+}
+.search-id {
+  position: relative;
+  height: 50px;
+  background-color: var(--main-bg);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+.search-id > input {
+  height: 100%;
+  width: 200px;
+  padding: 10px 60px 10px 20px;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  color: var(--txt-color);
+  background-color: var(--main-bg);
+}
+.search-id > i {
+  font-size: 1.5rem;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+.row.heading {
+  justify-content: space-between;
+  align-items: center;
+}

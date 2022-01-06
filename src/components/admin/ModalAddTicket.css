@@ -1,0 +1,158 @@
+.ticket {
+  position: relative;
+}
+.ticket-overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+}
+.ticket-container {
+  position: fixed;
+  width: 900px;
+  min-height: 420px;
+  background-color: var(--main-bg);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.Flight-info {
+  width: 100%;
+}
+.info-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-left: 20px;
+}
+.info-content > div {
+  display: flex;
+  flex-direction: column;
+}
+.info-title {
+  font-size: 20px;
+}
+
+.info-item {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.info-item > span {
+  color: #24a8d8;
+  font-size: 16px;
+}
+.Add-Ticket {
+  margin-top: 10px;
+}
+.content-ticket {
+  margin-top: 30px;
+}
+/*  */
+.select {
+  display: flex;
+  align-items: center;
+}
+.ticket-option {
+  background-color: var(--main-bg);
+  color: var(--txt-color);
+  cursor: pointer;
+  width: 200px;
+  padding: 5px 12px;
+  border: none;
+  border-bottom: 1px solid var(--txt-color);
+  outline: none;
+  font-size: 16px;
+  margin-left: 4px;
+}
+.group {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+.group .form-field .form-input {
+  border: none;
+  border-bottom: 2px solid var(--txt-color);
+  transition: all 0.35s ease;
+  outline: none;
+  font-size: 1rem;
+  height: 50px;
+  width: 100%;
+  padding: 28px 0 12px 30px;
+  color: var(--txt-color);
+  background-color: var(--main-bg);
+}
+.group .form-field .form-label {
+  position: absolute;
+  top: 60%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 30px;
+
+  user-select: none;
+  color: #999;
+  pointer-events: none;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  font-size: 1rem;
+}
+.form-input:not(:placeholder-shown) + .form-label,
+.form-input:focus + .form-label {
+  top: 5px;
+  display: inline-block;
+  background-color: var(--main-bg);
+  color: #24a8d8;
+  left: 0px;
+  font-size: 0.75rem;
+}
+.group .form-field {
+  width: 300px;
+  padding: 0;
+  position: relative;
+}
+.group .form-field:first-child {
+  margin-right: 20px;
+}
+.ticket-btn {
+  margin-top: 50px;
+}
+.ticket-btn > span {
+  padding: 9px 16px;
+  background-color: #24a8d8;
+  color: #fff;
+  border-radius: 99px;
+  cursor: pointer;
+}
+.ticket-heading {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  padding-right: 10px;
+}
+.ticket-btn > span:hover {
+  background-color: #194678;
+}
+.ticket-close {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  top: 0;
+}
+.ticket-close .close-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ticket-close:hover {
+  background-color: var(--hover-color);
+}
