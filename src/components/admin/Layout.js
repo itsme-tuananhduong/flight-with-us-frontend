@@ -4,9 +4,11 @@ import './Layout.css';
 
 import Sidebar from './Sidebar';
 import TopNav from './TopNav';
-import Customers from '../../pages/Admin/Customers';
+import Flights from '../../pages/Admin/Flights';
 import Dashboard from '../../pages/Admin/Dashboard';
-import Products from '../../pages/Admin/Products';
+import AddFlights from '../../pages/Admin/AddFlights';
+import Accounts from '../../pages/Admin/Accounts';
+import Passengers from '../../pages/Admin/Passengers';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -30,12 +32,14 @@ const Layout = (props) => {
   return (
     <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
       <Sidebar {...props} />
-      <div className="layout__content">
+      <div className='layout__content'>
         <TopNav />
-        <div className="layout__content-main">
-          {props.location === '/admin/customers' && <Customers />}
+        <div className='layout__content-main'>
+          {props.location === '/admin/flights' && <Flights />}
           {props.location === '/admin/dashboard' && <Dashboard />}
-          {props.location === '/admin/products' && <Products />}
+          {props.location === '/admin/add-flight' && <AddFlights />}
+          {props.location === '/admin/accounts' && <Accounts />}
+          {props.location === '/admin/passengers' && <Passengers />}
           {/* Add Admin Route Here */}
         </div>
       </div>

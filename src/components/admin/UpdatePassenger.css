@@ -1,0 +1,113 @@
+.Update__Passenger {
+  position: relative;
+}
+.Passenger_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.Passenger_main {
+  position: fixed;
+  width: 800px;
+  height: 380px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--main-bg);
+  z-index: 100;
+  border-radius: 8px;
+  padding: 20px;
+}
+.updatePassenger-list {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+.updatePassenger-list.time {
+  margin-top: 10px;
+}
+.Passenger_main .form-field .form-input {
+  border: none;
+  border-bottom: 1px solid var(--txt-color);
+  transition: all 0.35s ease;
+  outline: none;
+  font-size: 1rem;
+  height: 35px;
+  width: 100%;
+  color: var(--txt-color);
+  background-color: var(--main-bg);
+}
+.Passenger_main .form-field .form-label {
+  position: absolute;
+  top: 60%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  user-select: none;
+  color: #999;
+  pointer-events: none;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  font-size: 1rem;
+  left: 0;
+}
+.Passenger_main .form-input:not(:placeholder-shown) + .form-label,
+.Passenger_main .form-input:focus + .form-label {
+  top: -5px;
+  display: inline-block;
+  background-color: var(--main-bg);
+  color: #24a8d8;
+  left: 0px;
+  font-size: 0.75rem;
+}
+.Passenger_main .form-field {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  margin-bottom: 40px;
+  margin-right: 20px;
+}
+.form-field.time {
+  width: 200px;
+}
+.form-field.time .form-label {
+  top: -5px;
+  font-size: 0.75rem;
+  color: #24a8d8;
+}
+.code-passenger {
+  margin-top: 20px;
+  display: block;
+}
+.btn-success {
+  background-color: #24a8d8;
+  padding: 8px 22px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-success:hover {
+  background-color: #2d81b9;
+}
+.btn-delete {
+  height: 35px;
+  padding: 0 22px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 35px;
+  margin-left: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-delete {
+  color: red;
+  border: 1px solid red;
+}
+
+.btn-delete:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+  color: #fff;
+}

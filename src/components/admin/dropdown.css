@@ -54,7 +54,9 @@
   padding: 20px;
   text-align: center;
 }
-
+.dropdown__footer a {
+  color: var(--txt-color);
+}
 .admin-btn {
   cursor: pointer;
   border: 0;

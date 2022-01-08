@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Phan Tiến Dũng",
+    "GioiTinh": "Nam",
+    "NgaySinh": "27-01-2001"
+  },
+  {
+    "id": 2,
+    "name": "Dương Tuấn Anh",
+    "GioiTinh": "Nam",
+    "NgaySinh": "28-08-2001"
+  },
+  {
+    "id": 3,
+    "name": "Nguyễn Thùy Ninh",
+    "GioiTinh": "Nữ",
+    "NgaySinh": "24-06-2001"
+  },
+  {
+    "id": 4,
+    "name": "Phan Tiến Dũng",
+    "GioiTinh": "Nam",
+    "NgaySinh": "27-01-2001"
+  },
+  {
+    "id": 5,
+    "name": "Dương Tuấn Anh",
+    "GioiTinh": "Nam",
+    "NgaySinh": "28-08-2001"
+  },
+  {
+    "id": 6,
+    "name": "Nguyễn Thùy Ninh",
+    "GioiTinh": "Nữ",
+    "NgaySinh": "24-06-2001"
+  },
+  {
+    "id": 7,
+    "name": "Phan Tiến Dũng",
+    "GioiTinh": "Nam",
+    "NgaySinh": "27-01-2001"
+  },
+  {
+    "id": 8,
+    "name": "Dương Tuấn Anh",
+    "GioiTinh": "Nam",
+    "NgaySinh": "28-08-2001"
+  },
+  {
+    "id": 9,
+    "name": "Nguyễn Thùy Ninh",
+    "GioiTinh": "Nữ",
+    "NgaySinh": "24-06-2001"
+  },
+  {
+    "id": 10,
+    "name": "Phan Tiến Dũng",
+    "GioiTinh": "Nam",
+    "NgaySinh": "27-01-2001"
+  },
+  {
+    "id": 11,
+    "name": "Dương Tuấn Anh",
+    "GioiTinh": "Nam",
+    "NgaySinh": "28-08-2001"
+  },
+  {
+    "id": 12,
+    "name": "Nguyễn Thùy Ninh",
+    "GioiTinh": "Nữ",
+    "NgaySinh": "24-06-2001"
+  }
+]

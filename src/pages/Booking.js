@@ -15,6 +15,7 @@ const Booking = () => {
     <React.Fragment>
       <Navbar />
       <div className={theme === 'dark' ? 'booking-page dark' : 'booking-page'}>
+
         <div className="booking-wrapper">
           <BoxDatVe />
         </div>

@@ -6,7 +6,7 @@
   --main-color: #349eff;
   --second-color: #62b4ff;
   --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
+  --color-hover-light: #eaeaea;
   --main-bg-light: #ffffff;
   --second-bg-light: #fafafb;
   --txt-color-light: #455560;
@@ -16,6 +16,7 @@
   --second-bg-dark: #202020;
   --txt-color-dark: #bbbbbb;
   --box-shadow-dark: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+  --color-hover-dark: #515151;
 
   --main-color-blue: #349eff;
   --second-color-blue: #62b4ff;

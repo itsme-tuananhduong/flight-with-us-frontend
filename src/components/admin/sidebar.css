@@ -9,16 +9,24 @@
 }
 
 .sidebar__logo {
-  height: 150px;
+  width: 250px;
+}
+.logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 150px;
 }
-
-.sidebar__logo > img {
-  height: 45px;
+.sidebar__logo .logo-icon {
+  height: 66px;
+  fill: #24a8d8;
+  width: 66px;
 }
-
+.title-logo {
+  color: #24a8d8;
+  font-size: 24px;
+  margin-left: 5px;
+}
 .sidebar__item {
   padding: 0 20px;
 }
@@ -29,6 +37,7 @@
   align-items: center;
   font-weight: 600;
   transition: color 0.3s ease 0s;
+  color: var(--txt-color);
 }
 
 .sidebar__item-inner > i {

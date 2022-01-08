@@ -1,0 +1,17 @@
+.page-header {
+  margin-bottom: 40px;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.page-card {
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: var(--main-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}
+
+.full-height {
+  height: 100%;
+}
