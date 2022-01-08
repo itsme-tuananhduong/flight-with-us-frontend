@@ -30,13 +30,15 @@
 .post-container img {
   margin: 30px auto;
   display: block;
-  height: 530px;
-  width: 530px;
+  width: 640px;
   padding-bottom: 50px;
 }
 .content {
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.77);
+}
+.content-divider {
+  margin: 32px 0;
 }
 .content-1 {
   margin: 16px 0;
@@ -85,7 +87,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.post-container .title-link{
+.post-container .title-link {
   color: #24a8d8;
 }
 @media (max-width: 600px) {
@@ -101,12 +103,12 @@
   }
 }
 /* dark mode */
-.post-container.dark{
+.post-container.dark {
   background-color: #424242;
 }
 .post-container.dark .post-title,
 .post-container.dark .post-time,
 .post-container.dark .post-title-2,
-.post-container.dark .content{
+.post-container.dark .content {
   color: #fff;
 }

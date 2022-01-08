@@ -20,6 +20,8 @@ const Home = () => {
           <FormSearch />
           <CustomerCare />
           <BoxCard />
+
+          <button className="home-btn">Xem thêm</button>
         </div>
       </div>
       <BottomNavbar />

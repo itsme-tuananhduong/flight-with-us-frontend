@@ -28,69 +28,71 @@ const App = () => {
   if (token) {
     routes = (
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/result' element={<Result />} />
-        <Route path='/booking' element={<Booking />} />
-        <Route path='/authentication' element={<Navigate to='/' />} />
-        <Route path='/user/:uid' element={<User />} />
-        <Route path='/admin' element={<Admin />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/authentication" element={<Navigate to="/" />} />
+        <Route path="/user/:uid" element={<User />} />
+        <Route path="/admin" element={<NotFound />} />
+        <Route path="/admin" element={<Admin />}>
           <Route
-            path='dashboard'
+            path="dashboard"
             element={<Layout location={'/admin/dashboard'} />}
           />
           <Route
-            path='flights'
+            path="flights"
             element={<Layout location={'/admin/flights'} />}
           />
           <Route
-            path='add-flight'
+            path="add-flight"
             element={<Layout location={'/admin/add-flight'} />}
           />
           <Route
-            path='accounts'
+            path="accounts"
             element={<Layout location={'/admin/accounts'} />}
           />
           <Route
-            path='passengers'
+            path="passengers"
             element={<Layout location={'/admin/passengers'} />}
           />
         </Route>
-        <Route path='/notfound' element={<NotFound />} />
-        <Route path='*' element={<Navigate to='/notfound' />} />
+        <Route path="/notfound" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/notfound" />} />
       </Routes>
     );
   } else {
     routes = (
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/result' element={<Result />} />
-        <Route path='/booking' element={<Booking />} />
-        <Route path='/authentication' element={<Authentication />} />
-        <Route path='/user/:uid' element={<Navigate to='/authentication' />} />
-        <Route path='/admin' element={<Admin />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/authentication" element={<Authentication />} />
+        <Route path="/user/:uid" element={<Navigate to="/authentication" />} />
+        <Route path="/admin" element={<NotFound />} />
+        <Route path="/admin" element={<Admin />}>
           <Route
-            path='dashboard'
+            path="dashboard"
             element={<Layout location={'/admin/dashboard'} />}
           />
           <Route
-            path='customers'
+            path="customers"
             element={<Layout location={'/admin/flights'} />}
           />
           <Route
-            path='products'
+            path="products"
             element={<Layout location={'/admin/add-flight'} />}
           />
           <Route
-            path='accounts'
+            path="accounts"
             element={<Layout location={'/admin/accounts'} />}
           />
           <Route
-            path='passengers'
+            path="passengers"
             element={<Layout location={'/admin/passengers'} />}
           />
         </Route>
-        <Route path='/notfound' element={<NotFound />} />
-        <Route path='*' element={<Navigate to='/notfound' />} />
+        <Route path="/notfound" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/notfound" />} />
       </Routes>
     );
   }

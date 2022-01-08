@@ -1,9 +1,7 @@
 .SearchByWeek-container {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  position: relative;
-  top: 62px;
-  padding-top: 40px;
+  padding-top: 16px;
 }
 .header-content {
   display: flex;
@@ -142,7 +140,7 @@
 }
 .date-item-price.active::after {
   position: absolute;
-  content: "";
+  content: '';
   width: 101%;
   height: 3px;
   background-color: #24a4d8;
@@ -253,21 +251,24 @@
 }
 .ticketBox-container {
   width: 100%;
-  background-color: #24a4d8;
+  /* background-color: #24a4d8; */
+  position: fixed;
+  left: 0;
+  bottom: 8px;
 }
 .chooseTicket {
-  position: fixed;
-  bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 5;
   background-color: #fff;
-  width: 1183px;
+  width: 93%;
+  max-width: 1230px;
   height: 70px;
   border-radius: 8px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   padding: 0 12px;
+  margin: 0 auto;
 }
 
 .chooseTicket-price {
@@ -350,15 +351,24 @@
 }
 
 /* Responsive */
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .SearchByWeek-container {
-    width: 93%;
+    width: 100%;
   }
-  .chooseTicket {
-    width: 90%;
+  .ticketBox-container {
+    width: 100%;
+    max-width: 1230px;
   }
-}
+} */
 @media (max-width: 960px) {
+  .SearchByWeek-footer {
+    margin-top: 100px;
+  }
+
+  .ticketBox-container {
+    bottom: 80px;
+  }
+
   .calendar-week {
     overflow-x: auto;
     box-sizing: content-box;
@@ -398,6 +408,10 @@
   }
 }
 @media (max-width: 600px) {
+  .SearchByWeek-footer {
+    margin-top: 150px;
+  }
+
   .SearchByWeek-container {
     top: 114px;
   }

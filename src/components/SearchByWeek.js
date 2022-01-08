@@ -2,11 +2,15 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import useCalendar from '../hook/useCalendar';
 import moment from 'moment';
 import { ThemeContext } from '../shared/context/ThemeProvider';
+import TicketBox from '../components/TicketBox';
+import Modal from './BoxDatVe/ChildComponent/Modal';
 
 import './SearchByWeek.css';
 
 function SearchByWeek() {
   const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const [showModal, setShowModal] = useState(false);
 
   const api = [
     {
@@ -98,6 +102,7 @@ function SearchByWeek() {
           : 'SearchByWeek-container'
       }
     >
+      <Modal showModal={showModal} setShowModal={setShowModal} />
       <div className="SearchByWeek-header">
         <div className="header-content">
           <p>Kết quả tìm kiếm cho "chuyến bay một chiều"</p>
@@ -153,7 +158,7 @@ function SearchByWeek() {
             <span>1 người lớn</span>
           </div>
         </div>
-        <div className="header-btn">
+        <div className="header-btn" onClick={() => setShowModal((e) => !e)}>
           <span>Thay đổi tìm kiếm</span>
         </div>
       </div>
@@ -281,7 +286,7 @@ function SearchByWeek() {
           </div>
           <div className="main-sort">
             <div className="Sort-week">
-              <span className="Sort-text-week">Sắp xếp theo : </span>
+              <span className="Sort-text-week">Sắp xếp theo: </span>
               <span
                 className="display-Sort-week"
                 onClick={() => setShowSort((pre) => !pre)}
@@ -342,8 +347,11 @@ function SearchByWeek() {
           </div>
         </div>
       </div>
+
+      <TicketBox />
+
       <div className="SearchByWeek-footer">
-        <div className="noFlight">
+        {/* <div className="noFlight">
           <div className="noFlight-container">
             <div className="noFlight-img">
               <img
@@ -359,13 +367,13 @@ function SearchByWeek() {
               <span>Thay đổi tìm kiếm</span>
             </div>
           </div>
-        </div>
-        {/* hộp vé is here */}
+        </div> */}
+
         <div className="ticketBox-container">
           <div className="ticketBox-item"></div>
           <div className="chooseTicket">
             <div className="chooseTicket-price">
-              <span className="sum-money">Tổng Tiền : </span>
+              <span className="sum-money">Tổng Tiền: </span>
               <span className="color-red">0đ</span>
               <span className="note">(Giá đã bao gồm thuế và phí)</span>
             </div>
