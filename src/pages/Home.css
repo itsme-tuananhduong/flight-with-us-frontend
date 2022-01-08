@@ -23,6 +23,20 @@
   margin: 0 auto;
 }
 
+.home-btn {
+  display: block;
+  background: #24a8d8;
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 99px;
+  border: none;
+  margin: 24px auto;
+}
+
+.home-btn:hover {
+  background: rgb(25, 117, 151);
+}
+
 /* Dark Mode */
 
 /* Responsive */

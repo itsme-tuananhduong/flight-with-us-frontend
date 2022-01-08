@@ -479,6 +479,11 @@ input[type='checkbox'] {
   color: white;
 }
 /* dark mode */
+.formSearch-container.dark .form-label.over {
+  background: #424242;
+  color: #999;
+}
+
 .formSearch-container.dark .formSearch-main {
   background-color: #424242;
 }
@@ -597,6 +602,16 @@ input[type='checkbox'] {
 }
 
 @media (max-width: 600px) {
+  .btn-part4-1.active,
+  .btn-part4-2 {
+    margin: 20px auto;
+    margin-top: 0;
+  }
+
+  .formSearch-main.active {
+    padding-bottom: 16px;
+  }
+
   .formSearch-header {
     flex-wrap: wrap;
   }

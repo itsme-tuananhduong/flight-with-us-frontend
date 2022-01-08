@@ -1,9 +1,8 @@
 .user-container {
   margin: 0 auto;
   background-color: #fff;
-  width: 1200px;
-  position: relative;
-  top: 62px;
+  width: 100%;
+  margin-top: 32px;
 }
 .persinal-page {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.07), -3px -3px 5px rgba(0, 0, 0, 0.09);
@@ -68,7 +67,7 @@
 .tabItem::before {
   width: 24px;
   height: 24px;
-  content: "";
+  content: '';
   left: 30%;
   top: 30%;
   z-index: 0;
@@ -197,7 +196,7 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  content: "";
+  content: '';
   background-color: #effdff;
   top: -150px;
   left: -130px;
@@ -208,7 +207,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  content: "";
+  content: '';
   background-color: #e1fbff;
   top: -100px;
   left: -90px;
@@ -262,7 +261,7 @@
   padding-bottom: 6px;
 }
 .main-tab-item.active::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -460,7 +459,13 @@
   right: 0;
 }
 /* dark mode */
-.user-container.dark,
+.user-container.dark {
+  background: #212121;
+}
+.user-container.dark .persinal-page,
+.user-container.dark .tab-page {
+  background: #303030;
+}
 .user-container.dark .tabItem {
   background-color: #303030;
 }

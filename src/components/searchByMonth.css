@@ -1,9 +1,28 @@
+.ticket-box-month {
+  height: 500px;
+  overflow-y: auto;
+  padding: 0 16px;
+  margin: 16px 8px 0 8px;
+}
+
+.search-month-continue {
+  width: 100%;
+  margin-top: 16px;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 99px;
+  background: #24a4d8;
+  color: #fff;
+}
+
+.search-month-continue:hover {
+  background: rgb(25, 117, 151);
+}
+
 .SearchByMonth-container {
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  position: relative;
-  top: 62px;
-  padding-top: 40px;
+  padding-top: 16px;
 }
 
 .header-content {
@@ -64,10 +83,8 @@
 .info-flight {
   width: 296px;
   height: 335px;
-  background-color: #197597;
   margin-left: 16px;
-  margin-top: 13px;
-  border-radius: 8px;
+  margin-top: 10px;
 }
 /*  */
 .main-flight-province {
@@ -340,7 +357,7 @@ td {
 }
 .cell-logo img {
   width: 60px;
-  height: 25px;
+  /* height: 25px; */
   background-color: #fff;
   padding: 4px;
   border-radius: 4px;
@@ -391,21 +408,21 @@ td {
   cursor: pointer;
   display: flex;
 }
-input[type="checkbox"] {
+input[type='checkbox'] {
   cursor: pointer;
   opacity: 0;
   position: absolute;
 }
 .input-checkbox label::before {
-  content: "";
+  content: '';
   width: 1em;
   height: 1em;
   border-radius: 0.15em;
   margin-right: 0.5em;
   border: 0.05em solid black;
 }
-.input-checkbox input[type="checkbox"]:checked + label::before {
-  content: "\002714";
+.input-checkbox input[type='checkbox']:checked + label::before {
+  content: '\002714';
   background-color: #24a4d8;
   display: flex;
   justify-content: center;
@@ -443,6 +460,9 @@ input[type="checkbox"] {
   background-color: #212121;
 }
 /* dark mode */
+.SearchByMonth-container.dark .ticket-box-month {
+  background: #212121;
+}
 
 .SearchByMonth-container.dark .calendar-table {
   background-color: #212121;
@@ -513,7 +533,7 @@ input[type="checkbox"] {
 }
 .SearchByMonth-container.dark
   .input-checkbox
-  input[type="checkbox"]:checked
+  input[type='checkbox']:checked
   + label::before {
   border: 2px solid #424242;
 }
@@ -530,6 +550,16 @@ input[type="checkbox"] {
   background-color: #515151;
 }
 @media (max-width: 960px) {
+  .SearchByMonth-container .container-main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .SearchByMonth-container .container-main .info-flight {
+    width: 100%;
+    margin: 0;
+    margin-top: 16px;
+    margin-bottom: 136px;
+  }
   .SearchByMonth-container {
     width: 93%;
   }

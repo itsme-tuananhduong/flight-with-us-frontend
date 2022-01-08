@@ -6,6 +6,15 @@ const TicketBox = () => {
   return (
     <div className="ticket-box-wrapper">
       <Ticket />
+      <Ticket />
+      <Ticket />
+      <Ticket />
+      <Ticket />
+      <Ticket />
+      <Ticket />
+      <Ticket />
+      <Ticket />
+      <Ticket />
     </div>
   );
 };

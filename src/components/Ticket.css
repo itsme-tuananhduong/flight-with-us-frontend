@@ -6,6 +6,7 @@
   width: 100%;
   background: rgba(0, 0, 0, 0.12);
   border-radius: 4px 4px 10px 10px;
+  margin-bottom: 16px;
 }
 
 .ticket {
