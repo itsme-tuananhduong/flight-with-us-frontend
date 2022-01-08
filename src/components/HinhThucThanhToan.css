@@ -3,17 +3,17 @@
 }
 
 .BoxHinhThucThanhToan__container {
-  width: 822px;
+  width: 100%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   padding: 20px;
-  margin: 0 auto;
+  margin: 0;
   border-radius: 8px;
   background-color: #ffffff;
   position: relative;
 }
 .BoxHinhThucThanhToan__container::before {
   position: absolute;
-  content: "";
+  content: '';
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -231,6 +231,7 @@
   display: inline-block;
   margin-top: 20px;
   width: 20%;
+  white-space: nowrap;
 }
 .BoxHinhThucThanhToan__container .footer-btn:hover {
   background-color: #197597;

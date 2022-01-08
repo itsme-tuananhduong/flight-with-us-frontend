@@ -1,0 +1,217 @@
+.flight-info {
+  background: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  width: 360px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flight-info hr {
+  height: 1px;
+  background-color: #eee;
+  border: none;
+  margin: 5px 16px;
+}
+
+.flight-info .flight-info__heading {
+  padding: 16px 16px 8px;
+}
+
+.flight-info .flight-info__heading p {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  word-break: break-word;
+}
+
+.flight-info .flight-info__content {
+  padding: 16px;
+  padding-bottom: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.flight-info .flight-info__content .airline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.flight-info .flight-info__content .airline .airline-detail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flight-info .flight-info__content .airline .airline-detail p {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.flight-info .flight-info__content .airline .airline-detail img {
+  width: 78px;
+  margin: 0 16px;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.flight-info .flight-info__content .airline .flight-detail span {
+  color: #24a8d8;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 25px;
+  white-space: nowrap;
+}
+
+.flight-info .flight-info__content .airline .flight-detail span:hover {
+  border-bottom: 1px solid #24a8d8;
+}
+
+.flight-info .flight-info__content .depature-day p {
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 10px;
+}
+
+.flight-info .flight-info__content .flight-passenger {
+  margin-bottom: 10px;
+}
+
+.flight-info .flight-info__content .flight-passenger span {
+  font-weight: 600;
+}
+
+.flight-info .flight-info__content .time-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.flight-info .flight-info__content .time-group p.time {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.flight-info .flight-info__content .time-group p.place {
+  font-weight: 600;
+  line-height: 20px;
+  word-break: break-word;
+}
+
+.flight-info .flight-info__content .time-group .flight-flying-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flight-info .flight-info__content .time-group .flight-flying-time span {
+  font-size: 12px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.flight-info .flight-info__content .time-group .flight-flying-time img {
+  width: 80%;
+  margin: 8px auto;
+}
+
+.flight-info .flight-info__content .flight-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.flight-info .flight-info__content .flight-price p {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.flight-info .flight-info__content .flight-price p span {
+  color: #f44336;
+}
+
+.flight-info .flight-info__content .flight-price .more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #24a8d8;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 6px 8px;
+}
+
+.flight-info .flight-info__content .flight-price .more svg {
+  fill: #24a8d8;
+}
+
+.flight-info .flight-info__content .flight-price .more:hover {
+  background: rgba(36, 168, 216, 0.04);
+}
+
+.flight-info .flight-info__content .flight-price .more p {
+  font-weight: 500;
+}
+
+.flight-info .flight-info__content .price-detail hr {
+  width: 100%;
+  margin: 16px 0;
+}
+
+.flight-info .flight-info__content .price-detail p {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.flight-info .flight-info__content .price-detail .price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flight-info .flight-info__content .price-detail .price-item span {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* Dark Mode */
+.flight-info.dark {
+  color: #fff;
+  background: #424242;
+}
+
+.flight-info.dark .flight-info__content .airline .airline-detail img {
+  background: #fff;
+}
+
+.flight-info.dark .flight-info__content .depature-day p,
+.flight-info.dark .flight-info__content .time-group .flight-flying-time span,
+.flight-info.dark .flight-info__content .price-detail .price-item span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.flight-info.dark .flight-info__content .price-detail hr {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+  .flight-info {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .airline {
+    flex-wrap: wrap;
+  }
+}

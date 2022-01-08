@@ -1,7 +1,7 @@
-.BoxNguoiThanhToan_container .form-field {
+.BoxNguoiLienHe_container .form-field {
   width: 100%;
 }
-.BoxNguoiThanhToan_container {
+.BoxNguoiLienHe_container {
   width: 100%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   padding: 12px;
@@ -13,7 +13,7 @@
   position: relative;
   z-index: 1;
 }
-.BoxNguoiThanhToan_container::before {
+.BoxNguoiLienHe_container::before {
   position: absolute;
   content: '';
   width: 30px;
@@ -21,10 +21,12 @@
   border-radius: 50%;
   background-color: #c2f9ff;
   z-index: -1;
-  left: 16px;
+  left: 3px;
   top: 12px;
+
+  margin-left: 12px;
 }
-.BoxNguoiThanhToan_container.dark::before {
+.BoxNguoiLienHe_container.dark::before {
   background-color: #515151;
 }
 .option1,
@@ -34,7 +36,7 @@
 .option4 {
   display: flex;
 }
-.BoxNguoiThanhToan_container .form-input {
+.BoxNguoiLienHe_container .form-input {
   width: 100%;
   height: 40px;
   padding: 16px 0;
@@ -46,20 +48,20 @@
   border-bottom: 2px solid #eaeaea;
 }
 
-.BoxNguoiThanhToan_container .form-input:hover {
+.BoxNguoiLienHe_container .form-input:hover {
   border-bottom: 2px solid #303030;
 }
 
-.BoxNguoiThanhToan_container .form-input:focus {
+.BoxNguoiLienHe_container .form-input:focus {
   border-color: #24a8d8;
 }
 
-.BoxNguoiThanhToan_container .form-field {
+.BoxNguoiLienHe_container .form-field {
   position: relative;
   margin: 20px 10px;
 }
 
-.BoxNguoiThanhToan_container .form-label {
+.BoxNguoiLienHe_container .form-label {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -76,8 +78,8 @@
   font-size: 1rem;
 }
 
-.BoxNguoiThanhToan_container .form-input:not(:placeholder-shown) + .form-label,
-.BoxNguoiThanhToan_container .form-input:focus + .form-label {
+.BoxNguoiLienHe_container .form-input:not(:placeholder-shown) + .form-label,
+.BoxNguoiLienHe_container .form-input:focus + .form-label {
   top: -5px;
   display: inline-block;
   background-color: #ffffff;
@@ -103,13 +105,12 @@
   bottom: -19px;
   left: 0;
 }
-.BoxNguoiThanhToan-title {
-  font-size: 1.25rem;
+.BoxNguoiLienHe-title {
   font-size: 1.25rem;
   margin-left: 12px;
-  margin-bottom: 36px;
+  margin-bottom: 16px;
 }
-.BoxNguoiThanhToan-checkbox {
+.BoxNguoiLienHe-checkbox {
   font-size: 1rem;
   margin-left: 8px;
 }
@@ -122,7 +123,7 @@
 .bntt-checkbox:active {
   box-shadow: 2px 2px 2px #24a8d8, -2px -2px 2px #24a8d8;
 }
-.bntt-input-check {
+.nguoilienhe-bntt-input-check {
   display: flex;
   align-items: center;
   margin: 12px;
@@ -209,7 +210,7 @@
   z-index: 4;
   left: 0;
 }
-.bntt-input-check .input-checkbox {
+.nguoilienhe-bntt-input-check .input-checkbox {
   display: flex;
   align-items: center;
   z-index: 5;
@@ -240,70 +241,141 @@ input[type='checkbox'] {
   align-items: center;
   color: white;
 }
+
+.gender-options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.gender-options p {
+  padding: 12px;
+}
+
+.gender-options .options {
+  display: flex;
+  align-items: center;
+}
+
+.gender-options .options .option {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.gender-options .options .option input {
+  background: red;
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.BoxNguoiLienHe_container .nguoi-lien-he-step-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 4px;
+}
+
+.BoxNguoiLienHe_container .nguoi-lien-he-step-2 .nguoi-lien-he__box {
+  width: 50%;
+  display: inline-block;
+  padding: 4px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.BoxNguoiLienHe_container .nguoi-lien-he-step-2 .nguoi-lien-he__box span {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
 /* dark mode */
-.BoxNguoiThanhToan_container.dark {
+.BoxNguoiLienHe_container.dark .nguoi-lien-he-step-2 .nguoi-lien-he__box {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.BoxNguoiLienHe_container.dark .nguoi-lien-he-step-2 .nguoi-lien-he__box span {
+  color: #fff;
+}
+
+.BoxNguoiLienHe_container.dark {
   background-color: #424242;
 }
-.BoxNguoiThanhToan_container.dark .form-input {
+.BoxNguoiLienHe_container.dark .form-input {
   border-bottom: 1px solid white;
   background-color: #424242;
   color: white;
 }
 
-.BoxNguoiThanhToan_container.dark .form-input:hover {
+.BoxNguoiLienHe_container.dark .form-input:hover {
   border-bottom: 2px solid white;
 }
 
-.BoxNguoiThanhToan_container.dark .form-input:focus {
+.BoxNguoiLienHe_container.dark .form-input:focus {
   border-color: #24a8d8;
 }
 
-.BoxNguoiThanhToan_container.dark .form-label {
+.BoxNguoiLienHe_container.dark .form-label {
   color: #bababa;
 }
-.BoxNguoiThanhToan_container.dark
+.BoxNguoiLienHe_container.dark
   .form-input:not(:placeholder-shown)
   + .form-label,
-.BoxNguoiThanhToan_container.dark .form-input:focus + .form-label {
+.BoxNguoiLienHe_container.dark .form-input:focus + .form-label {
   background-color: #424242;
 }
-.BoxNguoiThanhToan_container.dark .BoxNguoiThanhToan-title,
-.BoxNguoiThanhToan_container.dark .BoxNguoiThanhToan-checkbox,
-.BoxNguoiThanhToan_container.dark .option-list-mdt-item,
-.BoxNguoiThanhToan_container.dark .label-checkbox {
+.BoxNguoiLienHe_container.dark .BoxNguoiLienHe-title,
+.BoxNguoiLienHe_container.dark .BoxNguoiLienHe-checkbox,
+.BoxNguoiLienHe_container.dark .option-list-mdt-item,
+.BoxNguoiLienHe_container.dark .label-checkbox {
   color: #fff;
 }
-.BoxNguoiThanhToan_container.dark .option-list-mdt-item:hover {
+.BoxNguoiLienHe_container.dark .option-list-mdt-item:hover {
   background-color: #515151;
 }
-.BoxNguoiThanhToan_container.dark .option-list-mdt {
+.BoxNguoiLienHe_container.dark .option-list-mdt {
   background-color: #424242;
 }
-.BoxNguoiThanhToan_container.dark .arrow-icon {
+.BoxNguoiLienHe_container.dark .arrow-icon {
   fill: #fff;
 }
-.BoxNguoiThanhToan_container.dark .arrow-btn {
+.BoxNguoiLienHe_container.dark .arrow-btn {
   background-color: #424242;
 }
-.BoxNguoiThanhToan_container.dark .arrow-btn:hover {
+.BoxNguoiLienHe_container.dark .arrow-btn:hover {
   background-color: #515151;
 }
-.BoxNguoiThanhToan_container.dark .input-checkbox label::before {
+.BoxNguoiLienHe_container.dark .input-checkbox label::before {
   background-color: #424242;
   border: 2px solid #fff;
 }
-.BoxNguoiThanhToan_container.dark
+.BoxNguoiLienHe_container.dark
   .input-checkbox
   input[type='checkbox']:checked
   + label::before {
   border: 2px solid #424242;
 }
+
+.BoxNguoiLienHe_container.dark .BoxNguoiLienHe-title {
+  color: #fff;
+}
+
+.BoxNguoiLienHe_container.dark .gender-options {
+  color: #fff;
+}
 /* responsive */
 @media (max-width: 960px) and (min-width: 601px) {
-  .BoxNguoiThanhToan_container .option2 {
+  .BoxNguoiLienHe_container .option2 {
     flex-direction: column;
   }
-  .BoxNguoiThanhToan_container {
+  .BoxNguoiLienHe_container {
     width: 100%;
   }
   .form-field.email {
@@ -321,10 +393,14 @@ input[type='checkbox'] {
   .option4 {
     flex-direction: column;
   }
-  .BoxNguoiThanhToan_container {
+  .BoxNguoiLienHe_container {
     width: 100%;
   }
   .form-field.email {
+    width: 100%;
+  }
+
+  .BoxNguoiLienHe_container .nguoi-lien-he-step-2 .nguoi-lien-he__box {
     width: 100%;
   }
 }
