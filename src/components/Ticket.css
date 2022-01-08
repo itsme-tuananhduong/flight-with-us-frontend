@@ -1,0 +1,638 @@
+.ticket-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 4px 4px 10px 10px;
+}
+
+.ticket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  box-shadow: 0px 0px 16px 8px rgba(0, 0, 0, 0.12);
+}
+
+.ticket-logo-img {
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  position: relative;
+  margin-right: 1px;
+
+  background-image: radial-gradient(
+      ellipse closest-side at 50% 50%,
+      hsla(0, 0%, 100%, 0.1),
+      transparent 38%
+    ),
+    radial-gradient(circle at 0% 150%, transparent 9px, #fff 9px),
+    radial-gradient(circle at 100% 100%, transparent 9px, #fff 9px),
+    radial-gradient(circle at 100% 0%, transparent 9px, #fff 9px),
+    radial-gradient(circle at 0% -50%, transparent 9px, #fff 9px);
+  border-radius: 4px;
+  background-size: cover, 51% 51%, 51% 51%, 51% 51%, 51% 51%;
+  background-repeat: no-repeat;
+  background-position: center center, bottom left, bottom right, top right,
+    top left;
+}
+
+.ticket-logo-img::after {
+  right: -7px;
+  background: radial-gradient(
+      circle,
+      #fff,
+      #fff 50%,
+      #ff000000 50%,
+      #ff000000 100%
+    ) -7px 2px / 12px 12px repeat-y;
+  top: 9px;
+  width: 10px;
+  bottom: 9px;
+  content: '';
+  position: absolute;
+}
+
+.ticket-logo-img img {
+  padding: 4px;
+}
+
+.ticket-body {
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  position: relative;
+
+  background-image: radial-gradient(
+      ellipse closest-side at 50% 50%,
+      hsla(0, 0%, 100%, 0.1),
+      transparent 38%
+    ),
+    radial-gradient(circle at 0% 100%, transparent 9px, #fff 9px),
+    radial-gradient(circle at 100% 150%, transparent 9px, #fff 9px),
+    radial-gradient(circle at 100% -100%, transparent 9px, #fff 9px),
+    radial-gradient(circle at 0 0%, transparent 9px, #fff 9px);
+  border-radius: 4px;
+  background-size: cover, 51% 51%, 51% 51%, 51% 51%, 51% 51%;
+  background-repeat: no-repeat;
+  background-position: center center, bottom left, bottom right, top right,
+    top left;
+}
+
+.ticket-body::before {
+  left: -1px;
+  background: radial-gradient(
+      circle,
+      transparent,
+      transparent 50%,
+      #fff 50%,
+      #fff 100%
+    ) -8px 8px / 13px 12px repeat-y;
+  top: 9px;
+  width: 10px;
+  bottom: 9px;
+  content: '';
+  position: absolute;
+}
+
+.ticket-body .ticket-body__box-1 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px;
+}
+
+.ticket-body .ticket-body__box-2 {
+  height: 100%;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-body .ticket-body__box-3 {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+}
+
+.ticket-body .ticket-body__box-3 p.time {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.ticket-body .ticket-body__box-3 .time-span {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  word-break: break-word;
+}
+
+.ticket-body .ticket-body__box-3 .flight-flying-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ticket-body .ticket-body__box-3 .flight-flying-time span {
+  font-size: 12px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.ticket-body .ticket-body__box-3 .flight-flying-time img {
+  width: 80%;
+  margin: 8px auto;
+}
+
+.ticket-body .ticket-body__box-4 {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-body .ticket-body__box-4 span {
+  color: #24a8d8;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 25px;
+  white-space: nowrap;
+  padding: 8px;
+}
+
+.ticket-body .ticket-body__box-4 span:hover {
+  border-bottom: 1px solid #24a8d8;
+}
+
+.ticket-body .ticket-body__box-5 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #f44336;
+}
+
+.ticket-body .ticket-body__box-5 .select-btn {
+  color: #fff;
+  background: #24a8d8;
+  border: none;
+  border-radius: 99px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  width: 64px;
+}
+
+.ticket-body .ticket-body__box-5 .select-btn:hover {
+  background: rgb(25, 117, 151);
+}
+
+.ticket-detail {
+  background: #fff;
+  padding: 8px 8px 16px;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 24px 16px 8px rgba(0, 0, 0, 0.12);
+}
+
+.ticket-detail span.heading {
+  display: block;
+  color: #24a8d8;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-bottom: 6px;
+}
+
+.ticket-detail hr {
+  background: rgba(0, 0, 0, 0.12);
+  height: 1px;
+  border: none;
+  margin: 8px;
+}
+
+.ticket-detail .ticket-detail__main {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ticket-detail .ticket-detail__main .flight-detail {
+  width: 35%;
+}
+
+.ticket-detail .ticket-detail__main .flight-detail .flight-detail__box-1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ticket-detail .ticket-detail__main .flight-detail .flight-detail__box-1 img {
+  width: 100px;
+  margin: 8px;
+  padding: 4px;
+}
+
+.ticket-detail
+  .ticket-detail__main
+  .flight-detail
+  .flight-detail__box-1
+  .flight-detail__box-1-1 {
+  padding: 8px;
+}
+
+.ticket-detail
+  .ticket-detail__main
+  .flight-detail
+  .flight-detail__box-1
+  .flight-detail__box-1-1
+  b {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ticket-detail .ticket-detail__main p {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.ticket-detail .ticket-detail__main .flight-detail .flight-detail__box-2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
+}
+
+.ticket-detail .ticket-detail__main .flight-detail .flight-detail__box-2 svg {
+  color: #24a8d8;
+}
+
+.ticket-detail
+  .ticket-detail__main
+  .flight-detail
+  .flight-detail__box-2
+  .flight-detail__box-2-1 {
+  padding: 4px;
+  margin-left: 8px;
+  width: 30%;
+}
+
+.ticket-detail
+  .ticket-detail__main
+  .flight-detail
+  .flight-detail__box-2
+  .flight-detail__box-2-2 {
+  padding: 4px;
+  margin-left: 8px;
+}
+
+.ticket-detail .ticket-detail__main .flight-detail .flight-detail__box-3 {
+  padding-left: 32px;
+  margin-left: 16px;
+  border-left: 2px solid #24a8d8;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.ticket-detail .ticket-detail__main .price-detail {
+  width: 65%;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .price-detail__box-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .price-detail__box-1 span {
+  text-align: right;
+  width: 20%;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 6px;
+}
+
+.ticket-detail
+  .ticket-detail__main
+  .price-detail
+  .price-detail__box-1
+  span:first-child {
+  text-align: left;
+}
+
+.ticket-detail
+  .ticket-detail__main
+  .price-detail
+  .price-detail__box-1
+  span:nth-child(2) {
+  text-align: center;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .passenger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .passenger span {
+  text-align: right;
+  width: 20%;
+  color: #24a8d8;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding: 6px;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .passenger span:first-child {
+  text-align: left;
+  color: #000;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .passenger span:nth-child(2) {
+  text-align: center;
+  color: #000;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .price-detail__box-2 {
+  margin-right: 6px;
+  padding: 8px;
+  text-align: right;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .price-detail__box-2 b {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ticket-detail .ticket-detail__main .price-detail .price-detail__box-2 b span {
+  color: #f44336;
+}
+
+.ticket-detail .ticket-detail__extra {
+  padding: 8px;
+}
+
+.ticket-detail .ticket-detail__extra ul {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  list-style-type: disc;
+  padding-inline-start: 16px;
+}
+
+.ticket-detail .ticket-detail__extra ul li {
+  margin-bottom: 8px;
+}
+
+.ticket-detail .ticket-detail__extra ul li::marker {
+  color: rgb(158, 158, 158);
+}
+
+/* Dark Mode */
+.ticket-wrapper.dark {
+  background: transparent;
+  color: #fff;
+}
+
+.ticket-wrapper.dark .ticket {
+  background: transparent;
+  box-shadow: none;
+}
+
+.ticket-wrapper.dark .ticket-logo-img {
+  background-image: radial-gradient(
+      ellipse closest-side at 50% 50%,
+      hsla(0, 0%, 100%, 0.1),
+      transparent 38%
+    ),
+    radial-gradient(circle at 0% 150%, transparent 9px, #424242 9px),
+    radial-gradient(circle at 100% 100%, transparent 9px, #424242 9px),
+    radial-gradient(circle at 100% 0%, transparent 9px, #424242 9px),
+    radial-gradient(circle at 0% -50%, transparent 9px, #424242 9px);
+}
+
+.ticket-wrapper.dark .ticket-logo-img::after {
+  background: radial-gradient(
+      circle,
+      #424242,
+      #424242 50%,
+      #ff000000 50%,
+      #ff000000 100%
+    ) -7px 2px / 12px 12px repeat-y;
+}
+
+.ticket-wrapper.dark .ticket-logo-img img {
+  background: #fff;
+  border-radius: 4px;
+}
+
+.ticket-wrapper.dark .ticket-body {
+  background-image: radial-gradient(
+      ellipse closest-side at 50% 50%,
+      hsla(0, 0%, 100%, 0.1),
+      transparent 38%
+    ),
+    radial-gradient(circle at 0% 100%, transparent 9px, #424242 9px),
+    radial-gradient(circle at 100% 150%, transparent 9px, #424242 9px),
+    radial-gradient(circle at 100% -100%, transparent 9px, #424242 9px),
+    radial-gradient(circle at 0 0%, transparent 9px, #424242 9px);
+}
+
+.ticket-wrapper.dark .ticket-body::before {
+  background: radial-gradient(
+      circle,
+      transparent,
+      transparent 50%,
+      #424242 50%,
+      #424242 100%
+    ) -8px 8px / 13px 12px repeat-y;
+}
+
+.ticket-wrapper.dark .ticket-body .ticket-body__box-3 .time-span {
+  color: #fff;
+}
+
+.ticket-wrapper.dark .ticket-detail {
+  background: #424242;
+  box-shadow: none;
+}
+
+.ticket-wrapper.dark .ticket-detail hr {
+  background: #888;
+}
+
+.ticket-wrapper.dark .flight-detail__box-1 img {
+  background: #fff;
+  border-radius: 4px;
+}
+
+.ticket-wrapper.dark
+  .ticket-detail
+  .ticket-detail__main
+  .flight-detail
+  .flight-detail__box-1
+  .flight-detail__box-1-1
+  b {
+  color: #fff;
+}
+
+.ticket-wrapper.dark .ticket-detail .ticket-detail__main p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ticket-wrapper.dark
+  .ticket-detail
+  .ticket-detail__main
+  .price-detail
+  .price-detail__box-1
+  span {
+  color: #fff;
+}
+
+.ticket-wrapper.dark
+  .ticket-detail
+  .ticket-detail__main
+  .price-detail
+  .passenger
+  span:first-child {
+  color: #fff;
+}
+
+.ticket-wrapper.dark
+  .ticket-detail
+  .ticket-detail__main
+  .price-detail
+  .passenger
+  span:nth-child(2) {
+  color: #fff;
+}
+
+.ticket-wrapper.dark
+  .ticket-detail
+  .ticket-detail__main
+  .price-detail
+  .price-detail__box-2
+  b {
+  color: #fff;
+}
+
+.ticket-wrapper.dark .ticket-detail .ticket-detail__extra ul {
+  color: #fff;
+}
+
+.ticket-wrapper.dark
+  .ticket-detail
+  .ticket-detail__main
+  .flight-detail
+  .flight-detail__box-3 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+  .ticket-body {
+    flex-wrap: wrap;
+  }
+
+  .ticket-body__box-3 {
+    width: 100%;
+  }
+
+  .ticket-detail__main {
+    flex-wrap: wrap;
+  }
+
+  .ticket-detail .ticket-detail__main .flight-detail {
+    width: 100%;
+  }
+
+  .ticket-detail .ticket-detail__main .price-detail {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ticket-detail .ticket-detail__main .price-detail .price-detail__box-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid #888;
+    border-radius: 10px;
+  }
+
+  .ticket-detail .ticket-detail__main .price-detail .price-detail__box-1 {
+    flex-direction: column;
+  }
+
+  .ticket-detail .ticket-detail__main .price-detail .price-detail__box-1 span {
+    text-align: left !important;
+    width: 100%;
+  }
+
+  .ticket-detail .ticket-detail__main .price-detail .passenger {
+    flex-direction: column;
+  }
+
+  .ticket-detail .ticket-detail__main .price-detail .passenger span {
+    text-align: left !important;
+    width: 100%;
+  }
+
+  .ticket-detail .ticket-detail__main .price-detail .price-detail__box-2 {
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .ticket {
+    flex-wrap: wrap;
+  }
+
+  .ticket .ticket-logo-img {
+    width: 100%;
+  }
+
+  .ticket-detail
+    .ticket-detail__main
+    .flight-detail
+    .flight-detail__box-2
+    .flight-detail__box-2-1 {
+    width: auto;
+  }
+}

@@ -1,0 +1,150 @@
+.box-dat-ve-wrapper {
+}
+
+.box-dat-ve-wrapper .box-dat-ve-btn {
+  background: #24a8d8;
+  padding: 8px 24px;
+  border: none;
+  border-radius: 99px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  min-width: 64px;
+}
+
+.box-dat-ve-wrapper .box-dat-ve-btn:hover {
+  background: rgb(25, 117, 151);
+}
+
+.box-dat-ve-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 24px 0;
+}
+
+.box-dat-ve-info div {
+  margin-bottom: 4px;
+}
+
+.box-dat-ve-info p {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.box-dat-ve-info .info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.box-dat-ve-info .info span {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.box-dat-ve__content {
+  display: flex;
+}
+
+.box-dat-ve__main {
+}
+
+.box-dat-ve__side {
+  width: 30%;
+  margin-left: 16px;
+}
+
+.box-dat-ve__content .box-btn {
+  margin: 16px 0;
+}
+
+.box-dat-ve__content .box-btn button {
+  width: 160px;
+  display: block;
+  margin: 0 auto;
+}
+
+.box-dat-ve__footer {
+  margin-bottom: 16px;
+}
+
+.box-dat-ve__footer div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.box-dat-ve__footer div svg {
+  color: #f44336;
+}
+
+.box-dat-ve__footer div span {
+  margin-left: 8px;
+  color: #f44336;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.box-dat-ve__footer ul {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.87);
+  list-style-type: disc;
+  padding-inline-start: 40px;
+  margin-top: 8px;
+  margin-block-end: 14px;
+}
+
+.box-dat-ve__footer ul li {
+  margin-bottom: 8px;
+}
+
+.box-dat-ve__footer ul li::marker {
+  color: rgb(158, 158, 158);
+}
+
+/* Dark Mode */
+.box-dat-ve-wrapper.dark .box-dat-ve-info p {
+  color: #fff;
+}
+
+.box-dat-ve-wrapper.dark .box-dat-ve-info .info svg {
+  color: #fff;
+}
+
+.box-dat-ve-wrapper.dark .box-dat-ve-info .info span {
+  color: #fff;
+}
+
+.box-dat-ve-wrapper.dark .box-dat-ve__footer ul {
+  color: #fff;
+}
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+  .box-dat-ve-info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .box-dat-ve-info button {
+    margin-top: 12px;
+  }
+
+  .box-dat-ve__content {
+    flex-wrap: wrap;
+  }
+
+  .box-dat-ve__side {
+    width: 100%;
+    margin-left: 0;
+  }
+}
