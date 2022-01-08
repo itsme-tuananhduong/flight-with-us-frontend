@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import Modal from './ChildComponent/Modal/Modal';
+import SearchModal from './ChildComponent/SearchModal/SearchModal';
 import TimKhiemKhuHoi from './TimKhiemKhuHoi';
 import TimKiemNhieuChang from './TimKiemNhieuChang';
 import TimKiemMotChieu from './TimKiemMotChieu';
@@ -35,8 +35,9 @@ function FormSearch() {
             Tra cứu đặt chỗ
           </span>
         </div>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
-        <div className='formSearch-btn'>
+
+        <SearchModal showModal={showModal} setShowModal={setShowModal} />
+        <div className="formSearch-btn">
           <button
             className={
               tab === 1 ? 'formSearch-btn-item active' : 'formSearch-btn-item'

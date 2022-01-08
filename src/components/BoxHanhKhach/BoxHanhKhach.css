@@ -1,0 +1,553 @@
+.BoxHanhKhach_container .form-field {
+  width: 100%;
+}
+.BoxHanhKhach_container {
+  width: 100%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  padding: 12px;
+  padding-top: 16px;
+  margin: 0;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.BoxHanhKhach_container::before {
+  position: absolute;
+  content: '';
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #c2f9ff;
+  z-index: -1;
+  left: 3px;
+  top: 12px;
+
+  margin-left: 12px;
+}
+.BoxHanhKhach_container.dark::before {
+  background-color: #515151;
+}
+.option1,
+.option2,
+.option3,
+.option3-1,
+.option4 {
+  display: flex;
+}
+.BoxHanhKhach_container .form-input {
+  width: 100%;
+  height: 40px;
+  padding: 16px 0;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  outline: none;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.BoxHanhKhach_container .form-input:hover {
+  border-bottom: 2px solid #303030;
+}
+
+.BoxHanhKhach_container .form-input:focus {
+  border-color: #24a8d8;
+}
+
+.BoxHanhKhach_container .form-field {
+  position: relative;
+  margin: 20px 10px;
+}
+
+.BoxHanhKhach_container .form-label {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #999;
+  pointer-events: none;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  font-size: 1rem;
+}
+
+.BoxHanhKhach_container .form-input:not(:placeholder-shown) + .form-label,
+.BoxHanhKhach_container .form-input:focus + .form-label {
+  top: -5px;
+  display: inline-block;
+  background-color: #ffffff;
+  color: #24a8d8;
+  font-size: 0.75rem;
+}
+.isvalid .form-input {
+  border-bottom-color: red;
+}
+.isvalid .form-input:hover,
+.isvalid .form-input:focus {
+  border-bottom-color: red;
+}
+.isvalid .form-input:not(:placeholder-shown) + .form-label,
+.isvalid .form-input:focus + .form-label {
+  color: red;
+}
+.message-error {
+  color: red;
+  font-size: 0.75rem;
+  padding-top: 5px;
+  position: absolute;
+  bottom: -19px;
+  left: 0;
+}
+.BoxHanhKhach-title {
+  font-size: 1.25rem;
+  margin-left: 12px;
+  margin-bottom: 16px;
+}
+.BoxHanhKhach-checkbox {
+  font-size: 1rem;
+  margin-left: 8px;
+}
+.bntt-checkbox {
+  font-size: 1.25rem;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+.bntt-checkbox:active {
+  box-shadow: 2px 2px 2px #24a8d8, -2px -2px 2px #24a8d8;
+}
+.nguoilienhe-bntt-input-check {
+  display: flex;
+  align-items: center;
+  margin: 12px;
+}
+.img-madt {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 18px;
+  height: 14px;
+  object-fit: cover;
+}
+.form-input.madt {
+  padding-left: 30px;
+}
+.arrow-btn {
+  width: 28px;
+  height: 28px;
+  background-color: #eaeaea;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.arrow-btn:active {
+  background-color: #f5f5f5;
+}
+.arrow-icon {
+  padding: 3px;
+  fill: rgba(0, 0, 0, 0.55);
+}
+.form-field.email {
+  width: 50%;
+}
+.form-field.madt {
+  width: 80%;
+}
+.option-list-mdt {
+  position: absolute;
+  width: 260px;
+  height: 150px;
+  overflow-y: auto;
+  background-color: #fff;
+  z-index: 6;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  left: 0;
+  z-index: 4;
+}
+.option-list-mdt-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9375rem;
+  padding: 8px 5px;
+}
+.option-list-mdt-item:hover {
+  background-color: #eaeaea;
+}
+.option-list-mdt-item img {
+  width: 18px;
+  height: 14px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.madienthoai,
+.quocgia {
+  position: absolute;
+}
+.quocgia .option-list-mdt {
+  width: 350px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  height: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  left: 0;
+}
+.nguoilienhe-bntt-input-check .input-checkbox {
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.input-checkbox label {
+  cursor: pointer;
+  display: flex;
+}
+input[type='checkbox'] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+.input-checkbox label::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+  border-radius: 0.15em;
+  margin-right: 0.5em;
+  border: 0.05em solid black;
+}
+.input-checkbox input[type='checkbox']:checked + label::before {
+  content: '\002714';
+  background-color: #24a4d8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.gender-options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.gender-options p {
+  padding: 12px;
+}
+
+.gender-options .options {
+  display: flex;
+  align-items: center;
+}
+
+.gender-options .options .option {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.gender-options .options .option input {
+  background: red;
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.package {
+  padding: 16px;
+  border-radius: 10px;
+  background: #e3f2fd;
+  margin: 6px;
+  margin-top: 16px;
+}
+
+.package p {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.package .package-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.package .package-main img {
+  width: 100px;
+  padding: 4px;
+  margin: 8px;
+  border-radius: 4px;
+}
+
+.package .package-main b {
+  padding: 8px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  word-break: break-word;
+}
+
+.package .package-main .form-field {
+  width: 50%;
+}
+
+.package .package-main .form-field .form-input {
+  background: #e3f2fd;
+}
+
+.package
+  .package-main
+  .form-field
+  .form-input:not(:placeholder-shown)
+  + .form-label,
+.package .package-main .form-field .form-input:focus + .form-label {
+  top: -5px;
+  display: inline-block;
+  background-color: #e3f2fd;
+  color: #24a8d8;
+  font-size: 0.75rem;
+}
+
+.BoxHanhKhach_container .nguoi-lien-he-step-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 4px;
+}
+
+.BoxHanhKhach_container .nguoi-lien-he-step-2 .nguoi-lien-he__box {
+  width: 50%;
+  display: inline-block;
+  padding: 4px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.BoxHanhKhach_container .nguoi-lien-he-step-2 .nguoi-lien-he__box span {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.BoxHanhKhach_container .package-options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px;
+}
+
+.BoxHanhKhach_container .package-options .package-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px;
+}
+
+.BoxHanhKhach_container .package-options .package-option:first-child {
+  color: #24a4d8;
+  fill: #24a4d8;
+}
+
+.BoxHanhKhach_container .package-options .package-option:first-child:hover {
+  background: rgba(36, 168, 216, 0.04);
+  border-radius: 4px;
+}
+
+.BoxHanhKhach_container .package-options .package-option:last-child {
+  color: #0ac46b;
+  fill: #0ac46b;
+}
+
+.BoxHanhKhach_container .package-options .package-option:last-child:hover {
+  background: #e8f5e9;
+  border-radius: 4px;
+}
+
+.BoxHanhKhach_container .package-options .package-option span {
+  margin-left: 4px;
+}
+
+/* dark mode */
+.BoxHanhKhach_container.dark .HLKG {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.BoxHanhKhach_container.dark .nguoi-lien-he-step-2 .nguoi-lien-he__box {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.BoxHanhKhach_container.dark .nguoi-lien-he-step-2 .nguoi-lien-he__box span {
+  color: #fff;
+}
+
+.BoxHanhKhach_container.dark .package {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.BoxHanhKhach_container.dark .package p {
+  color: #fff;
+}
+
+.BoxHanhKhach_container.dark .package .package-main img {
+  background: #fff;
+}
+
+.BoxHanhKhach_container.dark .package .package-main b {
+  color: #fff;
+}
+
+.BoxHanhKhach_container.dark .package .package-main .form-field {
+  background: #424242;
+}
+
+.BoxHanhKhach_container.dark .package .package-main .form-field .form-input {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.BoxHanhKhach_container.dark
+  .package
+  .package-main
+  .form-field
+  .form-input:not(:placeholder-shown)
+  + .form-label,
+.BoxHanhKhach_container.dark
+  .package
+  .package-main
+  .form-field
+  .form-input:focus
+  + .form-label {
+  background: rgba(255, 255, 255, 0);
+}
+
+.BoxHanhKhach_container.dark {
+  background-color: #424242;
+}
+.BoxHanhKhach_container.dark .form-input {
+  border-bottom: 1px solid white;
+  background-color: #424242;
+  color: white;
+}
+
+.BoxHanhKhach_container.dark .form-input:hover {
+  border-bottom: 2px solid white;
+}
+
+.BoxHanhKhach_container.dark .form-input:focus {
+  border-color: #24a8d8;
+}
+
+.BoxHanhKhach_container.dark .form-label {
+  color: #bababa;
+}
+.BoxHanhKhach_container.dark .form-input:not(:placeholder-shown) + .form-label,
+.BoxHanhKhach_container.dark .form-input:focus + .form-label {
+  background-color: #424242;
+}
+.BoxHanhKhach_container.dark .BoxHanhKhach-title,
+.BoxHanhKhach_container.dark .BoxHanhKhach-checkbox,
+.BoxHanhKhach_container.dark .option-list-mdt-item,
+.BoxHanhKhach_container.dark .label-checkbox {
+  color: #fff;
+}
+.BoxHanhKhach_container.dark .option-list-mdt-item:hover {
+  background-color: #515151;
+}
+.BoxHanhKhach_container.dark .option-list-mdt {
+  background-color: #424242;
+}
+.BoxHanhKhach_container.dark .arrow-icon {
+  fill: #fff;
+}
+.BoxHanhKhach_container.dark .arrow-btn {
+  background-color: #424242;
+}
+.BoxHanhKhach_container.dark .arrow-btn:hover {
+  background-color: #515151;
+}
+.BoxHanhKhach_container.dark .input-checkbox label::before {
+  background-color: #424242;
+  border: 2px solid #fff;
+}
+.BoxHanhKhach_container.dark
+  .input-checkbox
+  input[type='checkbox']:checked
+  + label::before {
+  border: 2px solid #424242;
+}
+
+.BoxHanhKhach_container.dark .BoxHanhKhach-title {
+  color: #fff;
+}
+
+.BoxHanhKhach_container.dark .gender-options {
+  color: #fff;
+}
+/* responsive */
+@media (max-width: 960px) and (min-width: 601px) {
+  .BoxHanhKhach_container .option2 {
+    flex-direction: column;
+  }
+  .BoxHanhKhach_container {
+    width: 100%;
+  }
+  .form-field.email {
+    width: 100%;
+  }
+  .option3-1 {
+    display: flex;
+  }
+}
+@media (max-width: 600px) {
+  .option1,
+  .option2,
+  .option3,
+  .option3-1,
+  .option4 {
+    flex-direction: column;
+  }
+  .BoxHanhKhach_container {
+    width: 100%;
+  }
+  .form-field.email {
+    width: 100%;
+  }
+
+  .package-main {
+    flex-wrap: wrap;
+  }
+
+  .BoxHanhKhach_container .nguoi-lien-he-step-2 .nguoi-lien-he__box {
+    width: 100%;
+  }
+
+  .BoxHanhKhach_container .package-options {
+    flex-wrap: wrap;
+  }
+}

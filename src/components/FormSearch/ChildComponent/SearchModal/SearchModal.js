@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useCallback ,useContext} from 'react';
+import React, { useRef, useEffect, useCallback, useContext } from 'react';
 import { ThemeContext } from '../../../../shared/context/ThemeProvider';
-import './Modal.css';
 
-function Modal({ showModal, setShowModal }) {
+import './SearchModal.css';
+
+function SearchModal({ showModal, setShowModal }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const modalRef = useRef();
   const closeModal = (e) => {
@@ -28,7 +29,11 @@ function Modal({ showModal, setShowModal }) {
   return (
     <>
       {showModal ? (
-        <div className={theme === 'dark' ?"modal_container dark":"modal_container"}>
+        <div
+          className={
+            theme === 'dark' ? 'modal_container dark' : 'modal_container'
+          }
+        >
           <div
             className="modal-overlay"
             onClick={closeModal}
@@ -88,4 +93,4 @@ function Modal({ showModal, setShowModal }) {
   );
 }
 
-export default Modal;
+export default SearchModal;
