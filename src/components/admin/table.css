@@ -16,8 +16,8 @@ tr {
   text-align: left;
 }
 
-th,
-td {
+.table-wrapper th,
+.table-wrapper td {
   text-transform: capitalize;
   padding: 15px 10px;
 }

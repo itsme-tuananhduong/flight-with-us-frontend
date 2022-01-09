@@ -258,7 +258,7 @@
   width: 100%;
   padding: 30px 10px 0px;
 }
-td {
+.table-body td {
   height: calc(100% / 7);
   text-align: center;
   background-color: #fff;

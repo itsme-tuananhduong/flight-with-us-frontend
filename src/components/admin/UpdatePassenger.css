@@ -40,6 +40,7 @@
   width: 100%;
   color: var(--txt-color);
   background-color: var(--main-bg);
+  padding-left: 0;
 }
 .Passenger_main .form-field .form-label {
   position: absolute;

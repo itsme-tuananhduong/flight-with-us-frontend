@@ -68,9 +68,9 @@ function FlightUpdate({ showFlightUpdate, setShowFlightUpdate, flightInfo }) {
       ></div>
       <div className='updateFlight'>
         {showUpdate ? (
-          <h4>Thông Tin chuyến bay</h4>
-        ) : (
           <h4>Sửa thông tin chuyến bay</h4>
+        ) : (
+          <h4>Thông Tin chuyến bay</h4>
         )}
         <span className='updateFlight-list-item code'>
           Mã Chuyến Bay : <span className='result'>{flightInfo.id} </span>
@@ -148,7 +148,7 @@ function FlightUpdate({ showFlightUpdate, setShowFlightUpdate, flightInfo }) {
                   dateFormat='Pp'
                 />
                 <label htmlFor='name' className='form-label'>
-                  Ngày Sinh
+                  Thời gian khởi hành
                   <span className='star'>*</span>
                 </label>
                 <span className='message-error'></span>
@@ -162,7 +162,7 @@ function FlightUpdate({ showFlightUpdate, setShowFlightUpdate, flightInfo }) {
                   dateFormat='Pp'
                 />
                 <label htmlFor='name' className='form-label'>
-                  Ngày Sinh
+                  Thời gian hạ cánh
                   <span className='star'>*</span>
                 </label>
                 <span className='message-error'></span>

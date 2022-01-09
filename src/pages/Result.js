@@ -16,9 +16,9 @@ const Result = () => {
     <React.Fragment>
       <Navbar />
       <div className={theme === 'dark' ? 'result-page dark' : 'result-page'}>
-        <div className="result-wrapper">
-          <SearchByWeek />
-          {/* <SearchByMonth /> */}
+        <div className='result-wrapper'>
+          {/* <SearchByWeek /> */}
+          <SearchByMonth />
         </div>
       </div>
       <BottomNavbar />
