@@ -3,17 +3,101 @@ import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../shared/context/ThemeProvider';
 
+import {
+  VALIDATOR_EMAIL,
+  VALIDATOR_MINLENGTH,
+  VALIDATOR_REQUIRE,
+} from '../shared/util/validators';
+import ErrorModal from '../shared/components/ErrorModal';
+import LoadingSpinner from '../shared/components/LoadingSpinner';
+import { AuthContext } from '../shared/context/auth-context';
+import axios from 'axios';
+
 import LoginForm from '../components/FormAuth/LoginForm';
 import RegisterForm from '../components/FormAuth/RegisterForm';
 import './Authentication.css';
 
 const Authentication = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const onUsernameChange = (firstName, lastName) => {
+    setUsername(`${firstName} ${lastName}`);
+  };
+  const onEmailChange = (email) => {
+    setEmail(email);
+  };
+  const onPasswordChange = (password) => {
+    setPassword(password);
+  };
+  const onConfirmPasswordChange = (confirmPassword) => {
+    setConfirmPassword(confirmPassword);
+  };
+
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const auth = useContext(AuthContext);
+
   const { theme } = useContext(ThemeContext);
 
-  const [loginMode, setLoginMode] = useState(true);
+  const [isLoginMode, setIsLoginMode] = useState(true);
 
   const authModeToggler = () => {
-    setLoginMode(!loginMode);
+    setIsLoginMode(!isLoginMode);
+  };
+
+  const authSubmitHandler = async () => {
+    if (isLoginMode) {
+      setIsLoading(true);
+      axios({
+        method: 'post',
+        baseURL: 'http://localhost:8000/api',
+        url: '/login',
+        data: {
+          Email: email.toString(),
+          Password: password.toString(),
+        },
+      })
+        .then((res) => {
+          auth.login(res.data.user.id, res.data.token);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err.message);
+        });
+    } else {
+      setIsLoading(true);
+      axios({
+        method: 'post',
+        baseURL: 'http://localhost:8000/api',
+        url: '/register',
+        data: {
+          Email: email.toString(),
+          Password: password.toString(),
+          Password_confirmation: confirmPassword.toString(),
+          Username: username.toString(),
+          IsAdmin: '0',
+          IdNhanVien: 0,
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
+          auth.login(res.data.user.id, res.data.token);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err.message);
+        });
+    }
+  };
+
+  const clearError = () => {
+    setError(null);
   };
 
   return (
@@ -22,6 +106,8 @@ const Authentication = () => {
         theme === 'dark' ? 'authentication-page dark' : 'authentication-page'
       }
     >
+      <ErrorModal error={error} onClear={clearError} />
+      {isLoading && <LoadingSpinner asOverlay />}
       <div className="svg-background"></div>
       <div className="wrapper">
         <div className="main-content">
@@ -57,14 +143,26 @@ const Authentication = () => {
             </div>
           </div>
           <div className="auth-form">
-            {loginMode ? (
-              <LoginForm authModeToggler={authModeToggler} />
+            {isLoginMode ? (
+              <LoginForm
+                authModeToggler={authModeToggler}
+                onEmailChange={onEmailChange}
+                onPasswordChange={onPasswordChange}
+                authSubmitHandler={authSubmitHandler}
+              />
             ) : (
-              <RegisterForm authModeToggler={authModeToggler} />
+              <RegisterForm
+                authModeToggler={authModeToggler}
+                onUsernameChange={onUsernameChange}
+                onEmailChange={onEmailChange}
+                onPasswordChange={onPasswordChange}
+                onConfirmPasswordChange={onConfirmPasswordChange}
+                authSubmitHandler={authSubmitHandler}
+              />
             )}
           </div>
         </div>
-        <div className="footer">
+        <div className="auth-footer">
           <div className="footer-options">
             <div className="download">
               <div className="download-item">

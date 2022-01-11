@@ -1,9 +1,23 @@
-import React, { Fragment, useState,useContext} from 'react';
+import React, { Fragment, useState, useContext, useRef } from 'react';
 import { ThemeContext } from '../../shared/context/ThemeProvider';
 
 import './FormAuth.css';
 
 function LoginForm(props) {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const onEmailChange = () => {
+    props.onEmailChange(emailRef.current.value);
+  };
+  const onPasswordChange = () => {
+    props.onPasswordChange(passwordRef.current.value);
+  };
+
+  const onSubmitRegister = () => {
+    props.authSubmitHandler();
+  };
+
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const [userName, setUserName] = useState('');
@@ -12,29 +26,37 @@ function LoginForm(props) {
 
   return (
     <Fragment>
-      <div className={theme === 'dark' ?"container_main-form dark":"container_main-form"}>
+      <div
+        className={
+          theme === 'dark' ? 'container_main-form dark' : 'container_main-form'
+        }
+      >
         <div className="container_main-form-content">
-          <h3 className="title">Đăng Nhập</h3>
+          <h3 className="title">Đăng nhập</h3>
           <div className="form-field">
             <input
               type="text"
               className="form-input"
               placeholder=" "
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              // value={userName}
+              // onChange={(e) => setUserName(e.target.value)}
+              onChange={onEmailChange}
+              ref={emailRef}
             />
             <label htmlFor="name" className="form-label">
               Email hoặc Số điện thoại
-              <span className="star">*</span>
+              <span className="star"> *</span>
             </label>
           </div>
           <div className="form-field">
             <input
               type={checkPass ? 'text' : 'password'}
               className="form-input"
-              value={password}
               placeholder=" "
-              onChange={(e) => setPassword(e.target.value)}
+              // value={password}
+              // onChange={(e) => setPassword(e.target.value)}
+              onChange={onPasswordChange}
+              ref={passwordRef}
             />
             <label htmlFor="name" className="form-label">
               Mật khẩu <span className="star">*</span>
@@ -65,8 +87,10 @@ function LoginForm(props) {
               </div>
             ) : null}
           </div>
-          <button className="btn-login">Đăng Nhập</button>
-          <p className="content-tilte">Quên Mật Khẩu</p>
+          <button className="btn-login" onClick={onSubmitRegister}>
+            Đăng nhập
+          </button>
+          <p className="content-tilte">Quên mật khẩu</p>
           <p className="content-text">
             Bạn chưa có tài khoản ?{' '}
             <span className="content-text-span" onClick={props.authModeToggler}>

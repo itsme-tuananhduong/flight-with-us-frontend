@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../context/ThemeProvider';
 
+import { AuthContext } from '../context/auth-context';
+import { useAuth } from '../hooks/auth-hook';
+
 import './Navbar.css';
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const auth = useContext(AuthContext);
+
+  const { userId } = useAuth();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(auth.isLoggedIn);
 
   const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -601,7 +608,7 @@ const Navbar = () => {
           <input type="checkbox" />
           <div className="dropbox">
             {isLoggedIn && (
-              <Link to="/user/:uid">
+              <Link to={`/user/${userId}`}>
                 <div className="dropbox-item user">
                   <div className="user-icon">
                     <svg
@@ -620,7 +627,7 @@ const Navbar = () => {
                 </div>
               </Link>
             )}
-            <Link to="/user/:uid/flights">
+            <Link to={`/user/${userId}`}>
               <div className="dropbox-item">
                 <svg
                   viewBox="0 0 24 24"
@@ -663,7 +670,7 @@ const Navbar = () => {
                 </span>
               </p>
             </div>
-            <Link to="/authenticate">
+            <Link to="/authentication">
               <div className="dropbox-item" onClick={logoutHandler}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -710,7 +717,8 @@ const Navbar = () => {
                     </g>
                   </g>
                 </svg>
-                <p>{isLoggedIn ? 'Đăng xuất' : 'Đăng nhập'}</p>
+                {isLoggedIn && <p onClick={auth.logout}>Đăng xuất</p>}
+                {!isLoggedIn && <p>Đăng nhập</p>}
               </div>
             </Link>
             <hr />
