@@ -115,7 +115,7 @@ function RegisterForm(props) {
           </p>
           <p className='content-text'>
             Bạn đã có tài khoản?{' '}
-            <span className='content-text-span' onClick={props.authModeToggler}>
+            <span className="content-text-span" onClick={props.authModeToggler}>
               Đăng nhập
             </span>
           </p>
