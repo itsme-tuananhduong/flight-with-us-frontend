@@ -106,8 +106,8 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
-.form-input:not(:placeholder-shown) + .form-label,
-.form-input:focus + .form-label {
+.AddFlight .form-input:not(:placeholder-shown) + .form-label,
+.AddFlight .form-input:focus + .form-label {
   top: 5px;
   display: inline-block;
   background-color: var(--main-bg);

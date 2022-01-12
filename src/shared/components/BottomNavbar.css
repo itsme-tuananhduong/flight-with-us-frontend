@@ -9,6 +9,7 @@
   background: #fff;
   transition: bottom 0.15s;
   box-shadow: none;
+  z-index: 100;
 }
 
 .bottom-nav-link {

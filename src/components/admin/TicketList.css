@@ -85,6 +85,8 @@
   width: 100%;
   color: var(--txt-color);
   background-color: var(--main-bg);
+  padding-left: 0px;
+  padding-top: 10px;
 }
 .ticket-list .form-field .form-label {
   position: absolute;
