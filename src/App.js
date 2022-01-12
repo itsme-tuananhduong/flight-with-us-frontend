@@ -13,7 +13,6 @@ import User from './pages/User';
 import Authentication from './pages/Authentication';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
-
 import Layout from './components/Admin/Layout';
 import LoadingSpinner from './shared/components/LoadingSpinner';
 

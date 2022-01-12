@@ -1,4 +1,5 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useContext, useRef } from 'react';
+import { ThemeContext } from '../../shared/context/ThemeProvider';
 
 import './FormAuth.css';
 
@@ -31,7 +32,11 @@ function RegisterForm(props) {
 
   return (
     <Fragment>
-      <div className="container_main-form">
+      <div
+        className={
+          theme === 'dark' ? 'container_main-form dark' : 'container_main-form'
+        }
+      >
         <div className="container_main-form-content">
           <h3 className="title">Đăng ký</h3>
           <div className="user">
@@ -108,7 +113,7 @@ function RegisterForm(props) {
               Tiêu chuẩn cộng đồng của chúng tôi{' '}
             </span>
           </p>
-          <p className="content-text">
+          <p className='content-text'>
             Bạn đã có tài khoản?{' '}
             <span className="content-text-span" onClick={props.authModeToggler}>
               Đăng nhập

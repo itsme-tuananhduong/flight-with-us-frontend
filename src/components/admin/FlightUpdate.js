@@ -132,9 +132,9 @@ function FlightUpdate({
       ></div>
       <div className="updateFlight">
         {showUpdate ? (
-          <h4>Thông tin chuyến bay</h4>
-        ) : (
           <h4>Sửa thông tin chuyến bay</h4>
+        ) : (
+          <h4>Thông Tin chuyến bay</h4>
         )}
         <span className="updateFlight-list-item code">
           Mã chuyến bay:{' '}

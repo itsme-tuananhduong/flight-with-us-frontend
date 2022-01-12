@@ -103,8 +103,8 @@
   transition: all 0.35s ease;
   font-size: 1rem;
 }
-.form-input:not(:placeholder-shown) + .form-label,
-.form-input:focus + .form-label {
+.group .form-input:not(:placeholder-shown) + .form-label,
+.group .form-input:focus + .form-label {
   top: 5px;
   display: inline-block;
   background-color: var(--main-bg);
