@@ -1,14 +1,17 @@
 [
   {
+    "DiaDiemHaCanh": "HCM",
+    "DiaDiemKhoiHanh": "Hanoi",
+    "HangHK": "Vietjet Air",
     "id": "1",
-    "HangHK": "VietNam AirLine",
-    "SHMayBay": "H5037",
-    "DiaDiemKhoiHanh": "Hà Nội",
-    "DiaDiemHaCanh": "Hồ Chí Minh",
-    "ThoiGianKhoiHanh": "05/01/2022 03:00:00",
-    "ThoiGianHaCanh": "05/01/2022 23:00:00",
-    "TongSoVe": "100",
-    "SoVeConLai": "98"
+    "LoaiHinhBay": "Bay thẳng",
+    "SHMayBay": "VJ6001",
+    "SLVeConLai": "3",
+    "ThoiGianHaCanh": "2022-01-09 04:38:25.913",
+    "ThoiGianKhoiHanh": "2022-01-09 04:38:25.913",
+    "TongSoVe": "3",
+    "created_at": "2022-01-09T13:43:41.297000Z",
+    "updated_at": "2022-01-09T13:43:41.297000Z"
   },
   {
     "id": "2",

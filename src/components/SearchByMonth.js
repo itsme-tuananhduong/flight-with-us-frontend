@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import useCalendar from '../hook/useCalendar';
+import useCalendar from '../shared/hooks/useCalendar';
 import { ThemeContext } from '../shared/context/ThemeProvider';
 import TicketBox from '../components/TicketBox';
 import FlightInfoBox from '../components/FlightInfoBox';
