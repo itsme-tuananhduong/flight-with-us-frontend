@@ -62,7 +62,12 @@ const Authentication = () => {
         },
       })
         .then((res) => {
-          auth.login(res.data.user.id, res.data.token);
+          auth.login(
+            res.data.user.id,
+            res.data.user.IsAdmin,
+            res.data.user.Username,
+            res.data.token
+          );
           setIsLoading(false);
         })
         .catch((err) => {
@@ -86,7 +91,12 @@ const Authentication = () => {
       })
         .then((res) => {
           console.log(res.data);
-          auth.login(res.data.user.id, res.data.token);
+          auth.login(
+            res.data.user.id,
+            res.data.user.IsAdmin,
+            res.data.user.Username,
+            res.data.token
+          );
           setIsLoading(false);
         })
         .catch((err) => {

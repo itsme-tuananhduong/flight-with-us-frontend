@@ -1,4 +1,4 @@
-.my-modal {
+.modal {
   z-index: 100;
   position: fixed;
   top: 22vh;
@@ -9,49 +9,49 @@
   border-radius: 8px;
 }
 
-.my-modal .modal__header {
+.modal__header {
   width: 100%;
   padding: 1rem 0.5rem;
   background: #24a8d8;
   color: white;
 }
 
-.my-modal .modal__header h2 {
+.modal__header h2 {
   margin: 0.5rem;
 }
 
-.my-modal .modal__content {
+.modal__content {
   padding: 1rem 0.5rem;
 }
 
-.my-modal .modal__footer {
+.modal__footer {
   padding: 1rem 0.5rem;
 }
 
 @media (min-width: 768px) {
-  .my-modal {
+  .modal {
     left: calc(50% - 20rem);
     width: 40rem;
   }
 }
 
-.my-modal .modal-enter {
+.modal-enter {
   transform: translateY(-10rem);
   opacity: 0;
 }
 
-.my-modal .modal-enter-active {
+.modal-enter-active {
   transform: translateY(0);
   opacity: 1;
   transition: all 200ms;
 }
 
-.my-modal .modal-exit {
+.modal-exit {
   transform: translateY(0);
   opacity: 1;
 }
 
-.my-modal .modal-exit-active {
+.modal-exit-active {
   transform: translateY(-10rem);
   opacity: 0;
   transition: all 200ms;

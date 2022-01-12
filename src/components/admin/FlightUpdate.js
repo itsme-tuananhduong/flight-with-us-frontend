@@ -105,8 +105,8 @@ function FlightUpdate({
       data: {
         HangHK: HangHK,
         SHMayBay: SHMayBay,
-        ThoiGianKhoiHanh: tgKhoiHanh.toString(),
-        ThoiGianHaCanh: tgHaCanh.toString(),
+        ThoiGianKhoiHanh: new Date(tgKhoiHanh).toString(),
+        ThoiGianHaCanh: new Date(tgHaCanh).toString(),
         DiaDiemKhoiHanh: DiaDiemKhoiHanh,
         DiaDiemHaCanh: DiaDiemHaCanh,
         // LoaiHinhBay: flyType,

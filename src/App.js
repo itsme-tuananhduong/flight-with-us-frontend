@@ -1,4 +1,4 @@
-import { useContext, Suspense } from 'react';
+import { useContext, Suspense, useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { ThemeContext } from './shared/context/ThemeProvider';
@@ -26,9 +26,47 @@ const App = () => {
     document.body.style.backgroundColor = '#fff';
   }
 
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId, isAdmin, username } = useAuth();
 
   let routes;
+  let adminRoutes;
+
+  if (isAdmin !== '0') {
+    adminRoutes = (
+      <Route path="/admin" element={<Admin />}>
+        <Route
+          path="dashboard"
+          element={<Layout location={'/admin/dashboard'} />}
+        />
+        <Route
+          path="flights"
+          element={<Layout location={'/admin/flights'} />}
+        />
+        <Route
+          path="add-flight"
+          element={<Layout location={'/admin/add-flight'} />}
+        />
+        <Route
+          path="accounts"
+          element={<Layout location={'/admin/accounts'} />}
+        />
+        <Route
+          path="passengers"
+          element={<Layout location={'/admin/passengers'} />}
+        />
+      </Route>
+    );
+  } else {
+    adminRoutes = (
+      <Route path="/admin" element={<Admin />}>
+        <Route path="dashboard" element={<Navigate to="/" />} />
+        <Route path="customers" element={<Navigate to="/" />} />
+        <Route path="products" element={<Navigate to="/" />} />
+        <Route path="accounts" element={<Navigate to="/" />} />
+        <Route path="passengers" element={<Navigate to="/authentication" />} />
+      </Route>
+    );
+  }
 
   if (token) {
     routes = (
@@ -42,28 +80,7 @@ const App = () => {
         <Route path="/user/:uid" element={<User />} />
 
         <Route path="/admin" element={<NotFound />} />
-        <Route path="/admin" element={<Admin />}>
-          <Route
-            path="dashboard"
-            element={<Layout location={'/admin/dashboard'} />}
-          />
-          <Route
-            path="flights"
-            element={<Layout location={'/admin/flights'} />}
-          />
-          <Route
-            path="add-flight"
-            element={<Layout location={'/admin/add-flight'} />}
-          />
-          <Route
-            path="accounts"
-            element={<Layout location={'/admin/accounts'} />}
-          />
-          <Route
-            path="passengers"
-            element={<Layout location={'/admin/passengers'} />}
-          />
-        </Route>
+        {adminRoutes}
 
         <Route path="/notfound" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/notfound" />} />
@@ -81,16 +98,7 @@ const App = () => {
         <Route path="/user/:uid" element={<Navigate to="/authentication" />} />
 
         <Route path="/admin" element={<NotFound />} />
-        <Route path="/admin" element={<Admin />}>
-          <Route path="dashboard" element={<Navigate to="/authentication" />} />
-          <Route path="customers" element={<Navigate to="/authentication" />} />
-          <Route path="products" element={<Navigate to="/authentication" />} />
-          <Route path="accounts" element={<Navigate to="/authentication" />} />
-          <Route
-            path="passengers"
-            element={<Navigate to="/authentication" />}
-          />
-        </Route>
+        {adminRoutes}
 
         <Route path="/notfound" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/notfound" />} />
@@ -104,6 +112,8 @@ const App = () => {
         isLoggedIn: !!token,
         token: token,
         userId: userId,
+        isAdmin: isAdmin,
+        username: username,
         login: login,
         logout: logout,
       }}

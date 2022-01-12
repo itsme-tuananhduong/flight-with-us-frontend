@@ -60,7 +60,7 @@ function UpdatePassenger({
       data: {
         HoTen: HoTen,
         GioiTinh: gioitinh,
-        NgaySinh: ngaysinh.toString(),
+        NgaySinh: new Date(ngaysinh).toString(),
       },
     })
       .then((res) => {

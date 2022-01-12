@@ -47,6 +47,7 @@ const Accounts = () => {
     'Email',
     'Username',
     'Phân Loại',
+    '',
     'Quản trị',
     '',
   ];
@@ -70,6 +71,11 @@ const Accounts = () => {
             Thêm quản trị viên
           </span>
         </td>
+        <td>
+          <span className="delete-admin" onClick={() => handleDelete(item.id)}>
+            Xóa
+          </span>
+        </td>
       </tr>
     ) : item.IsAdmin === '1' ? (
       <tr key={index}>
@@ -90,6 +96,11 @@ const Accounts = () => {
             Xóa nhân viên
           </span>
         </td>
+        <td>
+          <span className="delete-admin" onClick={() => handleDelete(item.id)}>
+            Xóa
+          </span>
+        </td>
       </tr>
     ) : (
       <tr key={index}>
@@ -106,6 +117,11 @@ const Accounts = () => {
           </span>
         </td>
         <td></td>
+        <td>
+          <span className="delete-admin" onClick={() => handleDelete(item.id)}>
+            Xóa
+          </span>
+        </td>
       </tr>
     );
 
@@ -120,6 +136,28 @@ const Accounts = () => {
       },
       data: {
         IsAdmin: flag === 0 ? 0 : flag === 1 ? 1 : 2,
+      },
+    })
+      .then((res) => {
+        triggerLoading();
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.message);
+      });
+  };
+
+  const handleDelete = (id) => {
+    setIsLoading(true);
+    axios({
+      method: 'delete',
+      baseURL: 'http://localhost:8000/api',
+      url: `/users/${id}`,
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+      data: {
+        id: id,
       },
     })
       .then((res) => {

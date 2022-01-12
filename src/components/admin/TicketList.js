@@ -203,9 +203,9 @@ function TicketList({
                     defaultValue={typeTicket}
                     onChange={(e) => setTypeTicket(e.target.value)}
                   >
-                    <option value="Thương Gia">Thương gia</option>
-                    <option value="Phổ Thông">Phổ thông</option>
-                    <option value="Hạng Nhất">Hạng nhất</option>
+                    <option value="Thương gia">Thương gia</option>
+                    <option value="Phổ thông">Phổ thông</option>
+                    <option value="Hạng nhất">Hạng nhất</option>
                   </select>
                 </div>
                 <div className="form-field">
