@@ -146,8 +146,9 @@
   background-color: var(--second-bg);
 }
 .airline-img img {
-  width: 110px;
-  height: 30px;
+  width: 100%;
+  max-width: 120px;
+  /* height: 30px; */
 }
 .chooseAirline-item:hover {
   background-color: var(--second-bg);

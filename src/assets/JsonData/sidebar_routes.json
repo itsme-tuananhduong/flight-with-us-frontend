@@ -24,10 +24,9 @@
     "route": "/admin/passengers",
     "icon": "bx bx-bar-chart-alt"
   },
-
   {
     "display_name": "settings",
-    "route": "/admin/settings",
+    "route": "/admin/dashboard",
     "icon": "bx bx-cog"
   }
 ]

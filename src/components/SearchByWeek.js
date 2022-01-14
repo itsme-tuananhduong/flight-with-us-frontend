@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import useCalendar from '../hook/useCalendar';
+import useCalendar from '../shared/hooks/useCalendar';
 import moment from 'moment';
 import { ThemeContext } from '../shared/context/ThemeProvider';
 import TicketBox from '../components/TicketBox';

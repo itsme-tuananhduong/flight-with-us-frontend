@@ -46,6 +46,23 @@ const Table = (props) => {
           ) : null}
           {props.bodyData && props.renderBody ? (
             <tbody>
+              {dataShow.forEach((item) => {
+                if (item.NgaySinh) {
+                  item.NgaySinh = new Date(item.NgaySinh)
+                    .toLocaleString('en-US')
+                    .toString();
+                }
+                if (item.ThoiGianKhoiHanh) {
+                  item.ThoiGianKhoiHanh = new Date(item.ThoiGianKhoiHanh)
+                    .toLocaleString('en-US')
+                    .toString();
+                }
+                if (item.ThoiGianHaCanh) {
+                  item.ThoiGianHaCanh = new Date(item.ThoiGianHaCanh)
+                    .toLocaleString('en-US')
+                    .toString();
+                }
+              })}
               {dataShow.map((item, index) => props.renderBody(item, index))}
             </tbody>
           ) : null}
