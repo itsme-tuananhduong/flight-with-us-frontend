@@ -41,7 +41,7 @@ const Accounts = () => {
             <input className='admin-input' type='text' placeholder='Nhập ID' />
             <i className='bx bx-search'></i>
           </div>
-          <div className='col-3'>
+          <div className=''>
             <div className='page-card'>
               <div className='page-card__body '>
                 <div className='select'>

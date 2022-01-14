@@ -27,18 +27,113 @@
   color: #888;
   fill: #888;
 }
-
-/* Dark Mode */
-.bottom-navbar.dark {
-  background: #424242;
+/* menu manage */
+.menu-manage {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: -100vw;
+  background-color: #fff;
+  /* display: none; */
+  transition: right 0.35s ease;
+}
+.menu-manage.active {
+  right: 0;
+}
+.manage-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  margin-left: 24px;
+}
+.manage-icon-close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.close-manage {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin-right: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.close-manage:hover {
+  background-color: #eaeaea;
+}
+.menu-manage-heading {
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.menu-item {
+  cursor: pointer;
+}
+.menu-item > span {
+  display: block;
+}
+.menu-item :hover {
+  background-color: #eaeaea;
+}
+.menu-item2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.item1,
+.item2 {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 10px 0;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 9px;
 }
 
-.bottom-navbar.dark .bottom-nav-link__item svg {
+.item1:hover,
+.item2:hover {
+  background-color: #eaeaea;
+}
+.d-flex-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  width: 100vw;
+}
+/* Dark Mode */
+.bottom-navbar.dark,
+.bottom-navbar.dark .menu-manage {
+  background: #424242;
+}
+.bottom-navbar.dark .menu-manage {
+  color: #fff;
+}
+.bottom-navbar.dark .bottom-nav-link__item svg,
+.bottom-navbar.dark .menu-manage svg {
   color: #fff;
   fill: #fff;
 }
-
+.bottom-navbar.dark .item1:hover,
+.bottom-navbar.dark .item2:hover,
+.bottom-navbar.dark .menu-item :hover,
+.bottom-navbar.dark .close-manage:hover {
+  background-color: #535353;
+}
 /* Responsive */
+@media screen and (max-width: 1160px) {
+  .bottom-navbar {
+    bottom: 0;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
 @media screen and (max-width: 960px) {
   .bottom-navbar {
     bottom: 0;

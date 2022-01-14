@@ -1,6 +1,3 @@
-.box-dat-ve-wrapper {
-}
-
 .box-dat-ve-wrapper .box-dat-ve-btn {
   background: #24a8d8;
   padding: 8px 24px;
@@ -12,6 +9,7 @@
   line-height: 20px;
   cursor: pointer;
   min-width: 64px;
+  outline: none;
 }
 
 .box-dat-ve-wrapper .box-dat-ve-btn:hover {
@@ -50,9 +48,6 @@
 
 .box-dat-ve__content {
   display: flex;
-}
-
-.box-dat-ve__main {
 }
 
 .box-dat-ve__side {

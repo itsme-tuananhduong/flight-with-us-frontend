@@ -84,12 +84,12 @@ const Flights = () => {
             <input className='admin-input' type='text' placeholder='Nhập ID' />
             <i className='bx bx-search'></i>
           </div>
-          <div className='col-2'>
+          <div className=''>
             <div
               className='page-card-heading'
               onClick={() => setShowFilter((e) => !e)}
             >
-              <div className='page-card__body'>Lọc Tìm Kiếm</div>
+              <div className='page-card__body filter'>Lọc Tìm Kiếm</div>
             </div>
           </div>
         </div>

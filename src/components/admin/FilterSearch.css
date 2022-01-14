@@ -148,3 +148,15 @@ input[type='checkbox'],
   justify-content: flex-end;
   right: 50px;
 }
+@media (max-width: 960px) {
+  .box-priamry {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+@media (max-width: 600px) {
+  .search-main {
+    flex-direction: column;
+    height: 500px;
+  }
+}

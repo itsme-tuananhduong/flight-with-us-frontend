@@ -182,7 +182,7 @@ function TicketList({ showTicketList, setShowTicketList, flightInfo }) {
         <div className='ticket-list'>
           {data.map((ticket) =>
             tabTicket === ticket.idve ? (
-              <div className='ticket-list-item' key={ticket.idve}>
+              <div className='ticket-list-item update' key={ticket.idve}>
                 <span className='stt-ticket'>{ticket.idve}</span>
                 <div className='select'>
                   <select
@@ -226,12 +226,17 @@ function TicketList({ showTicketList, setShowTicketList, flightInfo }) {
                   </label>
                   <span className='message-error'></span>
                 </div>
-                <span className='btn-update' onClick={handleGetData}>
-                  Xác Nhận
-                </span>
-                <span className='btn-delete' onClick={() => setTabTicket(null)}>
-                  Hủy
-                </span>
+                <div className='btn-up-de'>
+                  <span className='btn-update' onClick={handleGetData}>
+                    Xác Nhận
+                  </span>
+                  <span
+                    className='btn-delete'
+                    onClick={() => setTabTicket(null)}
+                  >
+                    Hủy
+                  </span>
+                </div>
               </div>
             ) : (
               <div className='ticket-list-item active' key={ticket.idve}>

@@ -5,7 +5,10 @@
   justify-content: space-between;
   height: var(--topnav-height);
 }
-
+.topnav-left {
+  display: flex;
+  align-items: center;
+}
 .topnav__search {
   position: relative;
   height: 50px;
@@ -32,10 +35,20 @@
   position: absolute;
   right: 20px;
 }
-
+.topnav-bar {
+  width: 30px;
+  height: 100%;
+  margin-right: 10px;
+  display: none;
+}
+.topnav-bar > svg {
+  fill: var(--txt-color);
+  cursor: pointer;
+}
 .topnav__right {
   display: flex;
   align-items: center;
+  z-index: 6;
 }
 
 .topnav__right-item ~ .topnav__right-item {
@@ -87,4 +100,9 @@
 
 .admin-input:focus {
   border: 2px solid var(--main-color);
+}
+@media (max-width: 1160px) {
+  .topnav-bar {
+    display: block;
+  }
 }

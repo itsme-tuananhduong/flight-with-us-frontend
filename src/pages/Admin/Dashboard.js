@@ -14,6 +14,8 @@ import Badge from '../../components/Admin/Badge';
 
 import statusCards from '../../assets/JsonData/status-card-data.json';
 
+import './Dashboard.css';
+
 const chartOptions = {
   series: [
     {
@@ -167,8 +169,8 @@ const Dashboard = () => {
   return (
     <div>
       <h2 className='page-header'>Dashboard</h2>
-      <div className='row'>
-        <div className='col-6'>
+      <div className='row responsive'>
+        <div className='col-6 statuscard'>
           <div className='row'>
             {statusCards.map((item, index) => (
               <div className='col-6' key={index}>
@@ -181,7 +183,7 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-        <div className='col-6'>
+        <div className='col-6 chart-res'>
           <div className='page-card full-height'>
             {/* chart */}
             <Chart
@@ -202,7 +204,7 @@ const Dashboard = () => {
             />
           </div>
         </div>
-        <div className='col-4'>
+        <div className='col-4 table1'>
           <div className='page-card'>
             <div className='page-card__header'>
               <h3>top customers</h3>
@@ -220,7 +222,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className='col-8'>
+        <div className='col-8 table2'>
           <div className='page-card'>
             <div className='page-card__header'>
               <h3>latest orders</h3>
