@@ -17,7 +17,7 @@
   height: 64px;
 }
 
-.lds-dual-ring:after {
+.lds-dual-ring::after {
   content: ' ';
   display: block;
   width: 46px;
@@ -30,11 +30,11 @@
 }
 
 .loading-spinner__overlay {
-  height: 100%;
-  width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(255, 255, 255, 0.9);
   display: flex;
   justify-content: center;

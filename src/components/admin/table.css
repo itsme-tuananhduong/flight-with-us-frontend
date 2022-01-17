@@ -4,14 +4,16 @@
 
 table {
   width: 100%;
-  min-width: 400px;
+  min-width: 500px;
   border-spacing: 0;
 }
 
 thead {
   background-color: var(--second-bg);
 }
-
+table::-webkit-scrollbar {
+  height: 4px;
+}
 tr {
   text-align: left;
 }

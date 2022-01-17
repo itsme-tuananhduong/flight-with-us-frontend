@@ -19,6 +19,7 @@
   background-color: #24a8d8;
   color: #fff;
   border-radius: 8px;
+  white-space: nowrap;
 }
 .addAdmin:hover {
   background-color: #194567;
@@ -55,6 +56,7 @@
   background-color: #ff0000d4;
   color: #fff;
   border-radius: 5px;
+  white-space: nowrap;
 }
 .delete-admin:hover {
   background-color: #aa0f0fe4;
