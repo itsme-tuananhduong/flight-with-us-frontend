@@ -3,9 +3,20 @@ import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../context/ThemeProvider';
 
+import { AuthContext } from '../context/auth-context';
+
 import './BottomNavbar.css';
 
 const MenuManage = ({ setShowManage, showManage }) => {
+  const auth = useContext(AuthContext);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(auth.isLoggedIn);
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const logoutHandler = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
   return (
     <div className={showManage ? 'menu-manage active' : 'menu-manage'}>
       <div className='menu-manage-heading'>
@@ -36,90 +47,166 @@ const MenuManage = ({ setShowManage, showManage }) => {
         </div>
       </div>
       <div className='menu-manage-main'>
-        <div className='menu-item'>
-          <div className='d-flex-item'>
-            <svg
-              viewBox='0 0 24 24'
-              className='manage-icon'
-              focusable='false'
-              aria-hidden='true'
-            >
-              <path d='M18.7 3.3H18c0-.7-.5-1.3-1.2-1.3s-1.3.6-1.3 1.3h-9c-.7 0-1.3.6-1.3 1.3v1.3h-.4c-.2 0-.3.1-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v.6c0 .7.6 1.3 1.3 1.3h12.3c.7 0 1.3-.6 1.3-1.3V4.6c0-.7-.6-1.3-1.3-1.3zm-2.6 0c0-.4.3-.6.6-.6s.6.3.6.6v1H16v-1zm0 1.6h1.3v8.7h-1.3V4.9zm0 9.4h1.3v.2l-.6 1.3-.6-1.3-.1-.2zm-9.7 7.1c-.4 0-.6-.3-.6-.6v-.6h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3V8.5h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3V6.5h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3V4.6c0-.4.3-.6.6-.6H7v17.4h-.6zm12.9-.7c0 .4-.3.6-.6.6h-11V3.9h7.7v1.9h-.3v-.6c0-.2-.1-.3-.3-.3-.2 0-.3.1-.3.3v3.9c0 .2.1.3.3.3.2 0 .3-.1.3-.3V6.5h.3v8.2l1 1.9c.1.2.3.2.4.1.1 0 .1-.1.1-.1l1-1.9V3.9h.6c.4 0 .6.3.6.6v16.2z'></path>
-            </svg>
-            <span>Quản lý đơn hàng</span>
-          </div>
+        <div className='menu-item '>
+          {auth.username && (
+            <Link to={`/user/${auth.userId}`}>
+              <div className='d-flex-item '>
+                <div className='user-icon'>
+                  <svg
+                    focusable='false'
+                    viewBox='0 0 24 24'
+                    aria-hidden='true'
+                    width='24'
+                    height='24'
+                  >
+                    <path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'></path>
+                  </svg>
+                </div>
+                <div className='content-item'>
+                  <span className='user-name'>{auth.username} </span>
+                  <p>Xem hồ sơ của bạn</p>
+                </div>
+              </div>
+            </Link>
+          )}
         </div>
         <div className='menu-item'>
-          <div className='d-flex-item'>
-            <svg
-              data-name='Capa 1'
-              xmlns='http://www.w3.org/2000/svg'
-              viewBox='0 0 24 24'
-              className='manage-icon'
-              focusable='false'
-              aria-hidden='true'
-            >
-              <path d='M20.57 13.24a.62.62 0 00-.52.11 6.79 6.79 0 01-2.05 1.2 6.34 6.34 0 01-2.33.41A6.74 6.74 0 018.91 8.2 7.09 7.09 0 019.28 6a6.19 6.19 0 011.1-2 .58.58 0 00-.09-.83.63.63 0 00-.53-.11 9.27 9.27 0 00-4.87 3.26A9.1 9.1 0 0012.11 21 9.12 9.12 0 0021 14a.55.55 0 00-.43-.76zm-3.51 4.81a7.93 7.93 0 01-12.82-6.21A7.75 7.75 0 015.88 7a7.93 7.93 0 012.64-2.18c-.11.25-.23.51-.32.78a7.63 7.63 0 00-.44 2.62 7.94 7.94 0 007.94 7.94 7.82 7.82 0 002.74-.48c.29-.12.59-.23.87-.37a8.4 8.4 0 01-2.25 2.74z'></path>
-            </svg>
-            <div className='content-item'>
-              <span>Chế độ tối (Bật)</span>
-              <p>
-                Điều chỉnh giao diện để giảm độ chói và cho đôi mắt được nghỉ
-                ngơi
-              </p>
+          {auth.isAdmin && auth.isAdmin !== '0' && (
+            <Link to='/admin/dashboard'>
+              <div className='d-flex-item'>
+                <svg
+                  aria-hidden='true'
+                  focusable='false'
+                  data-prefix='fal'
+                  data-icon='cog'
+                  role='img'
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 512 512'
+                  className='svg-inline--fa fa-cog fa-w-16 fa-3x manage-icon'
+                >
+                  <path
+                    fill='currentColor'
+                    d='M482.696 299.276l-32.61-18.827a195.168 195.168 0 0 0 0-48.899l32.61-18.827c9.576-5.528 14.195-16.902 11.046-27.501-11.214-37.749-31.175-71.728-57.535-99.595-7.634-8.07-19.817-9.836-29.437-4.282l-32.562 18.798a194.125 194.125 0 0 0-42.339-24.48V38.049c0-11.13-7.652-20.804-18.484-23.367-37.644-8.909-77.118-8.91-114.77 0-10.831 2.563-18.484 12.236-18.484 23.367v37.614a194.101 194.101 0 0 0-42.339 24.48L105.23 81.345c-9.621-5.554-21.804-3.788-29.437 4.282-26.36 27.867-46.321 61.847-57.535 99.595-3.149 10.599 1.47 21.972 11.046 27.501l32.61 18.827a195.168 195.168 0 0 0 0 48.899l-32.61 18.827c-9.576 5.528-14.195 16.902-11.046 27.501 11.214 37.748 31.175 71.728 57.535 99.595 7.634 8.07 19.817 9.836 29.437 4.283l32.562-18.798a194.08 194.08 0 0 0 42.339 24.479v37.614c0 11.13 7.652 20.804 18.484 23.367 37.645 8.909 77.118 8.91 114.77 0 10.831-2.563 18.484-12.236 18.484-23.367v-37.614a194.138 194.138 0 0 0 42.339-24.479l32.562 18.798c9.62 5.554 21.803 3.788 29.437-4.283 26.36-27.867 46.321-61.847 57.535-99.595 3.149-10.599-1.47-21.972-11.046-27.501zm-65.479 100.461l-46.309-26.74c-26.988 23.071-36.559 28.876-71.039 41.059v53.479a217.145 217.145 0 0 1-87.738 0v-53.479c-33.621-11.879-43.355-17.395-71.039-41.059l-46.309 26.74c-19.71-22.09-34.689-47.989-43.929-75.958l46.329-26.74c-6.535-35.417-6.538-46.644 0-82.079l-46.329-26.74c9.24-27.969 24.22-53.869 43.929-75.969l46.309 26.76c27.377-23.434 37.063-29.065 71.039-41.069V44.464a216.79 216.79 0 0 1 87.738 0v53.479c33.978 12.005 43.665 17.637 71.039 41.069l46.309-26.76c19.709 22.099 34.689 47.999 43.929 75.969l-46.329 26.74c6.536 35.426 6.538 46.644 0 82.079l46.329 26.74c-9.24 27.968-24.219 53.868-43.929 75.957zM256 160c-52.935 0-96 43.065-96 96s43.065 96 96 96 96-43.065 96-96-43.065-96-96-96zm0 160c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z'
+                    className=''
+                  ></path>
+                </svg>
+                <p>Admin Dashboard</p>
+              </div>
+            </Link>
+          )}
+        </div>
+        <Link to={`/user/${auth.userId}`}>
+          <div className='menu-item'>
+            <div className='d-flex-item'>
+              <svg
+                viewBox='0 0 24 24'
+                className='manage-icon'
+                focusable='false'
+                aria-hidden='true'
+              >
+                <path d='M18.7 3.3H18c0-.7-.5-1.3-1.2-1.3s-1.3.6-1.3 1.3h-9c-.7 0-1.3.6-1.3 1.3v1.3h-.4c-.2 0-.3.1-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v1.3h-.3c-.2 0-.3.2-.3.3 0 .2.1.3.3.3h.3v.6c0 .7.6 1.3 1.3 1.3h12.3c.7 0 1.3-.6 1.3-1.3V4.6c0-.7-.6-1.3-1.3-1.3zm-2.6 0c0-.4.3-.6.6-.6s.6.3.6.6v1H16v-1zm0 1.6h1.3v8.7h-1.3V4.9zm0 9.4h1.3v.2l-.6 1.3-.6-1.3-.1-.2zm-9.7 7.1c-.4 0-.6-.3-.6-.6v-.6h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3v-1.3h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3V8.5h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3V6.5h.3c.2 0 .3-.1.3-.3 0-.2-.1-.3-.3-.3h-.3V4.6c0-.4.3-.6.6-.6H7v17.4h-.6zm12.9-.7c0 .4-.3.6-.6.6h-11V3.9h7.7v1.9h-.3v-.6c0-.2-.1-.3-.3-.3-.2 0-.3.1-.3.3v3.9c0 .2.1.3.3.3.2 0 .3-.1.3-.3V6.5h.3v8.2l1 1.9c.1.2.3.2.4.1.1 0 .1-.1.1-.1l1-1.9V3.9h.6c.4 0 .6.3.6.6v16.2z'></path>
+              </svg>
+              <span>Quản lý đơn hàng</span>
             </div>
           </div>
+        </Link>
+
+        <div className='menu-item' onClick={toggleTheme}>
+          {theme === 'dark' ? (
+            <div className='d-flex-item'>
+              <svg
+                data-name='Capa 1'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                className='manage-icon'
+                focusable='false'
+                aria-hidden='true'
+              >
+                <path d='M20.57 13.24a.62.62 0 00-.52.11 6.79 6.79 0 01-2.05 1.2 6.34 6.34 0 01-2.33.41A6.74 6.74 0 018.91 8.2 7.09 7.09 0 019.28 6a6.19 6.19 0 011.1-2 .58.58 0 00-.09-.83.63.63 0 00-.53-.11 9.27 9.27 0 00-4.87 3.26A9.1 9.1 0 0012.11 21 9.12 9.12 0 0021 14a.55.55 0 00-.43-.76zm-3.51 4.81a7.93 7.93 0 01-12.82-6.21A7.75 7.75 0 015.88 7a7.93 7.93 0 012.64-2.18c-.11.25-.23.51-.32.78a7.63 7.63 0 00-.44 2.62 7.94 7.94 0 007.94 7.94 7.82 7.82 0 002.74-.48c.29-.12.59-.23.87-.37a8.4 8.4 0 01-2.25 2.74z'></path>
+              </svg>
+              <div className='content-item'>
+                <span>Chế độ tối (tắt)</span>
+                <p>
+                  Điều chỉnh giao diện để giảm độ chói và cho đôi mắt được nghỉ
+                  ngơi
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className='d-flex-item'>
+              <svg
+                data-name='Capa 1'
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                className='manage-icon'
+                focusable='false'
+                aria-hidden='true'
+              >
+                <path d='M20.57 13.24a.62.62 0 00-.52.11 6.79 6.79 0 01-2.05 1.2 6.34 6.34 0 01-2.33.41A6.74 6.74 0 018.91 8.2 7.09 7.09 0 019.28 6a6.19 6.19 0 011.1-2 .58.58 0 00-.09-.83.63.63 0 00-.53-.11 9.27 9.27 0 00-4.87 3.26A9.1 9.1 0 0012.11 21 9.12 9.12 0 0021 14a.55.55 0 00-.43-.76zm-3.51 4.81a7.93 7.93 0 01-12.82-6.21A7.75 7.75 0 015.88 7a7.93 7.93 0 012.64-2.18c-.11.25-.23.51-.32.78a7.63 7.63 0 00-.44 2.62 7.94 7.94 0 007.94 7.94 7.82 7.82 0 002.74-.48c.29-.12.59-.23.87-.37a8.4 8.4 0 01-2.25 2.74z'></path>
+              </svg>
+              <div className='content-item'>
+                <span>Chế độ tối (Bật)</span>
+                <p>
+                  Điều chỉnh giao diện để giảm độ chói và cho đôi mắt được nghỉ
+                  ngơi
+                </p>
+              </div>
+            </div>
+          )}
         </div>
-        <div className='menu-item'>
-          <div className='d-flex-item'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='24'
-              height='24'
-              className='manage-icon'
-              focusable='false'
-              viewBox='0 0 24 24'
-              aria-hidden='true'
-            >
-              <g data-name='Group 29031'>
-                <g data-name='Group 28715'>
-                  <path
-                    data-name='Rectangle 4595'
-                    fill='none'
-                    d='M0 0h24v24H0z'
-                  ></path>
-                  <g data-name='Group 28574'>
-                    <g data-name='Group 28570'>
-                      <path
-                        data-name='Path 20399'
-                        d='M5.879 21h8.266a1.879 1.879 0 001.879-1.875v-3.75a.376.376 0 00-.751 0v3.75a1.127 1.127 0 01-1.127 1.125H5.88a1.127 1.127 0 01-1.127-1.125V4.875A1.127 1.127 0 015.879 3.75h8.266a1.127 1.127 0 011.127 1.125v3.75a.376.376 0 00.751 0v-3.75A1.879 1.879 0 0014.144 3H5.878a1.879 1.879 0 00-1.879 1.875v14.25A1.879 1.879 0 005.879 21z'
-                        stroke='#000'
-                        stroke-width='0.25'
-                      ></path>
-                    </g>
-                    <g data-name='Group 28571'>
-                      <path
-                        data-name='Path 20400'
-                        d='M9.353 12.375h11.271a.376.376 0 100-.751H9.353a.376.376 0 000 .751z'
-                        stroke='#000'
-                        stroke-width='0.25'
-                      ></path>
-                    </g>
-                    <g data-name='Group 28572'>
-                      <path
-                        data-name='Path 20401'
-                        d='M12.359 15.381a.375.375 0 00.266-.641L9.885 12l2.74-2.74a.376.376 0 10-.531-.531l-3.006 3.006a.376.376 0 000 .531l3.006 3.006a.377.377 0 00.265.109z'
-                        stroke='#000'
-                        stroke-width='0.25'
-                      ></path>
+        <Link to='/authentication'>
+          <div className='menu-item'>
+            <div className='d-flex-item'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                className='manage-icon'
+                focusable='false'
+                viewBox='0 0 24 24'
+                aria-hidden='true'
+              >
+                <g data-name='Group 29031'>
+                  <g data-name='Group 28715'>
+                    <path
+                      data-name='Rectangle 4595'
+                      fill='none'
+                      d='M0 0h24v24H0z'
+                    ></path>
+                    <g data-name='Group 28574'>
+                      <g data-name='Group 28570'>
+                        <path
+                          data-name='Path 20399'
+                          d='M5.879 21h8.266a1.879 1.879 0 001.879-1.875v-3.75a.376.376 0 00-.751 0v3.75a1.127 1.127 0 01-1.127 1.125H5.88a1.127 1.127 0 01-1.127-1.125V4.875A1.127 1.127 0 015.879 3.75h8.266a1.127 1.127 0 011.127 1.125v3.75a.376.376 0 00.751 0v-3.75A1.879 1.879 0 0014.144 3H5.878a1.879 1.879 0 00-1.879 1.875v14.25A1.879 1.879 0 005.879 21z'
+                          stroke='#000'
+                          stroke-width='0.25'
+                        ></path>
+                      </g>
+                      <g data-name='Group 28571'>
+                        <path
+                          data-name='Path 20400'
+                          d='M9.353 12.375h11.271a.376.376 0 100-.751H9.353a.376.376 0 000 .751z'
+                          stroke='#000'
+                          stroke-width='0.25'
+                        ></path>
+                      </g>
+                      <g data-name='Group 28572'>
+                        <path
+                          data-name='Path 20401'
+                          d='M12.359 15.381a.375.375 0 00.266-.641L9.885 12l2.74-2.74a.376.376 0 10-.531-.531l-3.006 3.006a.376.376 0 000 .531l3.006 3.006a.377.377 0 00.265.109z'
+                          stroke='#000'
+                          stroke-width='0.25'
+                        ></path>
+                      </g>
                     </g>
                   </g>
                 </g>
-              </g>
-            </svg>
-            <span>Đăng nhập</span>
+              </svg>
+              {isLoggedIn && <span onClick={auth.logout}>Đăng xuất</span>}
+              {!isLoggedIn && <span>Đăng nhập</span>}
+            </div>
           </div>
-        </div>
+        </Link>
         <div className='menu-item2'>
           <div className='item1'>
             <svg

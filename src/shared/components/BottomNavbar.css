@@ -33,10 +33,9 @@
   width: 100vw;
   height: 100vh;
   top: 0;
-  right: -100vw;
+  right: -200vw;
   background-color: #fff;
-  /* display: none; */
-  transition: right 0.35s ease;
+  transition: right 0.45s ease;
 }
 .menu-manage.active {
   right: 0;
@@ -44,8 +43,24 @@
 .manage-icon {
   width: 24px;
   height: 24px;
-  margin-right: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #bdbdbd;
   margin-left: 24px;
+  margin-right: 20px;
+  position: relative;
+}
+.user-icon > svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: #fff;
 }
 .manage-icon-close {
   position: absolute;
@@ -101,18 +116,33 @@
 .item2:hover {
   background-color: #eaeaea;
 }
+.user-name {
+  font-weight: 600;
+}
 .d-flex-item {
   display: flex;
   align-items: center;
   padding: 12px 0;
   width: 100vw;
 }
+.content-item > p {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: #898989;
+}
 /* Dark Mode */
 .bottom-navbar.dark,
 .bottom-navbar.dark .menu-manage {
   background: #424242;
 }
-.bottom-navbar.dark .menu-manage {
+.bottom-navbar.dark .user-icon > svg {
+  fill: #000 !important;
+}
+.bottom-navbar.dark .user-icon {
+  background-color: #757575;
+}
+.bottom-navbar.dark .menu-manage,
+.bottom-navbar.dark a {
   color: #fff;
 }
 .bottom-navbar.dark .bottom-nav-link__item svg,

@@ -188,7 +188,7 @@
   position: fixed;
   width: 940px;
   height: 100vh;
-  right: -950px;
+  right: -200vw;
   top: 0;
   background-color: #fff;
   z-index: 120;
