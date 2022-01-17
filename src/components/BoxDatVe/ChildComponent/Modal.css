@@ -54,6 +54,12 @@
   height: 24px;
   width: 24px;
 }
+
+.my-modal {
+  padding: 16px;
+  margin-top: 32px;
+}
+
 .modal {
   padding: 16px;
 }

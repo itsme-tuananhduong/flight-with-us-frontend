@@ -92,6 +92,11 @@
   text-align: center;
 }
 
+.flight-info .flight-info__content .time-group .depature-time,
+.flight-info .flight-info__content .time-group .landing-time {
+  width: 25%;
+}
+
 .flight-info .flight-info__content .time-group p.time {
   font-size: 20px;
   font-weight: 600;

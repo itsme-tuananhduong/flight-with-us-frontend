@@ -290,20 +290,6 @@ function FilterSearch({ showFilter, setShowFilter, filterData }) {
                     </label>
                   </div>
                 </div>
-                <div className="filter-way-list-item">
-                  <div className="input-checkbox">
-                    <input
-                      type="radio"
-                      id="way3"
-                      name="way"
-                      onClick={onLhbChange}
-                      value="Khứ hồi"
-                    />
-                    <label htmlFor="way3" className="label-radio">
-                      Khứ Hồi
-                    </label>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

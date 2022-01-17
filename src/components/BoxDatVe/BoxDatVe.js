@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 
 import { ThemeContext } from '../../shared/context/ThemeProvider';
 
@@ -7,22 +7,30 @@ import BoxHanhKhach from '../BoxHanhKhach/BoxHanhKhach';
 import HinhThucThanhToan from '../HinhThucThanhToan';
 import BoxNguoiThanhToan from '../BoxNguoiThanhToan/BoxNguoiThanhToan';
 import FlightInfoBox from '../FlightInfoBox';
-import Modal from './ChildComponent/Modal';
+import ChildModal from './ChildComponent/Modal';
+import axios from 'axios';
+import Modal from '../../shared/components/Modal';
+import { AuthContext } from '../../shared/context/auth-context';
+
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { timeDiffCalc } from '../../shared/util/util-function';
 
 import './BoxDatVe.css';
 
-const BoxDatVe = () => {
+const BoxDatVe = ({ setIsLoading, setError }) => {
+  const auth = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   const { theme } = useContext(ThemeContext);
 
   const [showModal, setShowModal] = useState(false);
 
+  const [showMyModal, setShowMyModal] = useState(false);
+
   const [step, setStep] = useState(0);
 
   const [HLKG, setHLKG] = useState('0kg - 0 ₫');
-
-  const continueHandler = () => {
-    setStep(1);
-  };
 
   const changeHLKGHandler = (HLKG) => {
     setHLKG(HLKG);
@@ -32,13 +40,436 @@ const BoxDatVe = () => {
     setStep(0);
   };
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const IdVeMayBay = parseInt(searchParams.get('idvemaybay'));
+
+  const IdChuyenBay = parseInt(searchParams.get('idchuyenbay'));
+  console.log(IdChuyenBay);
+
+  const SLVeConLai = parseInt(searchParams.get('slvcl'));
+  console.log(SLVeConLai);
+
+  const GiaVe = parseFloat(searchParams.get('giave'));
+
+  const Thue = parseFloat(searchParams.get('thue'));
+
+  const passengers = {
+    adult: parseInt(searchParams.get('ps').split('.')[0]),
+    child: parseInt(searchParams.get('ps').split('.')[1]),
+    baby: parseInt(searchParams.get('ps').split('.')[2]),
+  };
+
+  const tongTien =
+    (passengers.adult + passengers.child + passengers.baby) *
+    (GiaVe + GiaVe * (Thue / 100));
+
+  const ddkh = searchParams.get('ddkh');
+  const ddhc = searchParams.get('ddhc');
+  const tgkh = searchParams.get('tgkh');
+  const tghc = searchParams.get('tghc');
+  const tgdc = timeDiffCalc(new Date(tghc), new Date(tgkh));
+  const lhb = searchParams.get('loaihinhbay');
+  const hanghk = searchParams.get('hanghk');
+
+  // const [adultPassenger, setAdultPassenger] = useState([]);
+  // const [childPassenger, setChildPassenger] = useState([]);
+  // const [babyPassenger, setBabyPassenger] = useState([]);
+
+  // useEffect(() => {
+  //   //
+
+  //   for (let i = 1; i <= passengers.adult; i++) {
+  //     setAdultPassenger((prevState) => [
+  //       ...prevState,
+  //       <BoxHanhKhach
+  //         step={step}
+  //         changeHLKGHandler={changeHLKGHandler}
+  //         HLKG={HLKG}
+  //         resetStepHandler={resetStepHandler}
+  //         passenger={`người lớn ${i}`}
+  //         key={`adult ${i}`}
+  //       />,
+  //     ]);
+  //   }
+
+  //   for (let i = 1; i <= passengers.child; i++) {
+  //     setChildPassenger((prevState) => [
+  //       ...prevState,
+  //       <BoxHanhKhach
+  //         step={step}
+  //         changeHLKGHandler={changeHLKGHandler}
+  //         HLKG={HLKG}
+  //         resetStepHandler={resetStepHandler}
+  //         passenger={`trẻ em ${i}`}
+  //         key={`child ${i}`}
+  //       />,
+  //     ]);
+  //   }
+
+  //   for (let i = 1; i <= passengers.baby; i++) {
+  //     setBabyPassenger((prevState) => [
+  //       ...prevState,
+  //       <BoxHanhKhach
+  //         step={step}
+  //         changeHLKGHandler={changeHLKGHandler}
+  //         HLKG={HLKG}
+  //         resetStepHandler={resetStepHandler}
+  //         passenger={`em bé ${i}`}
+  //         key={`baby ${i}`}
+  //       />,
+  //     ]);
+  //   }
+  // }, [step]);
+
+  const [passengerInfo, setPassengerInfo] = useState(
+    Array.from(
+      { length: passengers.adult + passengers.child + passengers.baby },
+      () => ({ name: '', gender: '' })
+    )
+  );
+
+  let adultPassenger_0 = [],
+    adultPassenger_1 = [],
+    childPassenger_0 = [],
+    childPassenger_1 = [],
+    babyPassenger_0 = [],
+    babyPassenger_1 = [];
+
+  for (let i = 1; i <= passengers.adult; i++) {
+    adultPassenger_0.push(
+      <BoxHanhKhach
+        step={0}
+        changeHLKGHandler={changeHLKGHandler}
+        HLKG={HLKG}
+        resetStepHandler={resetStepHandler}
+        passenger={`người lớn ${i}`}
+        key={`adult-${i}`}
+        id={`adult-${i}`}
+        pos={i - 1}
+        passengerInfo={passengerInfo}
+        setPassengerInfo={setPassengerInfo}
+      />
+    );
+    adultPassenger_1.push(
+      <BoxHanhKhach
+        step={1}
+        changeHLKGHandler={changeHLKGHandler}
+        HLKG={HLKG}
+        resetStepHandler={resetStepHandler}
+        passenger={`người lớn ${i}`}
+        key={`adult-${i}`}
+        id={`adult-${i}`}
+        pos={i - 1}
+        passengerInfo={passengerInfo}
+        setPassengerInfo={setPassengerInfo}
+      />
+    );
+  }
+  for (let i = 1; i <= passengers.child; i++) {
+    childPassenger_0.push(
+      <BoxHanhKhach
+        step={0}
+        changeHLKGHandler={changeHLKGHandler}
+        HLKG={HLKG}
+        resetStepHandler={resetStepHandler}
+        passenger={`trẻ em ${i}`}
+        key={`child-${i}`}
+        id={`child-${i}`}
+        pos={passengers.adult + i - 1}
+        passengerInfo={passengerInfo}
+        setPassengerInfo={setPassengerInfo}
+      />
+    );
+    childPassenger_1.push(
+      <BoxHanhKhach
+        step={1}
+        changeHLKGHandler={changeHLKGHandler}
+        HLKG={HLKG}
+        resetStepHandler={resetStepHandler}
+        passenger={`trẻ em ${i}`}
+        key={`child-${i}`}
+        id={`child-${i}`}
+        pos={passengers.adult + i - 1}
+        passengerInfo={passengerInfo}
+        setPassengerInfo={setPassengerInfo}
+      />
+    );
+  }
+  for (let i = 1; i <= passengers.baby; i++) {
+    babyPassenger_0.push(
+      <BoxHanhKhach
+        step={0}
+        changeHLKGHandler={changeHLKGHandler}
+        HLKG={HLKG}
+        resetStepHandler={resetStepHandler}
+        passenger={`em bé ${i}`}
+        key={`baby-${i}`}
+        id={`baby-${i}`}
+        pos={passengers.adult + passengers.child + i - 1}
+        passengerInfo={passengerInfo}
+        setPassengerInfo={setPassengerInfo}
+      />
+    );
+    babyPassenger_1.push(
+      <BoxHanhKhach
+        step={1}
+        changeHLKGHandler={changeHLKGHandler}
+        HLKG={HLKG}
+        resetStepHandler={resetStepHandler}
+        passenger={`em bé ${i}`}
+        key={`baby-${i}`}
+        id={`baby-${i}`}
+        pos={passengers.adult + passengers.child + i - 1}
+        passengerInfo={passengerInfo}
+        setPassengerInfo={setPassengerInfo}
+      />
+    );
+  }
+
+  const [contactInfo, setContactInfo] = useState({
+    name: '',
+    gender: '',
+    email: '',
+    phone: '',
+    address: '',
+  });
+
+  const [paymentInfo, setPaymentInfo] = useState({
+    name: '',
+    gender: 'null',
+    email: '',
+    phone: '',
+    address: '',
+    nation: '',
+    state: '',
+  });
+
+  const [isPassenger, setIsPassenger] = useState(false);
+
+  useEffect(() => {
+    // console.log(isPassenger);
+    // console.log(contactInfo);
+    if (isPassenger) {
+      setPassengerInfo((prevState) => [
+        ...prevState.slice(0, 0),
+        {
+          name: contactInfo.name,
+          gender: contactInfo.gender,
+        },
+        ...prevState.slice(1),
+      ]);
+    }
+    // console.log(passengerInfo);
+  }, [isPassenger]);
+
+  const continueHandler = () => {
+    let isValid = true;
+    for (const property in contactInfo) {
+      if (contactInfo[property] === '') {
+        isValid = false;
+        setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+      }
+    }
+    for (const passenger of passengerInfo) {
+      for (const property in passenger) {
+        if (passenger[property] === '') {
+          isValid = false;
+          setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+        }
+      }
+    }
+    if (isValid) {
+      setStep(1);
+    }
+  };
+
+  const onPay = () => {
+    setIsLoading(true);
+    let IdHoaDon, IdNguoiLienHe;
+    axios({
+      method: 'post',
+      baseURL: 'http://localhost:8000/api',
+      url: '/contact-infos',
+      headers: {
+        Authorization: `Bearer ${auth.token}`,
+      },
+      data: {
+        HoTen: contactInfo.name,
+        GioiTinh: contactInfo.gender,
+        Email: contactInfo.email,
+        SDT: contactInfo.phone,
+        DiaChi: contactInfo.address,
+      },
+    })
+      .then((res) => {
+        console.log('nlh', res.data);
+        IdNguoiLienHe = res.data.IdNguoiLienHe;
+        return axios({
+          method: 'post',
+          baseURL: 'http://localhost:8000/api',
+          url: '/payers',
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+          data: {
+            HoTen: paymentInfo.name,
+            GioiTinh: paymentInfo.gender,
+            Email: paymentInfo.email,
+            SDT: paymentInfo.phone,
+            DiaChi: paymentInfo.address,
+            QuocGia: paymentInfo.nation,
+            ThanhPho: paymentInfo.state,
+          },
+        });
+      })
+      .then((res) => {
+        console.log('ntt', res);
+        return axios({
+          method: 'post',
+          baseURL: 'http://localhost:8000/api',
+          url: '/invoices',
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+          data: {
+            TongTien: tongTien,
+            IdNguoiThanhToan: res.data.IdNguoiThanhToan,
+          },
+        });
+      })
+      .then((res) => {
+        console.log('hd', res.data);
+        IdHoaDon = res.data.id;
+        return axios({
+          method: 'put',
+          baseURL: 'http://localhost:8000/api',
+          url: `/tickets/${IdVeMayBay}`,
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+          data: {
+            TrangThai: 'Đã bán',
+          },
+        });
+      })
+      // .then((res) => {
+      //   return axios({
+      //     method: 'post',
+      //     baseURL: 'http://localhost:8000/api',
+      //     url: `/tickets/search`,
+      //     headers: {
+      //       Authorization: `Bearer ${auth.token}`,
+      //     },
+      //     data: {
+      //       IdVeMayBay: IdVeMayBay,
+      //     },
+      //   });
+      // })
+      .then((res) => {
+        console.log('ve', res.data);
+        return axios({
+          method: 'put',
+          baseURL: 'http://localhost:8000/api',
+          url: `/flights/${IdChuyenBay}`,
+          headers: {
+            Authorization: `Bearer ${auth.token}`,
+          },
+          data: {
+            SLVeConLai: SLVeConLai - 1,
+          },
+        });
+      })
+      .then((res) => {
+        console.log('cb', res.data);
+        let promiseArr = [];
+        for (
+          let i = 0;
+          i < passengers.adult + passengers.child + passengers.baby;
+          i++
+        ) {
+          promiseArr.push(
+            axios({
+              method: 'post',
+              baseURL: 'http://localhost:8000/api',
+              url: '/passengers',
+              headers: {
+                Authorization: `Bearer ${auth.token}`,
+              },
+              data: {
+                HoTen: passengerInfo[i].name,
+                GioiTinh: passengerInfo[i].gender,
+                NgaySinh: new Date().toString(),
+                IdNguoiLienHe: IdNguoiLienHe,
+              },
+            })
+              .then((res) => {
+                console.log('hk', res.data);
+                return axios({
+                  method: 'post',
+                  baseURL: 'http://localhost:8000/api',
+                  url: '/invoice-details',
+                  headers: {
+                    Authorization: `Bearer ${auth.token}`,
+                  },
+                  data: {
+                    Thue: Thue,
+                    ThanhTien: GiaVe + GiaVe * (Thue / 100),
+                    IdVeMayBay: IdVeMayBay,
+                    IdHanhKhach: res.data.id,
+                    IdHoaDon: IdHoaDon,
+                  },
+                });
+              })
+              .then((res) => console.log('cthd', res.data))
+          );
+        }
+        return Promise.all(promiseArr);
+      })
+      .then((res) => {
+        console.log(res);
+        setIsLoading(false);
+        setShowMyModal(true);
+        localStorage.setItem(
+          'flightData',
+          JSON.stringify({
+            ddkh: ddkh,
+            ddhc: ddhc,
+            tgkh: tgkh,
+            tghc: tghc,
+            tgdc: tgdc,
+            lhb: lhb,
+            tongTien: tongTien,
+            passengers: passengers,
+            hanghk: hanghk,
+          })
+        );
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.message);
+      });
+  };
+
+  const closeModal = () => {
+    setShowMyModal(false);
+    if (auth.userId) {
+      navigate(`/user/${auth.userId}`);
+    } else {
+      navigate(`/user/@guest`);
+    }
+  };
+
   return (
     <div
       className={
         theme === 'dark' ? 'box-dat-ve-wrapper dark' : 'box-dat-ve-wrapper'
       }
     >
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal onCancel={closeModal} header="Thông báo" show={showMyModal}>
+        <p>Đặt vé thành công</p>
+      </Modal>
+      <ChildModal showModal={showModal} setShowModal={setShowModal} />
       <div className="box-dat-ve-info">
         <div>
           <p>Thông tin đặt vé</p>
@@ -92,7 +523,16 @@ const BoxDatVe = () => {
                 </g>
               </g>
             </svg>
-            <span>1 người lớn</span>
+
+            {passengers.adult !== 0 ? (
+              <span>&nbsp;{passengers.adult} người lớn</span>
+            ) : null}
+            {passengers.child !== 0 ? (
+              <span>,&nbsp;{passengers.child} trẻ em</span>
+            ) : null}
+            {passengers.baby !== 0 ? (
+              <span>,&nbsp;{passengers.baby} em bé</span>
+            ) : null}
           </div>
         </div>
         <button
@@ -105,14 +545,32 @@ const BoxDatVe = () => {
 
       <div className="box-dat-ve__content">
         <div className="box-dat-ve__main">
-          {step === 0 && <BoxNguoiLienHe step={0} />}
-          {step === 1 && <BoxNguoiLienHe step={1} />}
           {step === 0 && (
+            <BoxNguoiLienHe
+              step={0}
+              contactInfo={contactInfo}
+              setContactInfo={setContactInfo}
+              isPassenger={isPassenger}
+              setIsPassenger={setIsPassenger}
+            />
+          )}
+          {step === 1 && (
+            <BoxNguoiLienHe
+              step={1}
+              contactInfo={contactInfo}
+              setContactInfo={setContactInfo}
+              isPassenger={isPassenger}
+              setIsPassenger={setIsPassenger}
+            />
+          )}
+
+          {/* {step === 0 && (
             <BoxHanhKhach
               step={0}
               changeHLKGHandler={changeHLKGHandler}
               HLKG={HLKG}
               resetStepHandler={resetStepHandler}
+              passenger={'người lớn 1'}
             />
           )}
           {step === 1 && (
@@ -121,13 +579,28 @@ const BoxDatVe = () => {
               changeHLKGHandler={changeHLKGHandler}
               HLKG={HLKG}
               resetStepHandler={resetStepHandler}
+              passenger={'người lớn 1'}
             />
-          )}
+          )} */}
+
+          {/* {adultPassenger}
+          {childPassenger}
+          {babyPassenger} */}
+
+          {step === 0 && adultPassenger_0}
+          {step === 1 && adultPassenger_1}
+          {step === 0 && childPassenger_0}
+          {step === 1 && childPassenger_1}
+          {step === 0 && babyPassenger_0}
+          {step === 1 && babyPassenger_1}
 
           {step === 1 && (
             <div className="step-2">
-              <BoxNguoiThanhToan />
-              <HinhThucThanhToan />
+              <BoxNguoiThanhToan
+                paymentInfo={paymentInfo}
+                setPaymentInfo={setPaymentInfo}
+              />
+              <HinhThucThanhToan onPay={onPay} />
             </div>
           )}
           {step === 0 && (

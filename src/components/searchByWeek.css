@@ -43,7 +43,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 16px;
   background-color: #24a4d8;
   padding: 16px 20px;
   border-radius: 10px;
@@ -57,6 +57,8 @@
 }
 .main-flight-province {
   font-size: 1rem;
+  font-weight: 600;
+  line-height: 24px;
   color: rgb(255, 255, 255, 1);
   margin-bottom: 5px;
 }
@@ -83,7 +85,7 @@
   height: 74px;
   position: relative;
   background-color: #fff;
-  margin-top: 20px;
+  margin-top: 16px;
   border-radius: 8px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   padding: 9px 0;
@@ -161,19 +163,28 @@
   height: 137px;
   background-color: #fff;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
-  margin-top: 20px;
+  margin-top: 16px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
 }
 .btn-filter-search {
   padding: 8px 12px;
-  border: 1px solid #eaeaea;
+  border: 1px solid #24a4d8;
   border-radius: 99px;
   cursor: pointer;
+  color: #24a4d8;
+}
+.btn-filter-search.disable {
+  border: 1px solid #ccc;
+  color: rgba(0, 0, 0, 0.87);
 }
 .btn-filter-search:hover {
   background-color: rgba(0, 0, 0, 0.04);
+}
+.btn-filter-search.disable:hover {
+  background-color: #fff;
+  cursor: default;
 }
 .main-sort,
 .filter-plane-ticket {
@@ -198,20 +209,31 @@
   font-size: 0.875rem;
   cursor: pointer;
 }
+.display-Sort-week.disable {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: default;
+}
 .Sort-text-week {
   font-weight: 600;
   font-size: 0.875rem;
 }
 .SearchByWeek-footer {
-  background-color: #fff;
+  /* background-color: #fff;
   width: 100%;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   margin-top: 20px;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 8px; */
+}
+.noFlight {
+  margin-top: 16px;
 }
 .noFlight-container {
-  margin-top: 40px;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
+  padding: 16px;
+  border-radius: 8px;
 }
 .noFlight-img {
   width: 100%;
@@ -294,6 +316,7 @@
   font-weight: 600;
   font-size: 1.25rem;
   margin: 0 3px;
+  color: #f44336;
 }
 .btn-put {
   padding: 10px 20px;
@@ -328,15 +351,27 @@
 .SearchByWeek-container.dark .date-item-price.active,
 .SearchByWeek-container.dark .btn-filter-search {
   color: #24a4d8;
-}
-.SearchByWeek-container.dark .btn-filter-search {
   border: 1px solid #24a4d8;
+}
+.SearchByWeek-container.dark .btn-filter-search.disable {
+  color: #ccc;
+  border: 1px solid #888;
+  cursor: default;
 }
 .SearchByWeek-container.dark .btn-filter-search:hover {
   background-color: rgba(36, 164, 216, 0.07);
 }
+.SearchByWeek-container.dark .btn-filter-search.disable:hover {
+  background-color: #424242;
+}
 .SearchByWeek-container.dark .display-Sort-week:hover {
   background-color: #515151;
+}
+.SearchByWeek-container.dark .display-Sort-week.disable {
+  color: #ccc;
+}
+.SearchByWeek-container.dark .display-Sort-week.disable:hover {
+  background-color: #424242;
 }
 .SearchByWeek-container.dark .calendar-week,
 .SearchByWeek-container.dark .main-filter,
@@ -362,7 +397,7 @@
 } */
 @media (max-width: 960px) {
   .SearchByWeek-footer {
-    margin-top: 100px;
+    margin-top: 136px;
   }
 
   .ticketBox-container {
@@ -409,7 +444,7 @@
 }
 @media (max-width: 600px) {
   .SearchByWeek-footer {
-    margin-top: 150px;
+    margin-top: 190px;
   }
 
   .SearchByWeek-container {

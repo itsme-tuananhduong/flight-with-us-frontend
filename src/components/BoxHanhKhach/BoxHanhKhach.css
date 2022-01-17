@@ -177,7 +177,7 @@
   padding: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   left: 0;
-  z-index: 4;
+  z-index: 10;
 }
 .option-list-mdt-item {
   display: flex;
@@ -196,7 +196,7 @@
 }
 .madienthoai,
 .quocgia {
-  position: absolute;
+  position: absolute !important;
 }
 .quocgia .option-list-mdt {
   width: 350px;

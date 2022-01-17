@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import BoxMaDienThoai from './ChildComponent/BoxMaDienThoai';
 import { ThemeContext } from '../../shared/context/ThemeProvider';
 
@@ -21,6 +21,23 @@ const BoxNguoiLienHe = (props) => {
   const getvaluePhoneCode = (e) => {
     setPhoneCode(e);
   };
+
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+
+  const [name, setName] = useState(props.contactInfo.name);
+  const [email, setEmail] = useState(props.contactInfo.email);
+  const [gender, setGender] = useState(props.contactInfo.gender);
+  const [phone, setPhone] = useState(props.contactInfo.phone);
+  const [address, setAddress] = useState(props.contactInfo.address);
+
+  const onNameChange = (e) => {
+    props.setContactInfo((prevState) => ({
+      ...prevState,
+      name: `${firstNameRef.current.value} ${lastNameRef.current.value}`,
+    }));
+  };
+
   return (
     <div
       className={
@@ -36,18 +53,30 @@ const BoxNguoiLienHe = (props) => {
       <div style={{ display: step === 0 ? 'block' : 'none' }}>
         <div className="option1">
           <div className="form-field">
-            <input type="text" className="form-input" placeholder=" " />
+            <input
+              type="text"
+              className="form-input"
+              placeholder=" "
+              onChange={(e) => onNameChange(e)}
+              ref={firstNameRef}
+            />
             <label htmlFor="name" className="form-label">
               Họ
-              <span className="star">*</span>
+              <span className="star"> *</span>
             </label>
             <span className="message-error"></span>
           </div>
           <div className="form-field">
-            <input type="text" className="form-input" placeholder=" " />
+            <input
+              type="text"
+              className="form-input"
+              placeholder=" "
+              onChange={(e) => onNameChange(e)}
+              ref={lastNameRef}
+            />
             <label htmlFor="name" className="form-label">
               Tên đệm & tên
-              <span className="star">*</span>
+              <span className="star"> *</span>
             </label>
             <span className="message-error"></span>
           </div>
@@ -56,15 +85,32 @@ const BoxNguoiLienHe = (props) => {
           <p>Giới tính</p>
           <div className="options">
             <label className="option" for="male">
-              <input type="radio" id="male" name="gender-options" value="Nam" />
+              <input
+                type="radio"
+                id="male"
+                name="gender-options-nlh"
+                value="Nam"
+                onClick={(e) =>
+                  props.setContactInfo((prevState) => ({
+                    ...prevState,
+                    gender: e.target.value,
+                  }))
+                }
+              />
               Nam
             </label>
             <label className="option" for="female">
               <input
                 type="radio"
                 id="female"
-                name="gender-options"
-                value="Nam"
+                name="gender-options-nlh"
+                value="Nữ"
+                onClick={(e) =>
+                  props.setContactInfo((prevState) => ({
+                    ...prevState,
+                    gender: e.target.value,
+                  }))
+                }
               />
               Nữ
             </label>
@@ -72,10 +118,20 @@ const BoxNguoiLienHe = (props) => {
         </div>
         <div className="option2">
           <div className="form-field email">
-            <input type="text" className="form-input" placeholder=" " />
+            <input
+              type="text"
+              className="form-input"
+              placeholder=" "
+              onChange={(e) =>
+                props.setContactInfo((prevState) => ({
+                  ...prevState,
+                  email: e.target.value,
+                }))
+              }
+            />
             <label htmlFor="name" className="form-label">
               Email
-              <span className="star">*</span>
+              <span className="star"> *</span>
             </label>
             <span className="message-error"></span>
           </div>
@@ -98,11 +154,10 @@ const BoxNguoiLienHe = (props) => {
                 className="form-input madt"
                 placeholder=" "
                 value={phoneCode.code}
-                onChange={(e) => e}
               />
               <label htmlFor="name" className="form-label">
                 Mã điện thoại
-                <span className="star">*</span>
+                <span className="star"> *</span>
               </label>
               <span className="message-error"></span>
 
@@ -113,10 +168,20 @@ const BoxNguoiLienHe = (props) => {
               />
             </div>
             <div className="form-field">
-              <input type="text" className="form-input" placeholder=" " />
+              <input
+                type="text"
+                className="form-input"
+                placeholder=" "
+                onChange={(e) =>
+                  props.setContactInfo((prevState) => ({
+                    ...prevState,
+                    phone: `${phoneCode.code} ${e.target.value}`,
+                  }))
+                }
+              />
               <label htmlFor="name" className="form-label">
                 Số điện thoại
-                <span className="star">*</span>
+                <span className="star"> *</span>
               </label>
               <span className="message-error"></span>
             </div>
@@ -124,17 +189,33 @@ const BoxNguoiLienHe = (props) => {
         </div>
         <div className="option3">
           <div className="form-field">
-            <input type="text" className="form-input" placeholder=" " />
+            <input
+              type="text"
+              className="form-input"
+              placeholder=" "
+              onChange={(e) =>
+                props.setContactInfo((prevState) => ({
+                  ...prevState,
+                  address: e.target.value,
+                }))
+              }
+            />
             <label htmlFor="name" className="form-label">
-              Địa Chỉ
-              <span className="star">*</span>
+              Địa chỉ
+              <span className="star"> *</span>
             </label>
             <span className="message-error"></span>
           </div>
         </div>
         <div className="nguoilienhe-bntt-input-check">
           <div className="input-checkbox">
-            <input type="checkbox" id="check" />
+            <input
+              type="checkbox"
+              id="check"
+              onClick={() => {
+                props.setIsPassenger(!props.isPassenger);
+              }}
+            />
             <label className="label-checkbox" htmlFor="check">
               Tôi là hành khách
             </label>
@@ -147,19 +228,19 @@ const BoxNguoiLienHe = (props) => {
         style={{ display: step === 1 ? 'block' : 'none' }}
       >
         <div className="nguoi-lien-he__box">
-          Họ tên: <span>DEMO</span>
+          Họ tên: <span>{name}</span>
         </div>
         <div className="nguoi-lien-he__box">
-          Giới tính: <span>Nam</span>
+          Giới tính: <span>{gender}</span>
         </div>
         <div className="nguoi-lien-he__box">
-          Số điện thoại: <span>0333333333</span>
+          Số điện thoại: <span>{phone}</span>
         </div>
         <div className="nguoi-lien-he__box">
-          Email: <span>demo@gmail.com</span>
+          Email: <span>{email}</span>
         </div>
         <div className="nguoi-lien-he__box">
-          Địa chỉ: <span>demo</span>
+          Địa chỉ: <span>{address}</span>
         </div>
       </div>
     </div>

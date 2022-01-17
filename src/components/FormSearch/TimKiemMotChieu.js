@@ -1,10 +1,16 @@
 import React, { Fragment, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BoxPassenger from './ChildComponent/BoxPassenger';
 import Provinces from './ChildComponent/Provinces/Provinces';
 
 import DatePicker from 'react-datepicker';
 
-function TimKiemMotChieu({ setSendData }) {
+import axios from 'axios';
+
+function TimKiemMotChieu({ setIsLoading, setError }) {
+  const navigate = useNavigate();
+  const [checkboxIsChecked, setCheckboxIsChecked] = useState(false);
+
   const [tabProvinces, setTabProvinces] = useState(null);
   const [showBoxProvinder, setShowBoxProvinder] = useState(false);
   const [showBoxPassenger, setShowBoxPassenger] = useState(false);
@@ -13,7 +19,6 @@ function TimKiemMotChieu({ setSendData }) {
   const [passenger, setPassenger] = useState({ adult: 1, child: 0, baby: 0 });
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
-  const [timeTab, setTimeTab] = useState('');
   const [startDate, setStartDate] = useState(new Date());
 
   const handleOnchangeInput = (e) => console.log(e);
@@ -23,16 +28,43 @@ function TimKiemMotChieu({ setSendData }) {
     setDeparture(diem2);
     setDestination(diem1);
   };
+
   const handleData = () => {
-    const data = {
-      departure,
-      destination,
-      timeTab,
-      passenger,
-    };
-    console.log(data);
-    setSendData(data);
+    if (
+      departure === '' ||
+      destination === '' ||
+      startDate.toString().substr(0, 15) === ''
+    ) {
+      setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+      return;
+    } else {
+      if (departure === destination) {
+        setError(
+          'Địa điểm khởi hành và địa điểm hạ cánh không được trùng nhau'
+        );
+        return;
+      }
+    }
+
+    if (checkboxIsChecked) {
+      navigate(
+        `/result-month?ddkh=${departure}&ddhc=${destination}&tgkh=${startDate
+          .toString()
+          .substr(0, 15)}&ps=${passenger.adult}.${passenger.child}.${
+          passenger.baby
+        }`
+      );
+    } else {
+      navigate(
+        `/result-week?ddkh=${departure}&ddhc=${destination}&tgkh=${startDate
+          .toString()
+          .substr(0, 15)}&ps=${passenger.adult}.${passenger.child}.${
+          passenger.baby
+        }`
+      );
+    }
   };
+
   return (
     <Fragment>
       <div className="formSearch-main active">
@@ -169,7 +201,7 @@ function TimKiemMotChieu({ setSendData }) {
                 value={destination}
               />
               <label htmlFor="name" className="form-label">
-                Điểm Đến
+                Điểm đến
               </label>
               <span className="message-error"></span>
               {tabProvinces === 2 ? (
@@ -280,6 +312,7 @@ function TimKiemMotChieu({ setSendData }) {
                 onChange={(date) => setStartDate(date)}
                 className="form-input"
                 minDate={new Date()}
+                dateFormat="MM/dd/yyyy"
               />
               <label htmlFor="name" className="form-label">
                 Ngày đi
@@ -345,7 +378,7 @@ function TimKiemMotChieu({ setSendData }) {
                 onClick={() => setShowBoxPassenger((e) => !e)}
               />
               <label htmlFor="name" className="form-label over">
-                Số Hành Khách
+                Số hành khách
               </label>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -396,7 +429,7 @@ function TimKiemMotChieu({ setSendData }) {
               {checkHind ? (
                 <div className="goiy">
                   <span>
-                    Số em bé không được nhiều hơn số hành khách Người lớn
+                    Số em bé không được nhiều hơn số hành khách người lớn
                   </span>
                 </div>
               ) : null}
@@ -411,14 +444,18 @@ function TimKiemMotChieu({ setSendData }) {
         </div>
         <div className="submit-form">
           <div className="input-checkbox">
-            <input type="checkbox" id="check" />
+            <input
+              type="checkbox"
+              id="check"
+              onClick={() => setCheckboxIsChecked(!checkboxIsChecked)}
+            />
             <label className="check-label" htmlFor="check">
               Tìm kiếm vé rẻ trong tháng
             </label>
           </div>
 
           <span className="submit-form-btn" onClick={handleData}>
-            Tìm Kiếm
+            Tìm kiếm
           </span>
         </div>
       </div>
