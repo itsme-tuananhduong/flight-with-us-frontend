@@ -40,6 +40,7 @@
   padding: 16px 0;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
+  transition: background 0s;
   outline: none;
   font-size: 1rem;
   border: none;

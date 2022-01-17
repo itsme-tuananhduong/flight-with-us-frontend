@@ -334,6 +334,10 @@
   background-color: #f57c00;
 }
 /* Dark mode */
+.SearchByWeek-container.dark .noFlight-container {
+  background: #424242;
+}
+
 .SearchByWeek-container.dark,
 .SearchByWeek-container.dark .date-item-price,
 .SearchByWeek-container.dark .date-item,

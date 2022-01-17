@@ -27,7 +27,7 @@ const BoxNguoiThanhToan = (props) => {
   const [phoneCode, setPhoneCode] = useState({
     id: 5,
     imgNational: 'https://media.hahalolo.com/other/flags/vn.png',
-    nation: 'VietNam',
+    nation: 'Vietnam',
     code: '+84',
   });
 
