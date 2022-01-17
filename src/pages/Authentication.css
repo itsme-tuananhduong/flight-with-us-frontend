@@ -160,10 +160,12 @@
 }
 
 /* Dark Mode */
+
+.authentication-page.dark .languages .language,
+.authentication-page.dark .languages > svg,
 .authentication-page.dark .intro-content {
   color: #fff;
 }
-
 .authentication-page.dark .footer {
   color: #fff;
 }

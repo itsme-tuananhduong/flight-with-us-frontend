@@ -129,17 +129,17 @@ const Flights = () => {
       <td onClick={() => handleFlight(item)}>{item.ThoiGianKhoiHanh}</td>
       <td onClick={() => handleFlight(item)}>{item.ThoiGianHaCanh}</td>
       <td>
-        <span className="AddTicket" onClick={() => HandleData(item)}>
+        <span className='AddTicket' onClick={() => HandleData(item)}>
           Thêm vé
         </span>
       </td>
       <td>
-        <span className="ListTicket" onClick={() => HandleData2(item)}>
+        <span className='ListTicket' onClick={() => HandleData2(item)}>
           Danh sách vé
         </span>
       </td>
       <td>
-        <span className="deleteTicket" onClick={() => HandleData3(item)}>
+        <span className='deleteTicket' onClick={() => HandleData3(item)}>
           Xóa chuyến bay
         </span>
       </td>
@@ -211,35 +211,35 @@ const Flights = () => {
           filterData={filterData}
         />
 
-        <h2 className="page-header">Thông Tin Chuyến Bay</h2>
-        <div className="row heading">
-          <div className="search-id">
+        <h2 className='page-header'>Thông Tin Chuyến Bay</h2>
+        <div className='row heading'>
+          <div className='search-id'>
             <input
-              className="admin-input"
-              type="text"
-              placeholder="Nhập ID"
+              className='admin-input'
+              type='text'
+              placeholder='Nhập ID'
               onKeyUp={onInputKeyUp}
             />
-            <i className="bx bx-search"></i>
+            <i className='bx bx-search'></i>
           </div>
-          <div className="col-2">
+          <div className='col-2'>
             <div
-              className="page-card-heading"
+              className='page-card-heading'
               onClick={() => setShowFilter((e) => !e)}
             >
-              <div className="page-card__body">Lọc tìm kiếm</div>
+              <div className='page-card__body filter'>Lọc Tìm Kiếm</div>
             </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-12">
-            <div className="page-card">
-              <div className="page-card__body">
+        <div className='row'>
+          <div className='col-12'>
+            <div className='page-card'>
+              <div className='page-card__body'>
                 {isLoading && <LoadingSpinner />}
                 {!isLoading && flight && (
                   <div>
                     <Table
-                      limit="10"
+                      limit='10'
                       headData={customerTableHead}
                       renderHead={(item, index) => renderHead(item, index)}
                       bodyData={flight}
