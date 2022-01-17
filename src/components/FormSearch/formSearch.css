@@ -45,6 +45,9 @@
   background-color: #e0e0e0;
   cursor: pointer;
 }
+.formSearch-btn-item:hover {
+  background: rgba(0, 0, 0, 0.26);
+}
 .formSearch-btn-item.active {
   color: #fff;
   background-color: #24a8d8;

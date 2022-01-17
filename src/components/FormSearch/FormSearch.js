@@ -7,11 +7,10 @@ import { ThemeContext } from '../../shared/context/ThemeProvider';
 
 import './FormSearch.css';
 
-function FormSearch() {
+function FormSearch({ setIsLoading, setError }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [tab, setTab] = useState(1);
   const [showModal, setShowModal] = useState(false);
-  const [sendData, setSendData] = useState({});
 
   return (
     <div>
@@ -63,9 +62,15 @@ function FormSearch() {
             Nhiều Chặng
           </button>
         </div>
-        {tab === 1 ? <TimKiemMotChieu setSendData={setSendData} /> : null}
-        {tab === 2 ? <TimKhiemKhuHoi setSendData={setSendData} /> : null}
-        {tab === 3 ? <TimKiemNhieuChang setSendData={setSendData} /> : null}
+        {tab === 1 ? (
+          <TimKiemMotChieu setIsLoading={setIsLoading} setError={setError} />
+        ) : null}
+        {tab === 2 ? (
+          <TimKhiemKhuHoi setIsLoading={setIsLoading} setError={setError} />
+        ) : null}
+        {tab === 3 ? (
+          <TimKiemNhieuChang setIsLoading={setIsLoading} setError={setError} />
+        ) : null}
       </div>
     </div>
   );

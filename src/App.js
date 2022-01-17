@@ -1,4 +1,4 @@
-import { useContext, Suspense, useState, useEffect } from 'react';
+import { useContext, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { ThemeContext } from './shared/context/ThemeProvider';
@@ -71,7 +71,8 @@ const App = () => {
     routes = (
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/result" element={<Result />} />
+        <Route path="/result-week/*" element={<Result flag={0} />} />
+        <Route path="/result-month/*" element={<Result flag={1} />} />
         <Route path="/booking" element={<Booking />} />
 
         <Route path="/authentication" element={<Navigate to="/" />} />
@@ -89,7 +90,8 @@ const App = () => {
     routes = (
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/result" element={<Result />} />
+        <Route path="/result-week/*" element={<Result flag={0} />} />
+        <Route path="/result-month/*" element={<Result flag={1} />} />
         <Route path="/booking" element={<Booking />} />
 
         <Route path="/authentication" element={<Authentication />} />

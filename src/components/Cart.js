@@ -3,120 +3,103 @@ import { ThemeContext } from '../shared/context/ThemeProvider';
 
 import './Cart.css';
 
-function Cart() {
-  const Flight = [
-    {
-      id: '1',
-      loaichuyenbay: 'Chuyến bay một chiều',
-      ddkh: 'Tokyo (NRT)',
-      ddhc: 'Dubai (DXB)',
-      hanhkhach: {
-        nguoilon: '1',
-        TreEm: '2',
-        Embe: '1',
-      },
-      thoigiankh: 'Thứ 6,14/01/2022 22:30',
-      thoigianhc: 'Thứ 7,15/01/2022 05:25',
-      loaihinh: 'Bay thẳng',
-      time: '11 giờ 55 phút',
-      tongtien: '11.398.000',
-    },
-    {
-      id: '2',
-      loaichuyenbay: 'Chuyến bay một chiều',
-      ddkh: 'Tokyo (NRT)',
-      ddhc: 'Dubai (DXB)',
-      hanhkhach: {
-        nguoilon: '1',
-        TreEm: '2',
-        Embe: '1',
-      },
-      thoigiankh: 'Thứ 6,14/01/2022 22:30',
-      thoigianhc: 'Thứ 7,15/01/2022 05:25',
-      loaihinh: 'Bay thẳng',
-      time: '11 giờ 55 phút',
-      tongtien: '11.398.000',
-      loaihinh: 'Bay thẳng',
-      time: '11 giờ 55 phút',
-    },
-  ];
+function Cart({
+  ddkh,
+  ddhc,
+  tgkh,
+  tghc,
+  tgdc,
+  lhb,
+  tongTien,
+  passengers,
+  hanghk,
+}) {
+  let imgLink = '';
+
+  if (hanghk === 'Vietnam Airlines')
+    imgLink =
+      'https://flight.hahalolo.com/e79fa58a4bf9d10176f38e36f1d157ce.svg';
+  else if (hanghk === 'Vietravel Airlines')
+    imgLink =
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='125' height='34.472' viewBox='0 0 125 34.472'%3E %3Cg id='Group_29016' data-name='Group 29016' transform='translate(4135.175 -2548.468)'%3E %3Cpath id='Path_20840' data-name='Path 20840' d='M-4135.175,2584.749c.428-2.036.837-3.888,1.2-5.748q.948-4.822,1.846-9.653c.092-.492.282-.723.826-.692.805.046,1.615.012,2.528.012l-2.611,13.536a3.508,3.508,0,0,0,4.557-2.239c.748-1.873,1.4-3.786,2.087-5.683,1.044-2.871,2.076-5.746,3.145-8.607a.911.911,0,0,1,.632-.5c.892-.058,1.79-.023,2.825-.023-.442,1.24-.844,2.392-1.264,3.536-1.352,3.682-2.694,7.367-4.072,11.039-1.623,4.324-4.042,5.448-8.652,5.341C-4133.142,2585.042-4134.155,2584.859-4135.175,2584.749Z' transform='translate(0 -13.862)' fill='%230055a4'/%3E %3Cpath id='Path_20841' data-name='Path 20841' d='M-4008.7,2622.81c-.13.742-.218,1.4-.375,2.046a.74.74,0,0,1-.452.42,9.049,9.049,0,0,1-5.3.094,4.2,4.2,0,0,1-3.281-4.091,6.746,6.746,0,0,1,3.612-6.7c1.8-.893,5.228-.832,6.5.828a5.225,5.225,0,0,1,.757,4.392c-.131.76-.438.984-1.205.958-1.85-.063-3.7-.02-5.556-.02h-1.153a2.255,2.255,0,0,0,1.843,2.539,6.932,6.932,0,0,0,3.735-.2C-4009.314,2623-4009.056,2622.919-4008.7,2622.81Zm-1.286-3.952c.279-1.358.079-2.067-.65-2.453a3.04,3.04,0,0,0-4.248,2.453Z' transform='translate(-97.285 -54.458)' fill='%230055a4'/%3E %3Cpath id='Path_20842' data-name='Path 20842' d='M-3726.385,2620.634a2.308,2.308,0,0,0,1.893,2.541c1.313.3,2.1.233,4.578-.441-.128.715-.222,1.386-.384,2.04a.754.754,0,0,1-.466.406,8.656,8.656,0,0,1-5.056.154c-2.513-.723-3.58-2.234-3.49-4.857a6.535,6.535,0,0,1,3.48-5.937c1.981-1.08,5.1-.795,6.465.6,1.226,1.246,1.115,2.777.958,4.344-.1.95-.5,1.219-1.451,1.181C-3722.012,2620.575-3724.171,2620.634-3726.385,2620.634Zm.266-1.854c1.545,0,3.026.01,4.506-.013a.674.674,0,0,0,.512-.293,1.792,1.792,0,0,0-1.022-2.272A3.076,3.076,0,0,0-3726.119,2618.78Z' transform='translate(-337.31 -54.356)' fill='%230055a4'/%3E %3Cpath id='Path_20843' data-name='Path 20843' d='M-3852.853,2618.581c.579-1.26.178-2.392-1.094-2.521a21.35,21.35,0,0,0-3.812.24,4.491,4.491,0,0,0-.663.176c.138-.728.233-1.356.391-1.967a.715.715,0,0,1,.423-.44,9.494,9.494,0,0,1,5.632-.022,3.1,3.1,0,0,1,2.148,3.562c-.309,2.218-.646,4.432-1,6.644a.7.7,0,0,1-.4.452,12.578,12.578,0,0,1-6.552.451,2.867,2.867,0,0,1-2.515-2.388,3.27,3.27,0,0,1,1.589-3.613,7.4,7.4,0,0,1,4.8-.8C-3853.544,2618.4-3853.2,2618.5-3852.853,2618.581Zm-.707,4.73c.171-1.135.3-1.955.428-2.838a4.685,4.685,0,0,0-3.586.051,1.5,1.5,0,0,0-.9,1.648,1.289,1.289,0,0,0,1.292,1.118C-3855.4,2623.369-3854.455,2623.311-3853.56,2623.311Z' transform='translate(-228.404 -54.145)' fill='%230055a4'/%3E %3Cpath id='Path_20844' data-name='Path 20844' d='M-3791.4,2616.819h2.909l1.072,8.14.2.068c.531-1.012,1.068-2.022,1.593-3.038.784-1.519,1.571-3.038,2.335-4.567a1.078,1.078,0,0,1,1.113-.668c.806-.005,1.447.013,2.3.013-.2.407-.325.707-.483.99-1.764,3.158-3.547,6.307-5.289,9.477a1.427,1.427,0,0,1-1.474.77,15.025,15.025,0,0,1-2.016-.027c-.25-.024-.647-.294-.681-.5-.554-3.344-1.062-6.695-1.574-10.045A4.74,4.74,0,0,1-3791.4,2616.819Z' transform='translate(-285.699 -56.742)' fill='%230055a4'/%3E %3Cpath id='Path_20845' data-name='Path 20845' d='M-3942.969,2601.242h2.929a1,1,0,0,1,.042.175c-.182,2.089-.222,2.184-2.32,2.087-.938-.044-1.28.22-1.377,1.142-.117,1.112-.385,2.209-.613,3.308-.388,1.875.409,2.667,2.3,2.263.269-.057.532-.141.943-.251-.135.761-.232,1.435-.386,2.095a.626.626,0,0,1-.411.356,5.77,5.77,0,0,1-3.637-.125,2.793,2.793,0,0,1-1.812-3.183c.16-1.557.513-3.094.78-4.641.047-.271.085-.544.141-.9l-1.712-.088c.067-.39.13-.69.167-.992.117-.933.438-1.3,1.45-1.237.453.026.662-.13.72-.585a11.852,11.852,0,0,1,.335-1.818.866.866,0,0,1,.572-.538c.746-.065,1.5-.025,2.36-.025Z' transform='translate(-155.484 -41.382)' fill='%230055a4'/%3E %3Cpath id='Path_20846' data-name='Path 20846' d='M-3662.232,2606.5c.473-2.445.942-4.745,1.359-7.054.482-2.671.914-5.351,1.391-8.023.035-.194.129-.489.4-.5.889-.051,1.782-.024,2.747-.024-.364,1.929-.7,3.771-1.059,5.609-.593,3.055-1.214,6.1-1.78,9.164-.113.612-.256.849-.967.843C-3660.8,2606.5-3661.472,2606.5-3662.232,2606.5Z' transform='translate(-393.069 -35.243)' fill='%230055a4'/%3E %3Cpath id='Path_20847' data-name='Path 20847' d='M-3894.362,2615.984l-.495,2.256c-.964,0-1.856.005-2.748,0-.464,0-.659.17-.746.672-.437,2.534-.953,5.055-1.39,7.59-.1.593-.316.826-.918.785-.638-.043-1.281-.009-2.079-.009.236-1.3.46-2.489.668-3.685.374-2.148.726-4.3,1.122-6.445a.96.96,0,0,1,.489-.655A14.631,14.631,0,0,1-3894.362,2615.984Z' transform='translate(-193.18 -56.012)' fill='%230055a4'/%3E %3Cpath id='Path_20848' data-name='Path 20848' d='M-4048.514,2617.174h2.883c-.073.547-.117,1.087-.221,1.616-.59,3-1.208,5.989-1.78,8.99-.091.474-.277.593-.723.569-.669-.036-1.342-.009-2.209-.009C-4049.878,2624.606-4049.2,2620.924-4048.514,2617.174Z' transform='translate(-70.35 -57.093)' fill='%230055a4'/%3E %3Cpath id='Path_20849' data-name='Path 20849' d='M-4034.027,2588.706a1.258,1.258,0,0,1-1.409-1.384,1.79,1.79,0,0,1,1.825-1.786,1.31,1.31,0,0,1,1.48,1.255A1.858,1.858,0,0,1-4034.027,2588.706Z' transform='translate(-82.928 -30.807)' fill='%230055a4'/%3E %3Cpath id='Path_20850' data-name='Path 20850' d='M-3615.489,2565.606l36.715-17.138v32.294s-.176,1.146-1.627,0l-11.916-8.327-23.173-5.287S-3616.72,2566.575-3615.489,2565.606Z' transform='translate(-431.401)' fill='%23ffba00'/%3E %3Cpath id='Path_20851' data-name='Path 20851' d='M-3461.769,2548.468l-13.543,23.891,2.466,1.7Z' transform='translate(-548.406 0)' fill='%23ffe100'/%3E %3Cpath id='Path_20852' data-name='Path 20852' d='M-3739.937,2709.947h1.479l-1.055,5.521h-1.363Z' transform='translate(-327.71 -134.196)' fill='%230055a4'/%3E %3Cpath id='Path_20853' data-name='Path 20853' d='M-3598.715,2709.837l.165-1.055s-3.66-1.023-4.32,1.187c0,0-.66,1.748,1.945,1.979,0,0,1.22.1.66,1.055,0,0-1.022.857-3.1-.2l-.165,1.286a4.464,4.464,0,0,0,4.023-.264,1.58,1.58,0,0,0,.5-2.012,2.639,2.639,0,0,0-2.028-.89s-.957-.033-.478-.99C-3601.518,2709.936-3600.925,2709.375-3598.715,2709.837Z' transform='translate(-441.859 -133.031)' fill='%230055a4'/%3E %3Cpath id='Path_20854' data-name='Path 20854' d='M-3784.993,2694.294a2.863,2.863,0,0,0-2.968,1.715l-3.2,8.113h1.583l1.517-3.891h2.9l-.4,2.223h1.583l1.517-8.159Zm.182,4.647-2.787-.1s.66-3.166,2.275-3.331h1.155Z' transform='translate(-285.913 -121.182)' fill='%230055a4'/%3E %3Cpath id='Path_20855' data-name='Path 20855' d='M-3726.354,2709.639s.857-.691,3.1-.3l-.231,1.022h-1.649l-.792,4.5h-1.451Z' transform='translate(-338.929 -133.593)' fill='%230055a4'/%3E %3Cpath id='Path_20856' data-name='Path 20856' d='M-3703.426,2696.446h1.484l-1.484,7.8h-1.451Z' transform='translate(-357.629 -122.971)' fill='%230055a4'/%3E %3Cpath id='Path_20857' data-name='Path 20857' d='M-3673.562,2709.639a5.681,5.681,0,0,1,3.364-.3,1.8,1.8,0,0,1,1.352,2.009l-.594,3.512h-1.418l.56-2.981s.363-1.385-.9-1.583l-1.149.033-.89,4.531h-1.319Z' transform='translate(-382.831 -133.593)' fill='%230055a4'/%3E %3Cpath id='Path_20858' data-name='Path 20858' d='M-3630.908,2711.723s.791-2.52-1.154-3.156a3.852,3.852,0,0,0-3.2.551,3.464,3.464,0,0,0-.956,2.605s.066,2.17,1.979,2.487c0,0,1.913.25,2.507-.409v-1.022a2.965,2.965,0,0,1-2.177.363s-1.187-.363-.923-1.418Zm-2.243-2.374s1.418-.1,1.121,1.616h-2.77A1.906,1.906,0,0,1-3633.151,2709.349Z' transform='translate(-414.688 -132.939)' fill='%230055a4'/%3E %3Ccircle id='Ellipse_994' data-name='Ellipse 994' cx='0.78' cy='0.78' r='0.78' transform='translate(-4067.378 2573.096)' fill='%230055a4'/%3E %3Cpath id='Path_20859' data-name='Path 20859' d='M-3687.805,2709.947h1.324l-1.055,5.521h-1.363Z' transform='translate(-370.91 -134.196)' fill='%230055a4'/%3E %3Ccircle id='Ellipse_995' data-name='Ellipse 995' cx='0.78' cy='0.78' r='0.78' transform='translate(-4058.542 2573.096)' fill='%230055a4'/%3E %3C/g%3E %3C/svg%3E";
+  else if (hanghk === 'Bamboo Airways')
+    imgLink =
+      'https://flight.hahalolo.com/bb8c9a3f56366b5c501f0db5574d0942.svg';
+  else if (hanghk === 'Vietjet Air')
+    imgLink =
+      "data:image/svg+xml,%3Csvg id='Group_29014' data-name='Group 29014' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='124.996' height='29.606' viewBox='0 0 124.996 29.606'%3E %3Cdefs%3E %3CclipPath id='clip-path'%3E %3Crect id='Rectangle_4346' data-name='Rectangle 4346' width='20.248' height='22.797' fill='none'/%3E %3C/clipPath%3E %3C/defs%3E %3Cpath id='Path_19993' data-name='Path 19993' d='M0,11.629H5.068L5.932,27.2l7.23-15.571h5.315L6.921,34.306H2.349L0,11.629' transform='translate(0 -7.359)' fill='%23e5342c'/%3E %3Cpath id='Path_19994' data-name='Path 19994' d='M46.713,11.805h5.068L48.134,29.537H43.066l3.647-17.732' transform='translate(-27.495 -7.471)' fill='%23e5342c'/%3E %3Cpath id='Path_19995' data-name='Path 19995' d='M293.955,1.166h5.067L295.376,18.9h-5.068l3.647-17.732' transform='translate(-185.342 -0.679)' fill='%23e5342c'/%3E %3Cpath id='Path_19996' data-name='Path 19996' d='M77.739,18.2c.247-.65,1.386-4.634-1.668-4.634a3.967,3.967,0,0,0-3.823,2.559,20.351,20.351,0,0,0-.719,2.075Zm3.973,3.336H71.344c-.124.556-.418,3.954,3.583,3.954a8.325,8.325,0,0,0,4.635-.926l.555,2.966a11.478,11.478,0,0,1-5.066,1.36c-5.206,0-8.466-1.545-8.405-7.354.1-9.161,7.866-10.976,9.888-10.936,9.453.185,5.178,10.936,5.178,10.936' transform='translate(-42.549 -6.704)' fill='%23e5342c'/%3E %3Cpath id='Path_19997' data-name='Path 19997' d='M172.074,18.2c.249-.65,1.387-4.634-1.666-4.634a3.967,3.967,0,0,0-3.823,2.559,20,20,0,0,0-.719,2.075Zm3.974,3.336H165.68c-.123.556-.418,3.954,3.585,3.954a8.314,8.314,0,0,0,4.632-.926l.556,2.966a11.479,11.479,0,0,1-5.066,1.36c-5.206,0-8.466-1.545-8.4-7.354.1-9.161,7.866-10.976,9.887-10.936,9.455.185,5.179,10.936,5.179,10.936' transform='translate(-102.776 -6.704)' fill='%23e5342c'/%3E %3Cpath id='Path_19998' data-name='Path 19998' d='M115.52,1.589A4,4,0,0,1,117.93.221a6.825,6.825,0,0,1,3.13-.077L120.085,4.3H122.7l-.6,3.2-2.9.069L117.4,16.672c-.067.326-.533,2.874,2.665,1.993,0,0-1.367,4.148-5.284,3.338a3.552,3.552,0,0,1-2.685-4.1L115.52,1.589' transform='translate(-71.532 0.063)' fill='%23e5342c'/%3E %3Cpath id='Path_19999' data-name='Path 19999' d='M210.112,1.589A4,4,0,0,1,212.52.221a6.825,6.825,0,0,1,3.13-.077L214.677,4.3h2.617l-.6,3.2-2.9.069-1.808,9.105c-.066.326-.532,2.874,2.665,1.993,0,0-1.367,4.148-5.284,3.338a3.554,3.554,0,0,1-2.685-4.1l3.428-16.314' transform='translate(-131.922 0.063)' fill='%23e5342c'/%3E %3Cpath id='Path_20000' data-name='Path 20000' d='M122.686,11.746h4.9L124.2,28.758c-1.068,5.048-5.909,9.865-12.281,7.785a4.992,4.992,0,0,1-3.476-5.282,8.509,8.509,0,0,0,4.773,1.808c3.939.185,5.721-3.787,5.979-5.006l3.488-16.317' transform='translate(-69.208 -7.433)' fill='%23e5342c'/%3E %3Cg id='Group_27538' data-name='Group 27538' transform='translate(84.104 0.49)'%3E %3Cg id='Group_27537' data-name='Group 27537' clip-path='url(%23clip-path)'%3E %3Cg id='Group_27536' data-name='Group 27536' transform='translate(0.289 0.003)'%3E %3Cpath id='Path_20001' data-name='Path 20001' d='M248.222,15.664V6.358l-5.215,9.306Zm.016,3.244h-6.859l-3.027,5.068h-4.943L247.064,1.182h5.313l.864,22.794h-5V18.909' transform='translate(-233.409 -1.182)' fill='%23e5342c'/%3E %3C/g%3E %3C/g%3E %3C/g%3E %3Cpath id='Path_20002' data-name='Path 20002' d='M322.224,3.533a7.056,7.056,0,0,0-3.407,0L315.8,18.084h-5.028l3.476-16.707C317.172-.337,320.81-.36,323.406.01l-1.182,3.522' transform='translate(-198.41 0.182)' fill='%23e5342c'/%3E %3C/svg%3E";
   const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <div className={theme === 'dark' ? 'cart dark' : 'cart'}>
-      <h4 className='cart-name'>Giỏ Hàng</h4>
-
-      <span className='ticket-type'>
-        Vé máy bay quốc tế <span>({Flight.length})</span>
+      <h4 className="cart-name">Giỏ Hàng</h4>
+      <span className="ticket-type">
+        Vé máy bay
+        {/* Vé máy bay <span>({Flight.length})</span> */}
       </span>
-      {Flight.map((flight) => (
-        <div className='ticket-box' key={flight.id}>
-          <div className='box-heading'>
-            <div className='heading1'>
-              <h5>{flight.loaichuyenbay}</h5>
-              <h4>
-                {flight.ddkh} - {flight.ddhc}
-              </h4>
-              <div className='heading-link'>
-                <a href='#' className='heading-link-delete'>
-                  Xóa
-                </a>
-                |
-                <a className='heading-link-change' href='#'>
-                  Thay đổi lựa chọn
-                </a>
-              </div>
-            </div>
-            <div className='heading2'>
-              <span className='heading2-price'>{flight.tongtien} ₫</span>
-              <h5>Đã bao gồm thuế phí</h5>
-              <div className='heading2-btn-box'>
-                <span className='heading2-btn'>Đặt vé</span>
-              </div>
+      <div className="ticket-box" key={0}>
+        <div className="box-heading">
+          <div className="heading1">
+            <h5>{'Chuyến bay một chiều'}</h5>
+            <h4>
+              {ddkh} - {ddhc}
+            </h4>
+            <div className="heading-link">
+              <a className="heading-link-delete">Xóa</a>|
+              <a className="heading-link-change">Thay đổi lựa chọn</a>
             </div>
           </div>
-          <div className='box-content'>
-            <div className='box-content-left'>
-              <h5 className='box-content-left-name'>chuyến bay</h5>
-              <div className='box-content-left-flex'>
-                <img
-                  src='https://media.hahalolo.com/other/flight/logo/EK.png'
-                  alt=''
-                />
-                <div className='left-content'>
-                  <h5>Emirates</h5>
-                  <span>
-                    Số hành khách:{' '}
-                    <span>
-                      {' '}
-                      {flight.hanhkhach.nguoilon} người lớn,{' '}
-                      {flight.hanhkhach.TreEm} trẻ em, {flight.hanhkhach.Embe}{' '}
-                      em bé{' '}
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className='box-content-right'>
-              <div className='right1'>
-                <div className='right1-box1'>
-                  <span>{flight.ddkh}</span>
-                  <span>Thứ 6, 14/01/2022</span>
-                  <h5>22:30</h5>
-                </div>
-                <div className='right1-box2'>
-                  <span>{flight.ddhc}</span>
-                  <span>Thứ 7, 15/01/2022</span>
-                  <h5>05:25</h5>
-                </div>
-              </div>
-              <div className='right2'>
-                <h5>{flight.time}</h5>
-                <span>{flight.loaihinh}</span>
-              </div>
+          <div className="heading2">
+            <span className="heading2-price">{tongTien} ₫</span>
+            <h5>Đã bao gồm thuế phí</h5>
+            <div className="heading2-btn-box">
+              <span className="heading2-btn">Đặt vé</span>
             </div>
           </div>
         </div>
-      ))}
+        <div className="box-content">
+          <div className="box-content-left">
+            <h5 className="box-content-left-name">Chuyến bay</h5>
+            <div className="box-content-left-flex">
+              <img src={imgLink} alt="" />
+              <div className="left-content">
+                <h5>{hanghk}</h5>
+                <span>
+                  Số hành khách:{' '}
+                  <span>
+                    {passengers.adult !== 0 ? (
+                      <span>&nbsp;{passengers.adult} người lớn</span>
+                    ) : null}
+                    {passengers.child !== 0 ? (
+                      <span>,&nbsp;{passengers.child} trẻ em</span>
+                    ) : null}
+                    {passengers.baby !== 0 ? (
+                      <span>,&nbsp;{passengers.baby} em bé</span>
+                    ) : null}
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="box-content-right">
+            <div className="right1">
+              <div className="right1-box1">
+                <span>{ddkh}</span>
+                <span>{tgkh.substr(0, 15)}</span>
+                <h5>{tgkh.substr(16, 5)}</h5>
+              </div>
+              <div className="right1-box2">
+                <span>{ddhc}</span>
+                <span>{tghc.substr(0, 15)}</span>
+                <h5>{tghc.substr(16, 5)}</h5>
+              </div>
+            </div>
+            <div className="right2">
+              <h5>{tgdc}</h5>
+              <span>{lhb}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

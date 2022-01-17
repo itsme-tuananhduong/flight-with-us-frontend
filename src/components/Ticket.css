@@ -147,6 +147,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 32px;
 }
 
 .ticket-body .ticket-body__box-3 .flight-flying-time span {
@@ -202,11 +203,21 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  width: 64px;
+  min-width: 64px;
+  margin-top: 8px;
+  white-space: nowrap;
+}
+
+.ticket-body .ticket-body__box-5 .select-btn.choosen {
+  background: #0ac46b;
 }
 
 .ticket-body .ticket-body__box-5 .select-btn:hover {
   background: rgb(25, 117, 151);
+}
+
+.ticket-body .ticket-body__box-5 .select-btn.choosen:hover {
+  background: #07894a;
 }
 
 .ticket-detail {
@@ -573,6 +584,10 @@
 
   .ticket-body__box-3 {
     width: 100%;
+  }
+
+  .ticket-body .ticket-body__box-3 .flight-flying-time {
+    margin: 0;
   }
 
   .ticket-detail__main {

@@ -4,6 +4,8 @@ import { ThemeContext } from '../../shared/context/ThemeProvider';
 import './FormAuth.css';
 
 function RegisterForm(props) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -67,7 +69,7 @@ function RegisterForm(props) {
           </div>
           <div className="form-field">
             <input
-              type="text"
+              type="email"
               className="form-input"
               placeholder=" "
               onChange={onEmailChange}
@@ -79,7 +81,7 @@ function RegisterForm(props) {
           </div>
           <div className="form-field">
             <input
-              type="text"
+              type="password"
               className="form-input"
               placeholder=" "
               onChange={onPasswordChange}
@@ -91,7 +93,7 @@ function RegisterForm(props) {
           </div>
           <div className="form-field">
             <input
-              type="text"
+              type="password"
               className="form-input"
               placeholder=" "
               onChange={onConfirmPasswordChange}
@@ -113,7 +115,7 @@ function RegisterForm(props) {
               Tiêu chuẩn cộng đồng của chúng tôi{' '}
             </span>
           </p>
-          <p className='content-text'>
+          <p className="content-text">
             Bạn đã có tài khoản?{' '}
             <span className="content-text-span" onClick={props.authModeToggler}>
               Đăng nhập

@@ -1,11 +1,11 @@
 .cart {
-  width: 1200px;
+  width: 100%;
   background-color: #fff;
   margin: 0 auto;
   padding: 20px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.07), -2px -2px 4px rgba(0, 0, 0, 0.07);
   position: relative;
-  top: 120px;
+  top: 48px;
   border-radius: 10px;
   overflow: hidden;
   z-index: 0;
@@ -71,7 +71,7 @@
 .heading-link {
   display: flex;
   align-items: center;
-  margin: 16px 0 0 8px;
+  margin: 16px 0 0 0px;
 }
 .heading1 .heading-link-change,
 .heading1 .heading-link-delete {
@@ -97,6 +97,7 @@
   margin-bottom: 10px;
   display: block;
   font-weight: 550;
+  text-align: right;
 }
 .heading2 > h5 {
   font-size: 1rem;
@@ -108,13 +109,15 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .heading2-btn {
   padding: 9px 14px;
   border-radius: 99px;
   color: #fff;
   background-color: #24a8d8;
-  margin: 16px 0 0 8px;
+  /* margin: 16px 0 0 8px; */
+  margin-bottom: 8px;
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
@@ -127,7 +130,7 @@
   border-radius: 8px;
   margin-top: 8px;
   padding: 20px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   display: flex;
   align-items: baseline;
 }
@@ -233,7 +236,7 @@
 /* responsive */
 @media (max-width: 1200px) {
   .cart {
-    width: 90%;
+    width: 100%;
   }
   .box-content-left-flex {
     flex-direction: column;
@@ -249,7 +252,7 @@
 }
 @media (max-width: 960px) {
   .cart {
-    width: 90%;
+    width: 100%;
   }
   .heading1 > h4 {
     font-size: 1rem;

@@ -122,8 +122,7 @@ function UpdatePassenger({
               selected={Date.parse(ngaysinh)}
               onChange={(date) => setNgaySinh(date)}
               className="form-input"
-              showTimeSelect
-              dateFormat="MM/dd/yyyy h:mm aa"
+              dateFormat="MM/dd/yyyy"
             />
             <label htmlFor="name" className="form-label">
               Ngày Sinh

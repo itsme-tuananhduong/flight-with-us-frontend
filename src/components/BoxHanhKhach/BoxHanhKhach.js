@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import BoxHLKG from './ChildComponent/BoxHLKG';
 
 import { ThemeContext } from '../../shared/context/ThemeProvider';
@@ -7,6 +7,57 @@ import './BoxHanhKhach.css';
 
 const BoxHanhKhach = (props) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+
+  const [name, setName] = useState(props.passengerInfo[props.pos].name);
+
+  const [gender, setGender] = useState(props.passengerInfo[props.pos].gender);
+
+  const onNameChange = () => {
+    const prevGender = props.passengerInfo[props.pos].gender;
+    if (props.pos === props.passengerInfo.length - 1) {
+      props.setPassengerInfo((prevState) => [
+        ...prevState.slice(0, props.pos),
+        {
+          name: `${firstNameRef.current.value} ${lastNameRef.current.value}`,
+          gender: prevGender,
+        },
+      ]);
+    } else {
+      props.setPassengerInfo((prevState) => [
+        ...prevState.slice(0, props.pos),
+        {
+          name: `${firstNameRef.current.value} ${lastNameRef.current.value}`,
+          gender: prevGender,
+        },
+        ...prevState.slice(props.pos + 1),
+      ]);
+    }
+  };
+
+  const onGenderChange = (e) => {
+    const prevName = props.passengerInfo[props.pos].name;
+    if (props.pos === props.passengerInfo.length - 1) {
+      props.setPassengerInfo((prevState) => [
+        ...prevState.slice(0, props.pos),
+        {
+          name: prevName,
+          gender: e.target.value,
+        },
+      ]);
+    } else {
+      props.setPassengerInfo((prevState) => [
+        ...prevState.slice(0, props.pos),
+        {
+          name: prevName,
+          gender: e.target.value,
+        },
+        ...prevState.slice(props.pos + 1),
+      ]);
+    }
+  };
 
   const [step, setStep] = useState(props.step);
 
@@ -33,25 +84,37 @@ const BoxHanhKhach = (props) => {
     >
       <div>
         <h4 className="BoxHanhKhach-title">
-          Thông tin <span>người lớn 1</span>
+          Thông tin <span>{props.passenger}</span>
         </h4>
       </div>
 
       <div style={{ display: step === 0 ? 'block' : 'none' }}>
         <div className="option1">
           <div className="form-field">
-            <input type="text" className="form-input" placeholder=" " />
+            <input
+              type="text"
+              className="form-input"
+              placeholder=" "
+              onChange={onNameChange}
+              ref={firstNameRef}
+            />
             <label htmlFor="name" className="form-label">
               Họ (Không dấu)
-              <span className="star">*</span>
+              <span className="star"> *</span>
             </label>
             <span className="message-error"></span>
           </div>
           <div className="form-field">
-            <input type="text" className="form-input" placeholder=" " />
+            <input
+              type="text"
+              className="form-input"
+              placeholder=" "
+              onChange={onNameChange}
+              ref={lastNameRef}
+            />
             <label htmlFor="name" className="form-label">
               Tên đệm & tên (Không dấu)
-              <span className="star">*</span>
+              <span className="star"> *</span>
             </label>
             <span className="message-error"></span>
           </div>
@@ -60,15 +123,22 @@ const BoxHanhKhach = (props) => {
           <p>Giới tính</p>
           <div className="options">
             <label className="option" for="male">
-              <input type="radio" id="male" name="gender-options" value="Nam" />
+              <input
+                type="radio"
+                id="male"
+                name={`gender-options-${props.id}`}
+                value="Nam"
+                onClick={(e) => onGenderChange(e)}
+              />
               Nam
             </label>
             <label className="option" for="female">
               <input
                 type="radio"
                 id="female"
-                name="gender-options"
-                value="Nam"
+                name={`gender-options-${props.id}`}
+                value="Nữ"
+                onClick={(e) => onGenderChange(e)}
               />
               Nữ
             </label>
@@ -81,10 +151,10 @@ const BoxHanhKhach = (props) => {
         style={{ display: step === 1 ? 'block' : 'none' }}
       >
         <div className="nguoi-lien-he__box">
-          Họ tên: <span>DEMO</span>
+          Họ tên: <span>{name}</span>
         </div>
         <div className="nguoi-lien-he__box">
-          Giới tính: <span>Nam</span>
+          Giới tính: <span>{gender}</span>
         </div>
       </div>
 
@@ -122,7 +192,7 @@ const BoxHanhKhach = (props) => {
               />
               <label htmlFor="name" className="form-label">
                 Chọn gói hành lý ký gửi
-                <span className="star">*</span>
+                <span className="star"> *</span>
               </label>
               <span className="message-error"></span>
               <BoxHLKG
