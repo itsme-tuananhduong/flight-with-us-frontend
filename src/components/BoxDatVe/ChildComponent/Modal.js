@@ -44,7 +44,7 @@ function Modal({ showModal, setShowModal }) {
               <p>Thay đổi tìm kiếm</p>
               <div className="close"></div>
             </div>
-            <div className="modal">
+            <div className="my-modal">
               <div>
                 <span>
                   Bạn có chắc chắn muốn thay đổi thông tin tìm kiếm của mình

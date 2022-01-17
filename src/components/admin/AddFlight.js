@@ -126,9 +126,9 @@ function AddFlight() {
     setShowModal(false);
   };
   return (
-    <div className='AddFlight'>
-      <Modal onCancel={closeModal} header='Infomation' show={showModal}>
-        <p>Add Flight Successfully</p>
+    <div className="AddFlight">
+      <Modal onCancel={closeModal} header="Thông báo" show={showModal}>
+        <p>Thêm chuyến bay thành công</p>
       </Modal>
       <ErrorModal error={error} onClear={clearError} />
       <div className='fight-group1'>
@@ -311,13 +311,13 @@ function AddFlight() {
                   className='chooseAirline-item'
                   onClick={handleChooseAirline}
                 >
-                  <div className=''>
-                    <span className='Airlines-name'>Vietravel Airlines</span>
+                  <div className="">
+                    <span className="Airlines-name">Bamboo Airways</span>
                   </div>
                   <div className='airline-img'>
                     <img
-                      src='https://flight.hahalolo.com/assets/image/flight/vu.gif'
-                      alt=''
+                      src="https://flight.hahalolo.com/assets/image/flight/qh.gif"
+                      alt=""
                     />
                   </div>
                 </div>
@@ -339,13 +339,13 @@ function AddFlight() {
                   className='chooseAirline-item'
                   onClick={handleChooseAirline}
                 >
-                  <div className=''>
-                    <span className='Airlines-name'>Bamboo Airways</span>
+                  <div className="">
+                    <span className="Airlines-name">Vietjet Air</span>
                   </div>
                   <div className='airline-img'>
                     <img
-                      src='https://flight.hahalolo.com/assets/image/flight/qh.gif'
-                      alt=''
+                      src="https://flight.hahalolo.com/assets/image/flight/vj.gif"
+                      alt=""
                     />
                   </div>
                 </div>
@@ -353,13 +353,13 @@ function AddFlight() {
                   className='chooseAirline-item'
                   onClick={handleChooseAirline}
                 >
-                  <div className=''>
-                    <span className='Airlines-name'>Vietjet Air</span>
+                  <div className="">
+                    <span className="Airlines-name">Vietravel Airlines</span>
                   </div>
                   <div className='airline-img'>
                     <img
-                      src='https://flight.hahalolo.com/assets/image/flight/vj.gif'
-                      alt=''
+                      src="https://flight.hahalolo.com/assets/image/flight/vu.gif"
+                      alt=""
                     />
                   </div>
                 </div>
@@ -464,10 +464,7 @@ function AddFlight() {
                 <span className='option-list-item' onClick={handleFlyType}>
                   Bay thẳng
                 </span>
-                <span className='option-list-item' onClick={handleFlyType}>
-                  Khứ hồi
-                </span>
-                <span className='option-list-item' onClick={handleFlyType}>
+                <span className="option-list-item" onClick={handleFlyType}>
                   Quá cảnh
                 </span>
               </div>

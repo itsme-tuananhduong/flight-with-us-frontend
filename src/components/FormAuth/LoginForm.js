@@ -35,7 +35,7 @@ function LoginForm(props) {
           <h3 className="title">Đăng nhập</h3>
           <div className="form-field">
             <input
-              type="text"
+              type="email"
               className="form-input"
               placeholder=" "
               // value={userName}

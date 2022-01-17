@@ -156,11 +156,15 @@ const Flights = () => {
   const [ticket, setticket] = useState(null);
   const HandleData2 = (e) => {
     axios({
-      method: 'get',
+      method: 'post',
       baseURL: 'http://localhost:8000/api',
-      url: `/tickets/search/${e.IdChuyenBay}`,
+      url: `/tickets/search`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
+      },
+      data: {
+        IdChuyenBay: e.IdChuyenBay,
+        TrangThai: null,
       },
     })
       .then((res) => {

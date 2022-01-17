@@ -90,7 +90,6 @@ const Authentication = () => {
         },
       })
         .then((res) => {
-          console.log(res.data);
           auth.login(
             res.data.user.id,
             res.data.user.IsAdmin,

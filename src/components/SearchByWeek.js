@@ -4,13 +4,95 @@ import moment from 'moment';
 import { ThemeContext } from '../shared/context/ThemeProvider';
 import TicketBox from '../components/TicketBox';
 import Modal from './BoxDatVe/ChildComponent/Modal';
+import axios from 'axios';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../shared/context/auth-context';
 
 import './SearchByWeek.css';
 
-function SearchByWeek() {
+import { moneyFormatter } from '../shared/util/util-function';
+
+function SearchByWeek({ setIsLoading, setError }) {
+  const auth = useContext(AuthContext);
+
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const [showModal, setShowModal] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const ddkh = searchParams.get('ddkh');
+  const ddhc = searchParams.get('ddhc');
+  const tgkh = searchParams.get('tgkh');
+  const passengers = {
+    adult: parseInt(searchParams.get('ps').split('.')[0]),
+    child: parseInt(searchParams.get('ps').split('.')[1]),
+    baby: parseInt(searchParams.get('ps').split('.')[2]),
+  };
+
+  const [ticketList, setTicketList] = useState([]);
+
+  const fetchData = (ddkh, ddhc, tgkh) => {
+    const tempArr = [];
+    setIsLoading(true);
+    axios({
+      method: 'post',
+      baseURL: 'http://localhost:8000/api',
+      url: '/flights/search',
+      data: {
+        DiaDiemKhoiHanh: ddkh,
+        DiaDiemHaCanh: ddhc,
+        NgayKhoiHanh: tgkh,
+      },
+    })
+      .then((res) => {
+        if (res.data.length === 0) {
+          setTicketList([]);
+          setIsLoading(false);
+          return;
+        }
+        res.data.forEach((flight) => {
+          axios({
+            method: 'post',
+            baseURL: 'http://localhost:8000/api',
+            url: '/tickets/search',
+            data: {
+              IdChuyenBay: flight.IdChuyenBay,
+              TrangThai: 'Chưa bán',
+            },
+          }).then((res) => {
+            res.data.forEach((ticket) =>
+              tempArr.push({
+                IdVeMayBay: ticket.IdVeMayBay,
+                LoaiVe: ticket.LoaiVe,
+                GiaVe: ticket.GiaVe,
+                HangHK: flight.HangHK,
+                SHMayBay: flight.SHMayBay,
+                ThoiGianKhoiHanh: flight.ThoiGianKhoiHanh,
+                ThoiGianHaCanh: flight.ThoiGianHaCanh,
+                DiaDiemKhoiHanh: flight.DiaDiemKhoiHanh,
+                DiaDiemHaCanh: flight.DiaDiemHaCanh,
+                LoaiHinhBay: flight.LoaiHinhBay,
+                passengers: passengers,
+                Thue: 1,
+                SLVeConLai: flight.SLVeConLai,
+                IdChuyenBay: flight.IdChuyenBay,
+              })
+            );
+            setTicketList([...tempArr]);
+            setIsLoading(false);
+          });
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.message);
+      });
+  };
+
+  useEffect(() => {
+    fetchData(ddkh, ddhc, tgkh);
+  }, []);
 
   const api = [
     {
@@ -55,6 +137,60 @@ function SearchByWeek() {
   }, [typeSort]);
   const handleTypeSort = (e) => {
     setTypeSort(e.target.innerHTML);
+
+    switch (e.target.innerHTML) {
+      case 'Giá tăng dần':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return parseInt(a['GiaVe']) - parseInt(b['GiaVe']);
+          })
+        );
+        break;
+      case 'Giá giảm dần':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return parseInt(b['GiaVe']) - parseInt(a['GiaVe']);
+          })
+        );
+        break;
+      case 'Giờ khởi hành sớm nhất':
+        let temp = ticketList.sort(function (a, b) {
+          return (
+            new Date(a['ThoiGianKhoiHanh']) - new Date(b['ThoiGianKhoiHanh'])
+          );
+        });
+        setTicketList([...temp]);
+        console.log(temp);
+        break;
+      case 'Giờ khởi hành muộn nhất':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return (
+              new Date(b['ThoiGianKhoiHanh']) - new Date(a['ThoiGianKhoiHanh'])
+            );
+          })
+        );
+        break;
+      case 'Giờ hạ cánh sớm nhất':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return (
+              new Date(a['ThoiGianHaCanh']) - new Date(b['ThoiGianHaCanh'])
+            );
+          })
+        );
+        break;
+      case 'Giờ hạ cánh muộn nhất':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return (
+              new Date(b['ThoiGianHaCanh']) - new Date(a['ThoiGianHaCanh'])
+            );
+          })
+        );
+        break;
+      default:
+    }
   };
   function compare(dateTimeA, dateTimeB) {
     var momentA = moment(dateTimeA, 'DD/MM/YYYY');
@@ -82,18 +218,52 @@ function SearchByWeek() {
     }
     return arr;
   };
+
   const dateClickHandler = (date, index) => {
     indexActive.current = index;
-    console.log(indexActive.current);
 
     setValueDay(date);
+
+    fetchData(
+      ddkh,
+      ddhc,
+      new Date(date.split('/')[2], date.split('/')[1] - 1, date.split('/')[0])
+        .toString()
+        .substr(0, 15)
+    );
   };
+
   useEffect(() => {
     setActiveDay(indexActive.current);
   }, [valueDay]);
   const getValueDay = (x, y) => {
     return x.filter((x) => x.day === y);
   };
+
+  const [choosenTicketInfo, setChoosenTicketInfo] = useState({
+    IdVeMayBay: null,
+    LoaiVe: null,
+    GiaVe: null,
+    HangHK: null,
+    SHMayBay: null,
+    ThoiGianKhoiHanh: null,
+    ThoiGianHaCanh: null,
+    DiaDiemKhoiHanh: null,
+    DiaDiemHaCanh: null,
+    LoaiHinhBay: null,
+    passengers: null,
+    Thue: null,
+    SLVeConLai: null,
+    IdChuyenBay: null,
+  });
+
+  const navigate = useNavigate();
+  const onBooking = () => {
+    navigate(
+      `/booking?idvemaybay=${choosenTicketInfo.IdVeMayBay}&loaive=${choosenTicketInfo.LoaiVe}&giave=${choosenTicketInfo.GiaVe}&hanghk=${choosenTicketInfo.HangHK}&shmaybay=${choosenTicketInfo.SHMayBay}&tgkh=${choosenTicketInfo.ThoiGianKhoiHanh}&tghc=${choosenTicketInfo.ThoiGianHaCanh}&ddkh=${choosenTicketInfo.DiaDiemKhoiHanh}&ddhc=${choosenTicketInfo.DiaDiemHaCanh}&loaihinhbay=${choosenTicketInfo.LoaiHinhBay}&ps=${choosenTicketInfo.passengers.adult}.${choosenTicketInfo.passengers.child}.${choosenTicketInfo.passengers.baby}&thue=${choosenTicketInfo.Thue}&slvcl=${choosenTicketInfo.SLVeConLai}&idchuyenbay=${choosenTicketInfo.IdChuyenBay}`
+    );
+  };
+
   return (
     <div
       className={
@@ -155,7 +325,15 @@ function SearchByWeek() {
                 </g>
               </g>
             </svg>
-            <span>1 người lớn</span>
+            {passengers.adult !== 0 ? (
+              <span>&nbsp;{passengers.adult} người lớn</span>
+            ) : null}
+            {passengers.child !== 0 ? (
+              <span>,&nbsp;{passengers.child} trẻ em</span>
+            ) : null}
+            {passengers.baby !== 0 ? (
+              <span>,&nbsp;{passengers.baby} em bé</span>
+            ) : null}
           </div>
         </div>
         <div className="header-btn" onClick={() => setShowModal((e) => !e)}>
@@ -166,9 +344,9 @@ function SearchByWeek() {
         <div className="main-flight">
           <h4 className="main-flight-title">Chuyến bay</h4>
           <span className="main-flight-province">
-            Đà Nẵng (DAD) - Hồ Chí Minh (SGN)
+            {ddkh} &rarr; {ddhc}
           </span>
-          <p className="main-flight-time">Thứ Sáu, 31/12/2021</p>
+          <p className="main-flight-time">{tgkh}</p>
         </div>
         <div className="calendar-week">
           {/* nut */}
@@ -244,8 +422,9 @@ function SearchByWeek() {
                   </p>
                 </li>
               ) : (
-                <li key={index} className="date-item disibale">
+                <li key={index} className="date-item disiable">
                   {x}
+                  <p>-</p>
                 </li>
               )
             )}
@@ -254,65 +433,127 @@ function SearchByWeek() {
         <div className="main-filter">
           <div className="filter-plane-ticket">
             <div className="filter-search">
-              <span className="btn-filter-search">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  className="filter-icon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <g data-name="Group 28546">
-                    <path
-                      data-name="Rectangle 4593"
-                      fill="none"
-                      d="M0 0h24v24H0z"
-                    ></path>
-                    <g data-name="Group 28534">
+              {ticketList.length === 0 && (
+                <span className="btn-filter-search disable">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    className="filter-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <g data-name="Group 28546">
                       <path
-                        data-name="Path 20368"
-                        d="M10.125 21a.367.367 0 01-.185-.049.375.375 0 01-.191-.326v-7.576a1.124 1.124 0 00-.378-.841L3.628 7.106A1.878 1.878 0 013 5.7V4.125A1.126 1.126 0 014.125 3h15.75A1.126 1.126 0 0121 4.125V5.7a1.878 1.878 0 01-.629 1.406l-5.743 5.1a1.124 1.124 0 00-.378.84v4.9a1.13 1.13 0 01-.546.965l-3.387 2.035a.366.366 0 01-.192.054zm-6-17.25a.376.376 0 00-.375.375V5.7a1.126 1.126 0 00.376.844l5.744 5.1a1.878 1.878 0 01.63 1.4v6.914l2.819-1.69a.379.379 0 00.182-.322v-4.9a1.877 1.877 0 01.63-1.4l5.743-5.1a1.129 1.129 0 00.376-.846V4.125a.376.376 0 00-.375-.375z"
-                        stroke="currentColor"
-                        strokeWidth="0.3"
+                        data-name="Rectangle 4593"
+                        fill="none"
+                        d="M0 0h24v24H0z"
                       ></path>
+                      <g data-name="Group 28534">
+                        <path
+                          data-name="Path 20368"
+                          d="M10.125 21a.367.367 0 01-.185-.049.375.375 0 01-.191-.326v-7.576a1.124 1.124 0 00-.378-.841L3.628 7.106A1.878 1.878 0 013 5.7V4.125A1.126 1.126 0 014.125 3h15.75A1.126 1.126 0 0121 4.125V5.7a1.878 1.878 0 01-.629 1.406l-5.743 5.1a1.124 1.124 0 00-.378.84v4.9a1.13 1.13 0 01-.546.965l-3.387 2.035a.366.366 0 01-.192.054zm-6-17.25a.376.376 0 00-.375.375V5.7a1.126 1.126 0 00.376.844l5.744 5.1a1.878 1.878 0 01.63 1.4v6.914l2.819-1.69a.379.379 0 00.182-.322v-4.9a1.877 1.877 0 01.63-1.4l5.743-5.1a1.129 1.129 0 00.376-.846V4.125a.376.376 0 00-.375-.375z"
+                          stroke="currentColor"
+                          strokeWidth="0.3"
+                        ></path>
+                      </g>
                     </g>
-                  </g>
-                </svg>
-                Lọc tìm kiếm
-              </span>
+                  </svg>
+                  Lọc tìm kiếm
+                </span>
+              )}
+              {ticketList.length !== 0 && (
+                <span className="btn-filter-search">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    className="filter-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <g data-name="Group 28546">
+                      <path
+                        data-name="Rectangle 4593"
+                        fill="none"
+                        d="M0 0h24v24H0z"
+                      ></path>
+                      <g data-name="Group 28534">
+                        <path
+                          data-name="Path 20368"
+                          d="M10.125 21a.367.367 0 01-.185-.049.375.375 0 01-.191-.326v-7.576a1.124 1.124 0 00-.378-.841L3.628 7.106A1.878 1.878 0 013 5.7V4.125A1.126 1.126 0 014.125 3h15.75A1.126 1.126 0 0121 4.125V5.7a1.878 1.878 0 01-.629 1.406l-5.743 5.1a1.124 1.124 0 00-.378.84v4.9a1.13 1.13 0 01-.546.965l-3.387 2.035a.366.366 0 01-.192.054zm-6-17.25a.376.376 0 00-.375.375V5.7a1.126 1.126 0 00.376.844l5.744 5.1a1.878 1.878 0 01.63 1.4v6.914l2.819-1.69a.379.379 0 00.182-.322v-4.9a1.877 1.877 0 01.63-1.4l5.743-5.1a1.129 1.129 0 00.376-.846V4.125a.376.376 0 00-.375-.375z"
+                          stroke="currentColor"
+                          strokeWidth="0.3"
+                        ></path>
+                      </g>
+                    </g>
+                  </svg>
+                  Lọc tìm kiếm
+                </span>
+              )}
             </div>
           </div>
           <div className="main-sort">
             <div className="Sort-week">
               <span className="Sort-text-week">Sắp xếp theo: </span>
-              <span
-                className="display-Sort-week"
-                onClick={() => setShowSort((pre) => !pre)}
-              >
-                {typeSort}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  className="sort-icon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+              {ticketList.length === 0 && (
+                <span
+                  className="display-Sort-week disable"
+                  // onClick={() => setShowSort((pre) => !pre)}
                 >
-                  <g data-name="Group 28796">
-                    <path
-                      data-name="Rectangle 4596"
-                      fill="none"
-                      d="M0 0h24v24H0z"
-                    ></path>
-                    <g data-name="Group 28778">
-                      <path data-name="Path 20527" d="M7 10l5 5 5-5z"></path>
+                  {typeSort}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    className="sort-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <g data-name="Group 28796">
+                      <path
+                        data-name="Rectangle 4596"
+                        fill="none"
+                        d="M0 0h24v24H0z"
+                      ></path>
+                      <g data-name="Group 28778">
+                        <path data-name="Path 20527" d="M7 10l5 5 5-5z"></path>
+                      </g>
                     </g>
-                  </g>
-                </svg>
-              </span>
+                  </svg>
+                </span>
+              )}
+              {ticketList.length !== 0 && (
+                <span
+                  className="display-Sort-week"
+                  onClick={() => setShowSort((pre) => !pre)}
+                >
+                  {typeSort}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    className="sort-icon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <g data-name="Group 28796">
+                      <path
+                        data-name="Rectangle 4596"
+                        fill="none"
+                        d="M0 0h24v24H0z"
+                      ></path>
+                      <g data-name="Group 28778">
+                        <path data-name="Path 20527" d="M7 10l5 5 5-5z"></path>
+                      </g>
+                    </g>
+                  </svg>
+                </span>
+              )}
               {/* sort option */}
               {showSort ? (
                 <div className="BoxThoiGian">
@@ -329,16 +570,16 @@ function SearchByWeek() {
                       Giá giảm dần
                     </span>
                     <span className="option-lish-item" onClick={handleTypeSort}>
-                      Giá khởi hành sớm nhất
+                      Giờ khởi hành sớm nhất
                     </span>
                     <span className="option-lish-item" onClick={handleTypeSort}>
-                      Giá khởi hành muộn nhất
+                      Giờ khởi hành muộn nhất
                     </span>
                     <span className="option-lish-item" onClick={handleTypeSort}>
-                      Giá hạ cánh sớm nhất
+                      Giờ hạ cánh sớm nhất
                     </span>
                     <span className="option-lish-item" onClick={handleTypeSort}>
-                      Giá hạ cánh muộn nhất
+                      Giờ hạ cánh muộn nhất
                     </span>
                   </div>
                 </div>
@@ -348,10 +589,14 @@ function SearchByWeek() {
         </div>
       </div>
 
-      <TicketBox />
+      <TicketBox
+        ticketList={ticketList}
+        choosenTicketInfo={choosenTicketInfo}
+        setChoosenTicketInfo={setChoosenTicketInfo}
+      />
 
-      <div className="SearchByWeek-footer">
-        {/* <div className="noFlight">
+      {ticketList.length === 0 && (
+        <div className="noFlight">
           <div className="noFlight-container">
             <div className="noFlight-img">
               <img
@@ -367,21 +612,46 @@ function SearchByWeek() {
               <span>Thay đổi tìm kiếm</span>
             </div>
           </div>
-        </div> */}
+        </div>
+      )}
 
+      <div className="SearchByWeek-footer">
         <div className="ticketBox-container">
           <div className="ticketBox-item"></div>
           <div className="chooseTicket">
             <div className="chooseTicket-price">
               <span className="sum-money">Tổng Tiền: </span>
-              <span className="color-red">0đ</span>
+              <span className="color-red">
+                {choosenTicketInfo.IdVeMayBay === null
+                  ? '0 ₫'
+                  : moneyFormatter.format(
+                      (choosenTicketInfo.passengers.adult +
+                        choosenTicketInfo.passengers.child +
+                        choosenTicketInfo.passengers.baby) *
+                        (choosenTicketInfo.GiaVe +
+                          choosenTicketInfo.GiaVe *
+                            (choosenTicketInfo.Thue / 100))
+                    )}
+              </span>
               <span className="note">(Giá đã bao gồm thuế và phí)</span>
             </div>
             <div className="chooseTicket-put">
               <span className="content">
-                Đã chọn <span className="quanlity"> 0/1 </span> Chuyến bay
+                Đã chọn{' '}
+                <span className="quanlity">
+                  {' '}
+                  {choosenTicketInfo.IdVeMayBay === null ? '0' : '1'}/1{' '}
+                </span>{' '}
+                Chuyến bay
               </span>
-              <span className="btn-put active">Đặt vé</span>
+              {choosenTicketInfo.IdVeMayBay !== null && (
+                <span className="btn-put active" onClick={onBooking}>
+                  Đặt vé
+                </span>
+              )}
+              {choosenTicketInfo.IdVeMayBay === null && (
+                <span className="btn-put">Đặt vé</span>
+              )}
             </div>
           </div>
         </div>

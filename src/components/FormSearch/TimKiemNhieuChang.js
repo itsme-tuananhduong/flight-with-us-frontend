@@ -3,7 +3,7 @@ import BoxPassenger from './ChildComponent/BoxPassenger';
 import Provinces from './ChildComponent/Provinces/Provinces';
 import DatePicker from 'react-datepicker';
 
-function TimKiemNhieuChang({ setSendData }) {
+function TimKiemNhieuChang() {
   const [tabProvinces, setTabProvinces] = useState(null);
   const [showBoxProvinder, setShowBoxProvinder] = useState(false);
   const [showBoxPassenger, setShowBoxPassenger] = useState(false);
@@ -55,7 +55,6 @@ function TimKiemNhieuChang({ setSendData }) {
       passenger,
     };
     console.log(data);
-    setSendData(data);
   };
   return (
     <Fragment>
@@ -193,7 +192,7 @@ function TimKiemNhieuChang({ setSendData }) {
                 value={destination1}
               />
               <label htmlFor="name" className="form-label">
-                Điểm Đến
+                Điểm đến
               </label>
               <span className="message-error"></span>
               {tabProvinces === 2 ? (
@@ -441,7 +440,7 @@ function TimKiemNhieuChang({ setSendData }) {
                 value={destination2}
               />
               <label htmlFor="name" className="form-label">
-                Điểm Đến
+                Điểm đến
               </label>
               <span className="message-error"></span>
               {tabProvinces === 4 ? (
@@ -693,7 +692,7 @@ function TimKiemNhieuChang({ setSendData }) {
                   value={destination3}
                 />
                 <label htmlFor="name" className="form-label">
-                  Điểm Đến
+                  Điểm đến
                 </label>
                 <span className="message-error"></span>
                 {tabProvinces === 6 ? (
@@ -943,7 +942,7 @@ function TimKiemNhieuChang({ setSendData }) {
                 onChange={handleOnchangeInput}
               />
               <label htmlFor="name" className="form-label over">
-                Số Hành Khách
+                Số hành khách
               </label>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -994,7 +993,7 @@ function TimKiemNhieuChang({ setSendData }) {
               {checkHind ? (
                 <div className="goiy">
                   <span>
-                    Số em bé không được nhiều hơn số hành khách Người lớn
+                    Số em bé không được nhiều hơn số hành khách người lớn
                   </span>
                 </div>
               ) : null}
@@ -1008,7 +1007,7 @@ function TimKiemNhieuChang({ setSendData }) {
         </div>
         <div className="submit-form">
           <span className="submit-form-btn" onClick={handleData}>
-            Tìm Kiếm
+            Tìm kiếm
           </span>
         </div>
       </div>

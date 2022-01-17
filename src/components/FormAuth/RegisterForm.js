@@ -69,9 +69,9 @@ function RegisterForm(props) {
           </div>
           <div className='form-field'>
             <input
-              type='text'
-              className='form-input'
-              placeholder=' '
+              type="email"
+              className="form-input"
+              placeholder=" "
               onChange={onEmailChange}
               ref={emailRef}
             />
@@ -81,9 +81,9 @@ function RegisterForm(props) {
           </div>
           <div className='form-field'>
             <input
-              type='password'
-              className='form-input'
-              placeholder=' '
+              type="password"
+              className="form-input"
+              placeholder=" "
               onChange={onPasswordChange}
               ref={passwordRef}
             />
@@ -93,9 +93,9 @@ function RegisterForm(props) {
           </div>
           <div className='form-field'>
             <input
-              type='password'
-              className='form-input'
-              placeholder=' '
+              type="password"
+              className="form-input"
+              placeholder=" "
               onChange={onConfirmPasswordChange}
               ref={confirmPasswordRef}
             />
@@ -115,7 +115,7 @@ function RegisterForm(props) {
               Tiêu chuẩn cộng đồng của chúng tôi{' '}
             </span>
           </p>
-          <p className='content-text'>
+          <p className="content-text">
             Bạn đã có tài khoản?{' '}
             <span className='content-text-span' onClick={props.authModeToggler}>
               Đăng nhập
