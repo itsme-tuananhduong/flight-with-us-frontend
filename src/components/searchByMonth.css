@@ -276,6 +276,9 @@
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   background-color: rgba(0, 0, 0, 0.04);
 }
+.cell-choice.disable {
+  color: #24a4d8;
+}
 .cell-choice.active.checked {
   background-color: #c0e7ff;
 }
@@ -364,7 +367,7 @@
 }
 
 .airline-img img {
-  width: 78px;
+  /* width: 78px; */
   height: 28px;
   background-color: #fff;
   border-radius: 8px;
@@ -374,6 +377,7 @@
 }
 .chooseAirline {
   position: absolute;
+  left: 0;
   background-color: #fff;
   padding: 12px;
   width: 330px;
@@ -403,6 +407,9 @@
   align-items: center;
   z-index: 5;
 }
+.input-checkbox span {
+  margin-left: 8px;
+}
 
 .input-checkbox label {
   cursor: pointer;
@@ -413,7 +420,7 @@ input[type='checkbox'] {
   opacity: 0;
   position: absolute;
 }
-.input-checkbox label::before {
+/* .input-checkbox label::before {
   content: '';
   width: 1em;
   height: 1em;
@@ -428,7 +435,7 @@ input[type='checkbox'] {
   justify-content: center;
   align-items: center;
   color: white;
-}
+} */
 /*  */
 .btn-chooseAirline {
   text-align: center;

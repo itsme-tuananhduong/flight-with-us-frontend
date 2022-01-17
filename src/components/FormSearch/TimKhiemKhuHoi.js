@@ -24,7 +24,7 @@ function TimKhiemKhuHoi() {
     setCheckOutDate(e);
   };
 
-  const handleOnchangeInput = (e) => console.log(e);
+  const handleOnchangeInput = (e) => {};
   const handleChuyenDoi = () => {
     const diem1 = departure;
     const diem2 = destination;

@@ -54,7 +54,7 @@ const Authentication = () => {
       setIsLoading(true);
       axios({
         method: 'post',
-        baseURL: 'http://localhost:8000/api',
+        baseURL: process.env.REACT_APP_BACKEND_URL,
         url: '/login',
         data: {
           Email: email.toString(),
@@ -78,7 +78,7 @@ const Authentication = () => {
       setIsLoading(true);
       axios({
         method: 'post',
-        baseURL: 'http://localhost:8000/api',
+        baseURL: process.env.REACT_APP_BACKEND_URL,
         url: '/register',
         data: {
           Email: email.toString(),

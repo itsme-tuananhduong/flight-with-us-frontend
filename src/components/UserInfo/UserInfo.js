@@ -779,19 +779,7 @@ function UserInfo() {
         />
       </div>
 
-      {status && (
-        <Cart
-          ddkh={storedFlightData.ddkh}
-          ddhc={storedFlightData.ddhc}
-          tgkh={storedFlightData.tgkh}
-          tghc={storedFlightData.tghc}
-          tgdc={storedFlightData.tgdc}
-          lhb={storedFlightData.lhb}
-          tongTien={storedFlightData.tongTien}
-          passengers={storedFlightData.passengers}
-          hanghk={storedFlightData.hanghk}
-        />
-      )}
+      {status && <Cart storedFlightData={storedFlightData} />}
 
       {!status && (
         <div className="tab-page">

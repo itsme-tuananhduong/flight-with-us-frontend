@@ -7,6 +7,7 @@ import Modal from './BoxDatVe/ChildComponent/Modal';
 import axios from 'axios';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../shared/context/auth-context';
+import FilterSearch from './Admin/FilterSearch';
 
 import './SearchByWeek.css';
 
@@ -37,7 +38,7 @@ function SearchByWeek({ setIsLoading, setError }) {
     setIsLoading(true);
     axios({
       method: 'post',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: '/flights/search',
       data: {
         DiaDiemKhoiHanh: ddkh,
@@ -54,7 +55,7 @@ function SearchByWeek({ setIsLoading, setError }) {
         res.data.forEach((flight) => {
           axios({
             method: 'post',
-            baseURL: 'http://localhost:8000/api',
+            baseURL: process.env.REACT_APP_BACKEND_URL,
             url: '/tickets/search',
             data: {
               IdChuyenBay: flight.IdChuyenBay,
@@ -132,9 +133,11 @@ function SearchByWeek({ setIsLoading, setError }) {
       setShowSort(false);
     }
   };
+
   useEffect(() => {
     setShowSort(false);
   }, [typeSort]);
+
   const handleTypeSort = (e) => {
     setTypeSort(e.target.innerHTML);
 
@@ -160,7 +163,6 @@ function SearchByWeek({ setIsLoading, setError }) {
           );
         });
         setTicketList([...temp]);
-        console.log(temp);
         break;
       case 'Giờ khởi hành muộn nhất':
         setTicketList(
@@ -192,6 +194,7 @@ function SearchByWeek({ setIsLoading, setError }) {
       default:
     }
   };
+
   function compare(dateTimeA, dateTimeB) {
     var momentA = moment(dateTimeA, 'DD/MM/YYYY');
     var momentB = moment(dateTimeB, 'DD/MM/YYYY');
@@ -264,6 +267,95 @@ function SearchByWeek({ setIsLoading, setError }) {
     );
   };
 
+  const [showFilter, setShowFilter] = useState(false);
+
+  const filterData = (
+    idvemaybay = null,
+    brand = null,
+    kgb = null,
+    lhb = null
+  ) => {
+    idvemaybay = idvemaybay === null ? '.' : idvemaybay;
+    brand = brand === null ? '.' : brand;
+    kgb = kgb === null ? '.' : kgb.split(', ');
+    lhb = lhb === null ? '.' : lhb;
+    const tempArr = [];
+    setShowFilter(false);
+    setIsLoading(true);
+    axios({
+      method: 'post',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
+      url: '/flights/search',
+      data: {
+        DiaDiemKhoiHanh: ddkh,
+        DiaDiemHaCanh: ddhc,
+        NgayKhoiHanh: tgkh,
+      },
+    })
+      .then((res) => {
+        if (res.data.length === 0) {
+          setTicketList([]);
+          setIsLoading(false);
+          return;
+        }
+        res.data.forEach((flight) => {
+          axios({
+            method: 'post',
+            baseURL: process.env.REACT_APP_BACKEND_URL,
+            url: '/tickets/search',
+            data: {
+              IdChuyenBay: flight.IdChuyenBay,
+              TrangThai: 'Chưa bán',
+            },
+          })
+            .then((res) => {
+              res.data.forEach((ticket) =>
+                tempArr.push({
+                  IdVeMayBay: ticket.IdVeMayBay,
+                  LoaiVe: ticket.LoaiVe,
+                  GiaVe: ticket.GiaVe,
+                  HangHK: flight.HangHK,
+                  SHMayBay: flight.SHMayBay,
+                  ThoiGianKhoiHanh: flight.ThoiGianKhoiHanh,
+                  ThoiGianHaCanh: flight.ThoiGianHaCanh,
+                  DiaDiemKhoiHanh: flight.DiaDiemKhoiHanh,
+                  DiaDiemHaCanh: flight.DiaDiemHaCanh,
+                  LoaiHinhBay: flight.LoaiHinhBay,
+                  passengers: passengers,
+                  Thue: 1,
+                  SLVeConLai: flight.SLVeConLai,
+                  IdChuyenBay: flight.IdChuyenBay,
+                })
+              );
+            })
+            .then((res) => {
+              const result = tempArr.filter((ticket) => {
+                if (
+                  (ticket['IdVeMayBay'] === idvemaybay || idvemaybay === '.') &&
+                  (ticket['HangHK'] === brand || brand === '.') &&
+                  (ticket['LoaiHinhBay'] === lhb || lhb === '.') &&
+                  ((parseInt(kgb[0]) <
+                    new Date(ticket['ThoiGianKhoiHanh']).getHours() &&
+                    parseInt(kgb[1]) >=
+                      new Date(ticket['ThoiGianKhoiHanh']).getHours()) ||
+                    kgb === '.')
+                ) {
+                  return true;
+                }
+                return false;
+              });
+              setTicketList([...result]);
+              setIsLoading(false);
+            });
+        });
+      })
+      .catch((err) => {
+        setShowFilter(false);
+        setIsLoading(false);
+        setError(err.message);
+      });
+  };
+
   return (
     <div
       className={
@@ -273,6 +365,11 @@ function SearchByWeek({ setIsLoading, setError }) {
       }
     >
       <Modal showModal={showModal} setShowModal={setShowModal} />
+      <FilterSearch
+        showFilter={showFilter}
+        setShowFilter={setShowFilter}
+        filterData={filterData}
+      />
       <div className="SearchByWeek-header">
         <div className="header-content">
           <p>Kết quả tìm kiếm cho "chuyến bay một chiều"</p>
@@ -464,7 +561,10 @@ function SearchByWeek({ setIsLoading, setError }) {
                 </span>
               )}
               {ticketList.length !== 0 && (
-                <span className="btn-filter-search">
+                <span
+                  className="btn-filter-search"
+                  onClick={() => setShowFilter(true)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"

@@ -27,7 +27,7 @@ function AddFlight() {
   const [chooseAirline, setChooseAirline] = useState('');
   const [showFlyType, setShowFlyType] = useState(false);
   const [flyType, setFlyType] = useState('');
-  const handleOnchangeInput = (e) => console.log(e);
+  const handleOnchangeInput = (e) => {};
   const handleTabProvinder1 = () => {
     setShowBoxProvinder((e) => !e);
     setTabProvinces(1);
@@ -99,7 +99,7 @@ function AddFlight() {
     }
     axios({
       method: 'post',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: '/flights',
       headers: {
         Authorization: `Bearer ${auth.token}`,

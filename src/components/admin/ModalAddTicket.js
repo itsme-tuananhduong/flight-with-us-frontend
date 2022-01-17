@@ -40,7 +40,7 @@ function FormInsertSticker({
     }
     axios({
       method: 'post',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/tickets`,
       headers: {
         Authorization: `Bearer ${auth.token}`,

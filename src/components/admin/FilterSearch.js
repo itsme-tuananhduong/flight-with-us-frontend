@@ -269,10 +269,10 @@ function FilterSearch({ showFilter, setShowFilter, filterData }) {
                       id="way1"
                       name="way"
                       onClick={onLhbChange}
-                      value="Bay Thẳng"
+                      value="Bay thẳng"
                     />
                     <label htmlFor="way1" className="label-radio">
-                      Bay Thẳng
+                      Bay thẳng
                     </label>
                   </div>
                 </div>
@@ -283,10 +283,10 @@ function FilterSearch({ showFilter, setShowFilter, filterData }) {
                       id="way2"
                       name="way"
                       onClick={onLhbChange}
-                      value="Quá Cảnh"
+                      value="Quá cảnh"
                     />
                     <label htmlFor="way2" className="label-radio">
-                      Quá Cảnh
+                      Quá cảnh
                     </label>
                   </div>
                 </div>
