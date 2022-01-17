@@ -10,7 +10,7 @@ import axios from 'axios';
 // import passengerList from '../../assets/JsonData/pasenger-list.json';
 import './Passengers.css';
 
-const Passengers = () => {
+const InvoiceDetail = () => {
   const auth = useContext(AuthContext);
 
   const [passenger, setPassenger] = useState();
@@ -25,7 +25,7 @@ const Passengers = () => {
     axios({
       method: 'get',
       baseURL: process.env.REACT_APP_BACKEND_URL,
-      url: '/passengers',
+      url: '/invoice-details',
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },
@@ -42,17 +42,17 @@ const Passengers = () => {
       });
   };
 
-  const filterData = (idhanhkhach = null) => {
+  const filterData = (idchitiethoadon = null) => {
     setIsLoading(true);
     axios({
       method: 'post',
       baseURL: process.env.REACT_APP_BACKEND_URL,
-      url: `/passengers/search`,
+      url: `/invoice-details/search`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
       },
       data: {
-        IdHanhKhach: idhanhkhach,
+        IdChiTietHoaDon: idchitiethoadon,
       },
     })
       .then((res) => {
@@ -71,11 +71,10 @@ const Passengers = () => {
   const [passengerInfo, setPassengerInfo] = useState({});
   const customerTableHead = [
     'ID',
-    'Họ & Tên',
-    'Giới Tính',
-    'Ngày Sinh',
-    'Sửa Thông Tin',
-    'Xóa',
+    'Thành Tiền',
+    'ID Vé Máy Bay',
+    'ID Hành Khách',
+    'ID Hóa Đơn',
   ];
 
   useEffect(() => {
@@ -83,7 +82,7 @@ const Passengers = () => {
       axios({
         method: 'get',
         baseURL: process.env.REACT_APP_BACKEND_URL,
-        url: '/passengers',
+        url: '/invoice-details',
         headers: {
           Authorization: `Bearer ${auth.token}`,
         },
@@ -99,11 +98,12 @@ const Passengers = () => {
 
   const renderBody = (item, index) => (
     <tr key={index}>
+      <td>{item.IdChiTietHoaDon}</td>
+      <td>{item.ThanhTien}</td>
+      <td>{item.IdVeMayBay}</td>
       <td>{item.IdHanhKhach}</td>
-      <td>{item.HoTen}</td>
-      <td>{item.GioiTinh}</td>
-      <td>{item.NgaySinh}</td>
-      <td>
+      <td>{item.IdHoaDon}</td>
+      {/* <td>
         <span
           className="update-passenger"
           onClick={() => handlePassengerInfo(item)}
@@ -115,31 +115,9 @@ const Passengers = () => {
         <span className="delete-passenger" onClick={() => HandleData2(item)}>
           Xóa
         </span>
-      </td>
+      </td> */}
     </tr>
   );
-
-  const HandleData2 = (e) => {
-    axios({
-      method: 'delete',
-      baseURL: process.env.REACT_APP_BACKEND_URL,
-      url: `/passengers/${e.IdHanhKhach}`,
-      headers: {
-        Authorization: `Bearer ${auth.token}`,
-      },
-    })
-      .then((res) => {
-        triggerLoading();
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
-  };
-
-  const handlePassengerInfo = (e) => {
-    setPassengerInfo(e);
-    setShowUpdate(true);
-  };
 
   const onInputKeyUp = (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
@@ -158,7 +136,7 @@ const Passengers = () => {
         setError={setError}
       />
       <div>
-        <h2 className="page-header">Thông Tin Khách Hàng</h2>
+        <h2 className="page-header">Thông Tin Chi Tiết Hóa Đơn</h2>
         <div className="row">
           <div className="search-id">
             <input
@@ -193,4 +171,4 @@ const Passengers = () => {
   );
 };
 
-export default Passengers;
+export default InvoiceDetail;

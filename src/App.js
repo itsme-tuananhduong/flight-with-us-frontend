@@ -1,4 +1,4 @@
-import { useContext, Suspense } from 'react';
+import React, { useContext, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { ThemeContext } from './shared/context/ThemeProvider';
@@ -13,8 +13,17 @@ import User from './pages/User';
 import Authentication from './pages/Authentication';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
+
 import Layout from './components/Admin/Layout';
 import LoadingSpinner from './shared/components/LoadingSpinner';
+
+// const Home = React.lazy(() => import('./pages/Home'));
+// const Result = React.lazy(() => import('./pages/Result'));
+// const Booking = React.lazy(() => import('./pages/Booking'));
+// const User = React.lazy(() => import('./pages/User'));
+// const Authentication = React.lazy(() => import('./pages/Authentication'));
+// const Admin = React.lazy(() => import('./pages/Admin'));
+// const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -53,6 +62,10 @@ const App = () => {
           path="passengers"
           element={<Layout location={'/admin/passengers'} />}
         />
+        <Route
+          path="invoice-detail"
+          element={<Layout location={'/admin/invoice-detail'} />}
+        />
       </Route>
     );
   } else {
@@ -63,6 +76,10 @@ const App = () => {
         <Route path="products" element={<Navigate to="/" />} />
         <Route path="accounts" element={<Navigate to="/" />} />
         <Route path="passengers" element={<Navigate to="/authentication" />} />
+        <Route
+          path="invoice-detail"
+          element={<Navigate to="/authentication" />}
+        />
       </Route>
     );
   }

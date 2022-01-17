@@ -26,7 +26,7 @@ const Accounts = () => {
     setIsLoading(true);
     axios({
       method: 'get',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: '/users',
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -43,7 +43,7 @@ const Accounts = () => {
   };
 
   const customerTableHead = [
-    '',
+    'ID',
     'Email',
     'Username',
     'Phân Loại',
@@ -129,7 +129,7 @@ const Accounts = () => {
     setIsLoading(true);
     axios({
       method: 'put',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/users/${id}`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -151,7 +151,7 @@ const Accounts = () => {
     setIsLoading(true);
     axios({
       method: 'delete',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/users/${id}`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -173,7 +173,7 @@ const Accounts = () => {
     setIsLoading(true);
     axios({
       method: 'post',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/users/search`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -197,7 +197,7 @@ const Accounts = () => {
     const fetchData = async () => {
       axios({
         method: 'get',
-        baseURL: 'http://localhost:8000/api',
+        baseURL: process.env.REACT_APP_BACKEND_URL,
         url: '/users',
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -224,9 +224,10 @@ const Accounts = () => {
     <Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <div>
-        <h2 className='page-header'>Danh Sách Tài Khoản</h2>
-        <div className='row heading'>
-          <div className='search-id'>
+
+        <h2 className="page-header">Thông Tin Tài Khoản</h2>
+        <div className="row heading">
+          <div className="search-id">
             <input
               className='admin-input'
               type='text'

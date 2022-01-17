@@ -21,6 +21,23 @@ const Result = ({ flag }) => {
 
   const { theme } = useContext(ThemeContext);
 
+  const [flightInfoBox, setFlightInfoBox] = useState({
+    IdVeMayBay: null,
+    LoaiVe: null,
+    GiaVe: null,
+    HangHK: null,
+    SHMayBay: null,
+    ThoiGianKhoiHanh: null,
+    ThoiGianHaCanh: null,
+    DiaDiemKhoiHanh: null,
+    DiaDiemHaCanh: null,
+    LoaiHinhBay: null,
+    passengers: null,
+    Thue: null,
+    SLVeConLai: null,
+    IdChuyenBay: null,
+  });
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
@@ -32,7 +49,12 @@ const Result = ({ flag }) => {
             <SearchByWeek setIsLoading={setIsLoading} setError={setError} />
           )}
           {flag === 1 && (
-            <SearchByMonth setIsLoading={setIsLoading} setError={setError} />
+            <SearchByMonth
+              setIsLoading={setIsLoading}
+              setError={setError}
+              flightInfoBox={flightInfoBox}
+              setFlightInfoBox={setFlightInfoBox}
+            />
           )}
         </div>
       </div>

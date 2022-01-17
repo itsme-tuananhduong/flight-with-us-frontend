@@ -97,7 +97,7 @@ function FlightUpdate({
     }
     axios({
       method: 'put',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/flights/${flightInfo.IdChuyenBay}`,
       headers: {
         Authorization: `Bearer ${auth.token}`,

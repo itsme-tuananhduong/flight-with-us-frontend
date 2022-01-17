@@ -154,6 +154,7 @@ const BoxNguoiLienHe = (props) => {
                 className="form-input madt"
                 placeholder=" "
                 value={phoneCode.code}
+                onChange={(e) => {}}
               />
               <label htmlFor="name" className="form-label">
                 Mã điện thoại

@@ -26,7 +26,7 @@ function TimKiemNhieuChang() {
   const [timeTab2, setTimeTab2] = useState('');
   const [timeTab3, setTimeTab3] = useState('');
 
-  const handleOnchangeInput = (e) => console.log(e);
+  const handleOnchangeInput = (e) => {};
   const handleChuyenDoiTab1 = () => {
     const diem1 = departure1;
     const diem2 = destination1;
@@ -54,7 +54,6 @@ function TimKiemNhieuChang() {
       three: { departure3, destination3, timeTab3 },
       passenger,
     };
-    console.log(data);
   };
   return (
     <Fragment>

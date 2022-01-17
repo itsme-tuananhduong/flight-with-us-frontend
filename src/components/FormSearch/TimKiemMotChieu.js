@@ -21,7 +21,7 @@ function TimKiemMotChieu({ setIsLoading, setError }) {
   const [destination, setDestination] = useState('');
   const [startDate, setStartDate] = useState(new Date());
 
-  const handleOnchangeInput = (e) => console.log(e);
+  const handleOnchangeInput = (e) => {};
   const handleChuyenDoi = () => {
     const diem1 = departure;
     const diem2 = destination;

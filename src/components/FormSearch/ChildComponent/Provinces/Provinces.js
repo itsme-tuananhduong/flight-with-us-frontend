@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback,useContext } from 'react';
+import React, { useRef, useEffect, useCallback, useContext } from 'react';
 import { ThemeContext } from '../../../../shared/context/ThemeProvider';
 import './Provinces.css';
 
@@ -23,7 +23,6 @@ function Provinces({ showBoxProvinder, setShowBoxProvinder, onKetqua }) {
     (e) => {
       if (e.key === 'Escape' && showBoxProvinder) {
         setShowBoxProvinder(false);
-        console.log('I pressed');
       }
     },
     [setShowBoxProvinder, showBoxProvinder]
@@ -37,7 +36,11 @@ function Provinces({ showBoxProvinder, setShowBoxProvinder, onKetqua }) {
   return (
     <>
       {showBoxProvinder ? (
-        <div className={theme === 'dark' ?"background-pro dark":"background-pro"}>
+        <div
+          className={
+            theme === 'dark' ? 'background-pro dark' : 'background-pro'
+          }
+        >
           <div
             className="overlay-pro"
             onClick={closeModal}

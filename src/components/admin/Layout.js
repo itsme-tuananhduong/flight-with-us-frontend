@@ -9,6 +9,7 @@ import Dashboard from '../../pages/Admin/Dashboard';
 import AddFlights from '../../pages/Admin/AddFlights';
 import Accounts from '../../pages/Admin/Accounts';
 import Passengers from '../../pages/Admin/Passengers';
+import InvoiceDetail from '../../pages/Admin/InvoiceDetail';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -32,14 +33,15 @@ const Layout = (props) => {
   return (
     <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
       <Sidebar {...props} />
-      <div className='layout__content'>
+      <div className="layout__content">
         <TopNav />
-        <div className='layout__content-main'>
+        <div className="layout__content-main">
           {props.location === '/admin/flights' && <Flights />}
           {props.location === '/admin/dashboard' && <Dashboard />}
           {props.location === '/admin/add-flight' && <AddFlights />}
           {props.location === '/admin/accounts' && <Accounts />}
           {props.location === '/admin/passengers' && <Passengers />}
+          {props.location === '/admin/invoice-detail' && <InvoiceDetail />}
           {/* Add Admin Route Here */}
         </div>
       </div>

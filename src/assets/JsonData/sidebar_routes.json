@@ -5,24 +5,29 @@
     "icon": "bx bx-category-alt"
   },
   {
-    "display_name": "Chuyến Bay",
-    "route": "/admin/flights",
-    "icon": "bx bx-user-pin"
-  },
-  {
     "display_name": "Thêm Chuyến Bay",
     "route": "/admin/add-flight",
-    "icon": "bx bx-package"
+    "icon": "bx bx-folder-plus"
   },
   {
-    "display_name": "Tài Khoản",
-    "route": "/admin/accounts",
-    "icon": "bx bx-cart"
+    "display_name": "Chuyến Bay",
+    "route": "/admin/flights",
+    "icon": "bx bxs-plane-alt"
   },
   {
     "display_name": "Hành Khách",
     "route": "/admin/passengers",
-    "icon": "bx bx-bar-chart-alt"
+    "icon": "bx bx-user-circle"
+  },
+  {
+    "display_name": "Chi Tiết Hóa Đơn",
+    "route": "/admin/invoice-detail",
+    "icon": "bx bx-detail"
+  },
+  {
+    "display_name": "Tài Khoản",
+    "route": "/admin/accounts",
+    "icon": "bx bxs-user-account"
   },
   {
     "display_name": "settings",

@@ -52,7 +52,7 @@ function UpdatePassenger({
     }
     axios({
       method: 'put',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/passengers/${passengerInfo.IdHanhKhach}`,
       headers: {
         Authorization: `Bearer ${auth.token}`,

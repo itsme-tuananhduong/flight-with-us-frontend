@@ -51,7 +51,7 @@ function TicketList({
     }
     axios({
       method: 'put',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/tickets/${tabTicket}`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -75,7 +75,7 @@ function TicketList({
   const ticketDelete = (ticket) => {
     axios({
       method: 'delete',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/tickets/${ticket.IdVeMayBay}`,
       headers: {
         Authorization: `Bearer ${auth.token}`,

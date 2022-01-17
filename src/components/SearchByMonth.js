@@ -6,15 +6,156 @@ import { ThemeContext } from '../shared/context/ThemeProvider';
 import TicketBox from '../components/TicketBox';
 import FlightInfoBox from '../components/FlightInfoBox';
 import Modal from './BoxDatVe/ChildComponent/Modal';
+import axios from 'axios';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import './SearchByMonth.css';
-function SearchByMonth() {
+
+import { moneyFormatter } from '../shared/util/util-function';
+
+function SearchByMonth({
+  setIsLoading,
+  setError,
+  flightInfoBox,
+  setFlightInfoBox,
+}) {
   const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const ddkh = searchParams.get('ddkh');
+  const ddhc = searchParams.get('ddhc');
+  const tgkh = searchParams.get('tgkh');
+  const passengers = {
+    adult: parseInt(searchParams.get('ps').split('.')[0]),
+    child: parseInt(searchParams.get('ps').split('.')[1]),
+    baby: parseInt(searchParams.get('ps').split('.')[2]),
+  };
+
+  const [ticketList, setTicketList] = useState([]);
+
+  const fetchData = (ddkh, ddhc, tgkh) => {
+    const tempArr = [];
+    setIsLoading(true);
+    axios({
+      method: 'post',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
+      url: '/flights/search',
+      data: {
+        DiaDiemKhoiHanh: ddkh,
+        DiaDiemHaCanh: ddhc,
+        NgayKhoiHanh: tgkh,
+      },
+    })
+      .then((res) => {
+        if (res.data.length === 0) {
+          setTicketList([]);
+          setIsLoading(false);
+          return;
+        }
+        res.data.forEach((flight) => {
+          axios({
+            method: 'post',
+            baseURL: process.env.REACT_APP_BACKEND_URL,
+            url: '/tickets/search',
+            data: {
+              IdChuyenBay: flight.IdChuyenBay,
+              TrangThai: 'Chưa bán',
+            },
+          }).then((res) => {
+            res.data.forEach((ticket) =>
+              tempArr.push({
+                IdVeMayBay: ticket.IdVeMayBay,
+                LoaiVe: ticket.LoaiVe,
+                GiaVe: ticket.GiaVe,
+                HangHK: flight.HangHK,
+                SHMayBay: flight.SHMayBay,
+                ThoiGianKhoiHanh: flight.ThoiGianKhoiHanh,
+                ThoiGianHaCanh: flight.ThoiGianHaCanh,
+                DiaDiemKhoiHanh: flight.DiaDiemKhoiHanh,
+                DiaDiemHaCanh: flight.DiaDiemHaCanh,
+                LoaiHinhBay: flight.LoaiHinhBay,
+                passengers: passengers,
+                Thue: 1,
+                SLVeConLai: flight.SLVeConLai,
+                IdChuyenBay: flight.IdChuyenBay,
+              })
+            );
+            setTicketList([...tempArr]);
+            setIsLoading(false);
+          });
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.message);
+      });
+  };
+
+  useEffect(() => {
+    fetchData(ddkh, ddhc, tgkh);
+  }, []);
+
+  const filterData = (tgkh = null) => {
+    const tempArr = [];
+    setIsLoading(true);
+    axios({
+      method: 'post',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
+      url: '/flights/search',
+      data: {
+        NgayKhoiHanh: tgkh,
+      },
+    })
+      .then((res) => {
+        if (res.data.length === 0) {
+          setTicketList([]);
+          setIsLoading(false);
+          return;
+        }
+        res.data.forEach((flight) => {
+          axios({
+            method: 'post',
+            baseURL: process.env.REACT_APP_BACKEND_URL,
+            url: '/tickets/search',
+            data: {
+              IdChuyenBay: flight.IdChuyenBay,
+              TrangThai: 'Chưa bán',
+            },
+          }).then((res) => {
+            res.data.forEach((ticket) =>
+              tempArr.push({
+                IdVeMayBay: ticket.IdVeMayBay,
+                LoaiVe: ticket.LoaiVe,
+                GiaVe: ticket.GiaVe,
+                HangHK: flight.HangHK,
+                SHMayBay: flight.SHMayBay,
+                ThoiGianKhoiHanh: flight.ThoiGianKhoiHanh,
+                ThoiGianHaCanh: flight.ThoiGianHaCanh,
+                DiaDiemKhoiHanh: flight.DiaDiemKhoiHanh,
+                DiaDiemHaCanh: flight.DiaDiemHaCanh,
+                LoaiHinhBay: flight.LoaiHinhBay,
+                passengers: passengers,
+                Thue: 1,
+                SLVeConLai: flight.SLVeConLai,
+                IdChuyenBay: flight.IdChuyenBay,
+              })
+            );
+            setTicketList([...tempArr]);
+            setIsLoading(false);
+          });
+        });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.message);
+      });
+  };
 
   const [showModal, setShowModal] = useState(false);
 
   const [startDate, setStartDate] = useState(new Date());
-  const [showSort, setShowSort] = useState(false);
+
   const [showChooseAirline, setShowChooseAirline] = useState(false);
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(false);
@@ -25,6 +166,10 @@ function SearchByMonth() {
   const [activeDay, setActiveDay] = useState(null);
   const [typeSort, setTypeSort] = useState('Mặc Định');
   const [chooseAirline, setChooseAirline] = useState('Tất Cả');
+
+  useEffect(() => {
+    setDisplaySort(ticketList.length === 0 ? false : true);
+  }, [ticketList]);
 
   // toggle boxSort & chooseAirline
   const sortRef = useRef();
@@ -70,12 +215,6 @@ function SearchByMonth() {
     setChecked4(checkAll);
   }, [checkAll]);
 
-  useEffect(() => {
-    setShowSort(false);
-  }, [typeSort]);
-  const handleTypeSort = (e) => {
-    setTypeSort(e.target.innerHTML);
-  };
   const {
     calendarRows,
     selectedDate,
@@ -85,10 +224,17 @@ function SearchByMonth() {
     getNextMonth,
     getPrevMonth,
   } = useCalendar();
+
   const dateClickHandler = (date) => {
+    const tgkh = new Date(date.split('-').reverse().join('-'))
+      .toString()
+      .substr(0, 15);
+
+    filterData(tgkh);
     setActiveDay(date);
     setDisplaySort(true);
   };
+
   function compare(dateTimeA, dateTimeB) {
     var momentA = moment(dateTimeA, 'DD/MM/YYYY');
     var momentB = moment(dateTimeB, 'DD/MM/YYYY');
@@ -161,6 +307,115 @@ function SearchByMonth() {
   const getValueDay = (x, y) => {
     return x.filter((x) => x.day === y);
   };
+
+  const [choosenTicketInfo, setChoosenTicketInfo] = useState({
+    IdVeMayBay: null,
+    LoaiVe: null,
+    GiaVe: null,
+    HangHK: null,
+    SHMayBay: null,
+    ThoiGianKhoiHanh: null,
+    ThoiGianHaCanh: null,
+    DiaDiemKhoiHanh: null,
+    DiaDiemHaCanh: null,
+    LoaiHinhBay: null,
+    passengers: null,
+    Thue: null,
+    SLVeConLai: null,
+    IdChuyenBay: null,
+  });
+
+  useEffect(() => {
+    if (choosenTicketInfo.IdVeMayBay !== null) {
+      setFlightInfoBox(choosenTicketInfo);
+    }
+  }, [choosenTicketInfo]);
+
+  const [showSort, setShowSort] = useState(false);
+  useEffect(() => {
+    setShowSort(false);
+  }, [typeSort]);
+  const handleTypeSort = (e) => {
+    setTypeSort(e.target.innerHTML);
+
+    switch (e.target.innerHTML) {
+      case 'Giá tăng dần':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return parseInt(a['GiaVe']) - parseInt(b['GiaVe']);
+          })
+        );
+        break;
+      case 'Giá giảm dần':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return parseInt(b['GiaVe']) - parseInt(a['GiaVe']);
+          })
+        );
+        break;
+      case 'Giờ khởi hành sớm nhất':
+        let temp = ticketList.sort(function (a, b) {
+          return (
+            new Date(a['ThoiGianKhoiHanh']) - new Date(b['ThoiGianKhoiHanh'])
+          );
+        });
+        setTicketList([...temp]);
+        break;
+      case 'Giờ khởi hành muộn nhất':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return (
+              new Date(b['ThoiGianKhoiHanh']) - new Date(a['ThoiGianKhoiHanh'])
+            );
+          })
+        );
+        break;
+      case 'Giờ hạ cánh sớm nhất':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return (
+              new Date(a['ThoiGianHaCanh']) - new Date(b['ThoiGianHaCanh'])
+            );
+          })
+        );
+        break;
+      case 'Giờ hạ cánh muộn nhất':
+        setTicketList(
+          ticketList.sort(function (a, b) {
+            return (
+              new Date(b['ThoiGianHaCanh']) - new Date(a['ThoiGianHaCanh'])
+            );
+          })
+        );
+        break;
+      default:
+    }
+  };
+
+  const navigate = useNavigate();
+  const onBooking = () => {
+    navigate(
+      `/booking?idvemaybay=${choosenTicketInfo.IdVeMayBay}&loaive=${choosenTicketInfo.LoaiVe}&giave=${choosenTicketInfo.GiaVe}&hanghk=${choosenTicketInfo.HangHK}&shmaybay=${choosenTicketInfo.SHMayBay}&tgkh=${choosenTicketInfo.ThoiGianKhoiHanh}&tghc=${choosenTicketInfo.ThoiGianHaCanh}&ddkh=${choosenTicketInfo.DiaDiemKhoiHanh}&ddhc=${choosenTicketInfo.DiaDiemHaCanh}&loaihinhbay=${choosenTicketInfo.LoaiHinhBay}&ps=${choosenTicketInfo.passengers.adult}.${choosenTicketInfo.passengers.child}.${choosenTicketInfo.passengers.baby}&thue=${choosenTicketInfo.Thue}&slvcl=${choosenTicketInfo.SLVeConLai}&idchuyenbay=${choosenTicketInfo.IdChuyenBay}`
+    );
+  };
+
+  const [brand, setBrand] = useState(null);
+
+  const filter = (brand = null) => {
+    if (brand === null) fetchData(ddkh, ddhc, tgkh);
+    else {
+      const tempArr = ticketList.filter((ticket) => {
+        return ticket.HangHK === brand;
+      });
+      setTicketList([]);
+      setTicketList((prevState) => [...tempArr]);
+    }
+  };
+
+  const onFilter = () => {
+    filter(brand);
+  };
+
   return (
     <div
       className={
@@ -222,7 +477,15 @@ function SearchByMonth() {
                 </g>
               </g>
             </svg>
-            <span>1 người lớn</span>
+            {passengers.adult !== 0 ? (
+              <span>&nbsp;{passengers.adult} người lớn</span>
+            ) : null}
+            {passengers.child !== 0 ? (
+              <span>,&nbsp;{passengers.child} trẻ em</span>
+            ) : null}
+            {passengers.baby !== 0 ? (
+              <span>,&nbsp;{passengers.baby} em bé</span>
+            ) : null}
           </div>
         </div>
 
@@ -235,9 +498,9 @@ function SearchByMonth() {
           <div className="main-flight">
             <h4 className="main-flight-title">Chuyến bay</h4>
             <span className="main-flight-province">
-              Đà Nẵng (DAD) - Hồ Chí Minh (SGN)
+              {ddkh} &rarr; {ddhc}
             </span>
-            <p className="main-flight-time">Thứ Sáu, 31/12/2021</p>
+            <p className="main-flight-time">{tgkh}</p>
           </div>
           <div className="main-search">
             <div className="inputInformation">
@@ -294,22 +557,34 @@ function SearchByMonth() {
                             Hủy chọn tất cả
                           </span>
                         ) : (
-                          <span onClick={() => setCheckAll(true)}>
-                            chọn tất cả
+                          <span
+                            onClick={(e) => {
+                              setBrand(null);
+                              setChecked1(false);
+                              setChecked2(false);
+                              setChecked3(false);
+                              setChecked4(false);
+                            }}
+                          >
+                            Chọn tất cả
                           </span>
                         )}
                       </div>
                       <div className="chooseAirline-item">
                         <div className="input-checkbox">
                           <input
-                            type="checkbox"
+                            type="radio"
                             id="check"
                             onChange={() => setChecked1((pre) => !pre)}
                             checked={checked1}
+                            name="brand"
+                            value="Vietravel Airlines"
+                            onClick={(e) => setBrand(e.target.value)}
                           />
-                          <label htmlFor="check" className="label-checkbox">
+                          {/* <label htmlFor="check" className="label-checkbox">
                             Vietravel Airlines
-                          </label>
+                          </label> */}
+                          <span>Vietravel Airlines</span>
                         </div>
                         <div className="airline-img">
                           <img
@@ -321,14 +596,18 @@ function SearchByMonth() {
                       <div className="chooseAirline-item">
                         <div className="input-checkbox">
                           <input
-                            type="checkbox"
+                            type="radio"
                             id="check2"
                             onChange={() => setChecked2((pre) => !pre)}
                             checked={checked2}
+                            name="brand"
+                            value="Vietnam Airlines"
+                            onClick={(e) => setBrand(e.target.value)}
                           />
-                          <label className="label-checkbox" htmlFor="check2">
+                          {/* <label className="label-checkbox" htmlFor="check2">
                             Vietnam Airlines
-                          </label>
+                          </label> */}
+                          <span>Vietnam Airlines</span>
                         </div>
                         <div className="airline-img">
                           <img
@@ -340,14 +619,18 @@ function SearchByMonth() {
                       <div className="chooseAirline-item">
                         <div className="input-checkbox">
                           <input
-                            type="checkbox"
+                            type="radio"
                             id="check3"
                             onChange={() => setChecked3((pre) => !pre)}
                             checked={checked3}
+                            name="brand"
+                            value="Bamboo Airways"
+                            onClick={(e) => setBrand(e.target.value)}
                           />
-                          <label className="label-checkbox" htmlFor="check3">
+                          {/* <label className="label-checkbox" htmlFor="check3">
                             Bamboo Airways
-                          </label>
+                          </label> */}
+                          <span>Bamboo Airways</span>
                         </div>
                         <div className="airline-img">
                           <img
@@ -359,14 +642,18 @@ function SearchByMonth() {
                       <div className="chooseAirline-item">
                         <div className="input-checkbox">
                           <input
-                            type="checkbox"
+                            type="radio"
                             id="check4"
                             onChange={() => setChecked4((pre) => !pre)}
                             checked={checked4}
+                            name="brand"
+                            value="Vietjet Air"
+                            onClick={(e) => setBrand(e.target.value)}
                           />
-                          <label className="label-checkbox" htmlFor="check4">
+                          {/* <label className="label-checkbox" htmlFor="check4">
                             Vietjet Air
-                          </label>
+                          </label> */}
+                          <span>Vietjet Air</span>
                         </div>
                         <div className="airline-img">
                           <img
@@ -377,7 +664,7 @@ function SearchByMonth() {
                       </div>
 
                       <div className="btn-chooseAirline">
-                        <span className="btn-filter" onClick={handleChecked}>
+                        <span className="btn-filter" onClick={onFilter}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -506,7 +793,7 @@ function SearchByMonth() {
                   minDate={new Date()}
                 />
                 <label htmlFor="name" className="form-label">
-                  Chọn Tháng
+                  Chọn tháng
                 </label>
               </div>
               {displaySort ? (
@@ -566,25 +853,25 @@ function SearchByMonth() {
                           className="option-lish-item"
                           onClick={handleTypeSort}
                         >
-                          Giá khởi hành sớm nhất
+                          Giờ khởi hành sớm nhất
                         </span>
                         <span
                           className="option-lish-item"
                           onClick={handleTypeSort}
                         >
-                          Giá khởi hành muộn nhất
+                          Giờ khởi hành muộn nhất
                         </span>
                         <span
                           className="option-lish-item"
                           onClick={handleTypeSort}
                         >
-                          Giá hạ cánh sớm nhất
+                          Giờ hạ cánh sớm nhất
                         </span>
                         <span
                           className="option-lish-item"
                           onClick={handleTypeSort}
                         >
-                          Giá hạ cánh muộn nhất
+                          Giờ hạ cánh muộn nhất
                         </span>
                       </div>
                     </div>
@@ -693,7 +980,7 @@ function SearchByMonth() {
                                   </div>
                                 ) : (
                                   <div className="cell-choice disable">
-                                    {/* <div className='cell-logo'> */}
+                                    {/* <div className="cell-logo"> */}
                                     <span>{col.value}</span>
                                     {/* </div> */}
                                   </div>
@@ -720,14 +1007,18 @@ function SearchByMonth() {
             </div>
             {/* Hop ve is here */}
             <div className="ticket-box-month">
-              <TicketBox />
+              <TicketBox
+                ticketList={ticketList}
+                choosenTicketInfo={choosenTicketInfo}
+                setChoosenTicketInfo={setChoosenTicketInfo}
+              />
             </div>
 
             {/* footer */}
             <div className="main-final">
               <p className="final-title">Giá vé rẻ nhất bao gồm thuế và phí</p>
               <div className="final-note">
-                <span className="final-note-text">Chú thích : </span>
+                <span className="final-note-text">Chú thích: </span>
                 <div className="box-min">
                   <div className="box-color min"></div>
                   <span className="price-min">Giá thấp nhất</span>
@@ -746,8 +1037,28 @@ function SearchByMonth() {
         </div>
         {/* infomation flight is here */}
         <div className="info-flight">
-          <FlightInfoBox />
-          <button className="search-month-continue">Tiếp tục</button>
+          {flightInfoBox.IdVeMayBay &&
+            choosenTicketInfo.IdVeMayBay !== null && (
+              <FlightInfoBox
+                IdVeMayBay={flightInfoBox.IdVeMayBay}
+                LoaiVe={flightInfoBox.LoaiVe}
+                GiaVe={flightInfoBox.GiaVe}
+                HangHK={flightInfoBox.HangHK}
+                SHMayBay={flightInfoBox.SHMayBay}
+                ThoiGianKhoiHanh={flightInfoBox.ThoiGianKhoiHanh}
+                ThoiGianHaCanh={flightInfoBox.ThoiGianHaCanh}
+                DiaDiemKhoiHanh={flightInfoBox.DiaDiemKhoiHanh}
+                DiaDiemHaCanh={flightInfoBox.DiaDiemHaCanh}
+                LoaiHinhBay={flightInfoBox.LoaiHinhBay}
+                passengers={flightInfoBox.passengers}
+                Thue={flightInfoBox.Thue}
+              />
+            )}
+          {choosenTicketInfo.IdVeMayBay !== null && (
+            <button className="search-month-continue" onClick={onBooking}>
+              Tiếp tục
+            </button>
+          )}
         </div>
       </div>
     </div>

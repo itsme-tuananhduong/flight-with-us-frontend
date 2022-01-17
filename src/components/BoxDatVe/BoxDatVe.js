@@ -45,10 +45,8 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
   const IdVeMayBay = parseInt(searchParams.get('idvemaybay'));
 
   const IdChuyenBay = parseInt(searchParams.get('idchuyenbay'));
-  console.log(IdChuyenBay);
 
   const SLVeConLai = parseInt(searchParams.get('slvcl'));
-  console.log(SLVeConLai);
 
   const GiaVe = parseFloat(searchParams.get('giave'));
 
@@ -71,6 +69,9 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
   const tgdc = timeDiffCalc(new Date(tghc), new Date(tgkh));
   const lhb = searchParams.get('loaihinhbay');
   const hanghk = searchParams.get('hanghk');
+
+  const LoaiVe = searchParams.get('loaive');
+  const SHMayBay = searchParams.get('shmaybay');
 
   // const [adultPassenger, setAdultPassenger] = useState([]);
   // const [childPassenger, setChildPassenger] = useState([]);
@@ -248,8 +249,6 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
   const [isPassenger, setIsPassenger] = useState(false);
 
   useEffect(() => {
-    // console.log(isPassenger);
-    // console.log(contactInfo);
     if (isPassenger) {
       setPassengerInfo((prevState) => [
         ...prevState.slice(0, 0),
@@ -260,7 +259,6 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
         ...prevState.slice(1),
       ]);
     }
-    // console.log(passengerInfo);
   }, [isPassenger]);
 
   const continueHandler = () => {
@@ -289,7 +287,7 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
     let IdHoaDon, IdNguoiLienHe;
     axios({
       method: 'post',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: '/contact-infos',
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -303,11 +301,10 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
       },
     })
       .then((res) => {
-        console.log('nlh', res.data);
         IdNguoiLienHe = res.data.IdNguoiLienHe;
         return axios({
           method: 'post',
-          baseURL: 'http://localhost:8000/api',
+          baseURL: process.env.REACT_APP_BACKEND_URL,
           url: '/payers',
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -324,10 +321,9 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
         });
       })
       .then((res) => {
-        console.log('ntt', res);
         return axios({
           method: 'post',
-          baseURL: 'http://localhost:8000/api',
+          baseURL: process.env.REACT_APP_BACKEND_URL,
           url: '/invoices',
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -339,11 +335,10 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
         });
       })
       .then((res) => {
-        console.log('hd', res.data);
         IdHoaDon = res.data.id;
         return axios({
           method: 'put',
-          baseURL: 'http://localhost:8000/api',
+          baseURL: process.env.REACT_APP_BACKEND_URL,
           url: `/tickets/${IdVeMayBay}`,
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -356,7 +351,7 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
       // .then((res) => {
       //   return axios({
       //     method: 'post',
-      //     baseURL: 'http://localhost:8000/api',
+      //     baseURL: process.env.REACT_APP_BACKEND_URL,
       //     url: `/tickets/search`,
       //     headers: {
       //       Authorization: `Bearer ${auth.token}`,
@@ -367,10 +362,9 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
       //   });
       // })
       .then((res) => {
-        console.log('ve', res.data);
         return axios({
           method: 'put',
-          baseURL: 'http://localhost:8000/api',
+          baseURL: process.env.REACT_APP_BACKEND_URL,
           url: `/flights/${IdChuyenBay}`,
           headers: {
             Authorization: `Bearer ${auth.token}`,
@@ -381,7 +375,6 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
         });
       })
       .then((res) => {
-        console.log('cb', res.data);
         let promiseArr = [];
         for (
           let i = 0;
@@ -391,7 +384,7 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
           promiseArr.push(
             axios({
               method: 'post',
-              baseURL: 'http://localhost:8000/api',
+              baseURL: process.env.REACT_APP_BACKEND_URL,
               url: '/passengers',
               headers: {
                 Authorization: `Bearer ${auth.token}`,
@@ -404,10 +397,9 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
               },
             })
               .then((res) => {
-                console.log('hk', res.data);
                 return axios({
                   method: 'post',
-                  baseURL: 'http://localhost:8000/api',
+                  baseURL: process.env.REACT_APP_BACKEND_URL,
                   url: '/invoice-details',
                   headers: {
                     Authorization: `Bearer ${auth.token}`,
@@ -421,29 +413,29 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
                   },
                 });
               })
-              .then((res) => console.log('cthd', res.data))
+              .then((res) => {})
           );
         }
         return Promise.all(promiseArr);
       })
       .then((res) => {
-        console.log(res);
+        const storedFlightData = JSON.parse(localStorage.getItem('flightData'))
+          ? JSON.parse(localStorage.getItem('flightData'))
+          : [];
+        storedFlightData.push({
+          ddkh: ddkh,
+          ddhc: ddhc,
+          tgkh: tgkh,
+          tghc: tghc,
+          tgdc: tgdc,
+          lhb: lhb,
+          tongTien: tongTien,
+          passengers: passengers,
+          hanghk: hanghk,
+        });
+        localStorage.setItem('flightData', JSON.stringify(storedFlightData));
         setIsLoading(false);
         setShowMyModal(true);
-        localStorage.setItem(
-          'flightData',
-          JSON.stringify({
-            ddkh: ddkh,
-            ddhc: ddhc,
-            tgkh: tgkh,
-            tghc: tghc,
-            tgdc: tgdc,
-            lhb: lhb,
-            tongTien: tongTien,
-            passengers: passengers,
-            hanghk: hanghk,
-          })
-        );
       })
       .catch((err) => {
         setIsLoading(false);
@@ -689,7 +681,20 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
           )}
         </div>
         <div className="box-dat-ve__side">
-          <FlightInfoBox />
+          <FlightInfoBox
+            IdVeMayBay={IdVeMayBay}
+            LoaiVe={LoaiVe}
+            GiaVe={GiaVe}
+            HangHK={hanghk}
+            SHMayBay={SHMayBay}
+            ThoiGianKhoiHanh={tgkh}
+            ThoiGianHaCanh={tghc}
+            DiaDiemKhoiHanh={ddkh}
+            DiaDiemHaCanh={ddhc}
+            LoaiHinhBay={lhb}
+            passengers={passengers}
+            Thue={Thue}
+          />
         </div>
       </div>
     </div>

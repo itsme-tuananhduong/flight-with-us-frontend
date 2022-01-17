@@ -27,7 +27,7 @@ const Flights = () => {
     setIsLoading(true);
     axios({
       method: 'get',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: '/flights',
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -54,7 +54,7 @@ const Flights = () => {
     setIsLoading(true);
     axios({
       method: 'post',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/flights/search`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -88,7 +88,7 @@ const Flights = () => {
 
   const [flightInfo, setFlightInfo] = useState({});
   const customerTableHead = [
-    '',
+    'ID',
     'Hãng Hàng Không',
     'Số Hiệu Máy Bay',
     'Khởi Hành',
@@ -104,7 +104,7 @@ const Flights = () => {
     const fetchData = async () => {
       axios({
         method: 'get',
-        baseURL: 'http://localhost:8000/api',
+        baseURL: process.env.REACT_APP_BACKEND_URL,
         url: '/flights',
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -157,7 +157,7 @@ const Flights = () => {
   const HandleData2 = (e) => {
     axios({
       method: 'post',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/tickets/search`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
@@ -177,7 +177,7 @@ const Flights = () => {
   const HandleData3 = (e) => {
     axios({
       method: 'delete',
-      baseURL: 'http://localhost:8000/api',
+      baseURL: process.env.REACT_APP_BACKEND_URL,
       url: `/flights/${e.IdChuyenBay}`,
       headers: {
         Authorization: `Bearer ${auth.token}`,
