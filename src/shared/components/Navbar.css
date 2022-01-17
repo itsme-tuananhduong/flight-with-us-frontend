@@ -234,7 +234,7 @@
   font-size: 12px;
 }
 
-.dropbox-item.user .user-icon {
+.dropbox-item.user .nav-user-icon {
   width: 45px;
   height: 45px;
   border-radius: 45px;
@@ -245,7 +245,7 @@
   margin: 5px auto;
 }
 
-.dropbox-item.user .user-icon svg {
+.dropbox-item.user .nav-user-icon svg {
   fill: #fff !important;
 }
 
@@ -380,11 +380,11 @@
   fill: #fff !important;
 }
 
-.navbar.dark .dropbox-item.user .user-icon {
+.navbar.dark .dropbox-item.user .nav-user-icon {
   background: #888;
 }
 
-.navbar.dark .dropbox-item.user .user-icon svg {
+.navbar.dark .dropbox-item.user .nav-user-icon svg {
   fill: #212121 !important;
 }
 
