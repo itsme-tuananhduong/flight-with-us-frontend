@@ -265,7 +265,7 @@
   color: #000000de;
   position: relative;
   border: 1px solid #5050504d;
-  cursor: pointer;
+  /* cursor: pointer; */
   width: calc(100% / 7);
   z-index: 3;
   padding: 2px;
@@ -278,6 +278,7 @@
 }
 .cell-choice.disable {
   color: #24a4d8;
+  cursor: pointer !important;
 }
 .cell-choice.active.checked {
   background-color: #c0e7ff;
