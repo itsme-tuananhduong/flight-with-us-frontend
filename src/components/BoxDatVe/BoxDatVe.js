@@ -283,6 +283,14 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
   };
 
   const onPay = () => {
+    let isValid = true;
+    for (const property in paymentInfo) {
+      if (paymentInfo[property] === '') {
+        isValid = false;
+        setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+      }
+    }
+    if (!isValid) return;
     setIsLoading(true);
     let IdHoaDon, IdNguoiLienHe;
     axios({
