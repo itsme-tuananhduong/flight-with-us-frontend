@@ -1,6 +1,6 @@
 [
   {
-    "display_name": "Dashboard",
+    "display_name": "Bảng điều khiển",
     "route": "/admin/dashboard",
     "icon": "bx bx-category-alt"
   },
@@ -30,7 +30,7 @@
     "icon": "bx bxs-user-account"
   },
   {
-    "display_name": "settings",
+    "display_name": "Cài đặt",
     "route": "/admin/dashboard",
     "icon": "bx bx-cog"
   }

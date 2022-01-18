@@ -19,11 +19,11 @@ import './Dashboard.css';
 const chartOptions = {
   series: [
     {
-      name: 'Online Customers',
+      name: 'Doanh thu',
       data: [40, 70, 20, 90, 36, 80, 30, 91, 60],
     },
     {
-      name: 'Store Customers',
+      name: 'Chi phí',
       data: [40, 30, 70, 80, 40, 16, 40, 20, 51, 10],
     },
   ],
@@ -61,32 +61,27 @@ const chartOptions = {
 };
 
 const topCustomers = {
-  head: ['user', 'total orders', 'total spending'],
+  head: ['Hành khách', 'Tổng số vé', 'Tổng số chi trả'],
   body: [
     {
-      username: 'john doe',
-      order: '490',
-      price: '$15,870',
+      username: 'Phan Tiến Dũng',
+      order: '5',
+      price: '2.500.000 ₫',
     },
     {
-      username: 'frank iva',
-      order: '250',
-      price: '$12,251',
+      username: 'Lê Thanh Sơn',
+      order: '4',
+      price: '2.000.000 ₫',
     },
     {
-      username: 'anthony baker',
-      order: '120',
-      price: '$10,840',
+      username: 'Nguyễn Văn Dũng',
+      order: '3',
+      price: '1.500.000 ₫',
     },
     {
-      username: 'frank iva',
-      order: '110',
-      price: '$9,251',
-    },
-    {
-      username: 'anthony baker',
-      order: '80',
-      price: '$8,840',
+      username: 'Dương Tuấn Anh',
+      order: '2',
+      price: '1.000.000 ₫',
     },
   ],
 };
@@ -102,48 +97,41 @@ const renderCusomerBody = (item, index) => (
 );
 
 const latestOrders = {
-  header: ['order id', 'user', 'total price', 'date', 'status'],
+  header: ['ID', 'Hành khách', 'Tổng chi phí', 'Ngày tạo', 'Trạng thái'],
   body: [
     {
+      id: '#OD1713',
+      user: 'Phan Tiến Dũng',
+      date: '27 Jan 2022',
+      price: '2.500.000 ₫',
+      status: 'paid',
+    },
+    {
+      id: '#OD1712',
+      user: 'Lê Thanh Sơn',
+      date: '26 Jan 2022',
+      price: '2.000.000 ₫',
+      status: 'paid',
+    },
+    {
       id: '#OD1711',
-      user: 'john doe',
-      date: '17 Jun 2021',
-      price: '$900',
-      status: 'shipping',
-    },
-    {
-      id: '#OD1712',
-      user: 'frank iva',
-      date: '1 Jun 2021',
-      price: '$400',
+      user: 'Nguyễn Văn Dũng',
+      date: '25 Jan 2022',
+      price: '1.500.000 ₫',
       status: 'paid',
     },
     {
-      id: '#OD1713',
-      user: 'anthony baker',
-      date: '27 Jun 2021',
-      price: '$200',
-      status: 'pending',
-    },
-    {
-      id: '#OD1712',
-      user: 'frank iva',
-      date: '1 Jun 2021',
-      price: '$400',
+      id: '#OD1710',
+      user: 'Dương Tuấn Anh',
+      date: '24 Jan 2022',
+      price: '1.000.000 ₫',
       status: 'paid',
-    },
-    {
-      id: '#OD1713',
-      user: 'anthony baker',
-      date: '27 Jun 2021',
-      price: '$200',
-      status: 'refund',
     },
   ],
 };
 
 const orderStatus = {
-  shipping: 'primary',
+  shipping: 'shipping',
   pending: 'warning',
   paid: 'success',
   refund: 'danger',
@@ -168,12 +156,12 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h2 className='page-header'>Dashboard</h2>
-      <div className='row responsive'>
-        <div className='col-6 statuscard'>
-          <div className='row'>
+      <h2 className="page-header">Bảng điều khiển</h2>
+      <div className="row responsive">
+        <div className="col-6 statuscard">
+          <div className="row">
             {statusCards.map((item, index) => (
-              <div className='col-6' key={index}>
+              <div className="col-6" key={index}>
                 <StatusCard
                   icon={item.icon}
                   count={item.count}
@@ -183,8 +171,8 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-        <div className='col-6 chart-res'>
-          <div className='page-card full-height'>
+        <div className="col-6 chart-res">
+          <div className="page-card full-height">
             {/* chart */}
             <Chart
               options={
@@ -199,17 +187,17 @@ const Dashboard = () => {
                     }
               }
               series={chartOptions.series}
-              type='line'
-              height='100%'
+              type="line"
+              height="100%"
             />
           </div>
         </div>
-        <div className='col-4 table1'>
-          <div className='page-card'>
-            <div className='page-card__header'>
-              <h3>top customers</h3>
+        <div className="col-4 table1">
+          <div className="page-card">
+            <div className="page-card__header">
+              <h3>Hành khách mới nhất</h3>
             </div>
-            <div className='page-card__body'>
+            <div className="page-card__body">
               <Table
                 headData={topCustomers.head}
                 renderHead={(item, index) => renderCusomerHead(item, index)}
@@ -217,17 +205,17 @@ const Dashboard = () => {
                 renderBody={(item, index) => renderCusomerBody(item, index)}
               />
             </div>
-            <div className='page-card__footer'>
-              <Link to='/'>view all</Link>
+            <div className="page-card__footer">
+              <Link to="/">Xem tất cả</Link>
             </div>
           </div>
         </div>
-        <div className='col-8 table2'>
-          <div className='page-card'>
-            <div className='page-card__header'>
-              <h3>latest orders</h3>
+        <div className="col-8 table2">
+          <div className="page-card">
+            <div className="page-card__header">
+              <h3>Hóa đơn mới nhất</h3>
             </div>
-            <div className='page-card__body'>
+            <div className="page-card__body">
               <Table
                 headData={latestOrders.header}
                 renderHead={(item, index) => renderOrderHead(item, index)}
@@ -235,8 +223,8 @@ const Dashboard = () => {
                 renderBody={(item, index) => renderOrderBody(item, index)}
               />
             </div>
-            <div className='page-card__footer'>
-              <Link to='/'>view all</Link>
+            <div className="page-card__footer">
+              <Link to="/">Xem tất cả</Link>
             </div>
           </div>
         </div>
