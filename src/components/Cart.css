@@ -253,6 +253,7 @@
 @media (max-width: 960px) {
   .cart {
     width: 100%;
+    margin-bottom: 48px;
   }
   .heading1 > h4 {
     font-size: 1rem;
@@ -260,7 +261,8 @@
 }
 @media (max-width: 600px) {
   .cart {
-    width: 90%;
+    width: 100%;
+    margin-bottom: 48px;
   }
   .box-content,
   .box-heading {

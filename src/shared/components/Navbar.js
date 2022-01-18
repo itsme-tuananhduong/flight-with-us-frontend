@@ -624,7 +624,7 @@ const Navbar = () => {
                 </div>
               </Link>
             )}
-            <Link to={`/user/${auth.userId}`}>
+            <Link to={auth.userId ? `/user/${auth.userId}` : '/user/@guest'}>
               <div className="dropbox-item">
                 <svg
                   viewBox="0 0 24 24"
