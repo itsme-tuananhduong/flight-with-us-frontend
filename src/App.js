@@ -39,7 +39,7 @@ const App = () => {
   let routes;
   let adminRoutes;
 
-  if (isAdmin !== '0') {
+  if (isAdmin !== '0' && isAdmin !== null) {
     adminRoutes = (
       <Route path="/admin" element={<Admin />}>
         <Route
