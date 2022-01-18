@@ -70,9 +70,9 @@ function BoxCard() {
     {
       id: 5,
       cardImage:
-        'https://hl-vn-1.hlcdn.net/2021/10/26/07/18/652827cd0dda52463ec032d7b0977510-1635232716_autox480_high.jpg.webp',
-      cardTitle: 'HƯỚNG DẪN BAY AN TOÀN DÀNH CHO KHÁCH BAY NỘI ĐỊA',
-      cartContent: `Theo Công văn số 11244/BGTVT-CYT của Bộ Giao thông Vận tải, các hành khách khi đi bay sẽ không phải thực hiện việc kê khai thông tin bằng Bản cam kết phòng chống dịch Covid-19 (bản cứng) từ 12h00 ngày 26/10/2010.`,
+        'https://hl-vn-1.hlcdn.net/2022/01/15/09/37/a42ac083f6a37373805757578fa68112-1642239479_autox480_high.png.webp',
+      cardTitle: 'VẬN CHUYỂN MAI ĐÀO - XUÂN VỀ NÔN NAO',
+      cartContent: `Đón chào xuân Nhâm Dần đang tiến dần, các Hãng hàng không đồng loạt đưa ra dịch vụ đưa cành mai, cành đào về đến mọi nhà.`,
     },
     {
       id: 6,
