@@ -75,11 +75,8 @@ const App = () => {
         <Route path="customers" element={<Navigate to="/" />} />
         <Route path="products" element={<Navigate to="/" />} />
         <Route path="accounts" element={<Navigate to="/" />} />
-        <Route path="passengers" element={<Navigate to="/authentication" />} />
-        <Route
-          path="invoice-detail"
-          element={<Navigate to="/authentication" />}
-        />
+        <Route path="passengers" element={<Navigate to="/" />} />
+        <Route path="invoice-detail" element={<Navigate to="/" />} />
       </Route>
     );
   }
