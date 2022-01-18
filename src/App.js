@@ -113,7 +113,7 @@ const App = () => {
 
         <Route path="/authentication" element={<Authentication />} />
 
-        <Route path="/user/:uid" element={<Navigate to="/authentication" />} />
+        <Route path="/user/:uid" element={<User />} />
 
         <Route path="/admin" element={<NotFound />} />
         {adminRoutes}
