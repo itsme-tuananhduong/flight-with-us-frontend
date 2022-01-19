@@ -17,6 +17,14 @@ import { timeDiffCalc } from '../../shared/util/util-function';
 
 import './BoxDatVe.css';
 
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
 const BoxDatVe = ({ setIsLoading, setError }) => {
   const auth = useContext(AuthContext);
 
@@ -262,35 +270,49 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
   }, [isPassenger]);
 
   const continueHandler = () => {
-    let isValid = true;
+    setError(null);
+    // let isValid = true;
     for (const property in contactInfo) {
       if (contactInfo[property] === '') {
-        isValid = false;
+        // isValid = false;
         setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+        return;
       }
     }
     for (const passenger of passengerInfo) {
       for (const property in passenger) {
         if (passenger[property] === '') {
-          isValid = false;
+          // isValid = false;
           setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+          return;
         }
       }
     }
-    if (isValid) {
-      setStep(1);
+    if (!validateEmail(contactInfo.email)) {
+      // isValid = false;
+      setError('Email không hợp lệ');
+      return;
     }
+    setStep(1);
+    // if (isValid) {
+    // }
   };
 
   const onPay = () => {
-    let isValid = true;
+    // let isValid = true;
     for (const property in paymentInfo) {
       if (paymentInfo[property] === '') {
-        isValid = false;
+        // isValid = false;
         setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+        return;
       }
     }
-    if (!isValid) return;
+    if (!validateEmail(paymentInfo.email)) {
+      // isValid = false;
+      setError('Email không hợp lệ');
+      return;
+    }
+    // if (!isValid) return;
     setIsLoading(true);
     let IdHoaDon, IdNguoiLienHe;
     axios({
