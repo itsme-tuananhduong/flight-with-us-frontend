@@ -331,7 +331,7 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
       },
     })
       .then((res) => {
-        IdNguoiLienHe = res.data.IdNguoiLienHe;
+        IdNguoiLienHe = res.data.id;
         return axios({
           method: 'post',
           baseURL: process.env.REACT_APP_BACKEND_URL,
@@ -360,7 +360,7 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
           },
           data: {
             TongTien: tongTien,
-            IdNguoiThanhToan: res.data.IdNguoiThanhToan,
+            IdNguoiThanhToan: res.data.id,
           },
         });
       })
