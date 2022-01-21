@@ -92,7 +92,7 @@ function LoginForm(props) {
           </button>
           <p className="content-tilte">Quên mật khẩu</p>
           <p className="content-text">
-            Bạn chưa có tài khoản ?{' '}
+            Bạn chưa có tài khoản?{' '}
             <span className="content-text-span" onClick={props.authModeToggler}>
               {' '}
               Đăng ký ngay tại đây
