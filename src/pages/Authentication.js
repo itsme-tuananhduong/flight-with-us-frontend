@@ -58,23 +58,34 @@ const Authentication = () => {
   };
 
   const authSubmitHandler = async () => {
-    if (
-      username === '' ||
-      email === '' ||
-      password === '' ||
-      confirmPassword === ''
-    ) {
-      setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
-      return;
-    } else if (!validateEmail(email)) {
-      setError('Email không hợp lệ');
-      return;
-    } else if (password.length <= 3 || password.length >= 6) {
-      setError('Độ dài password chưa hợp lệ');
-      return;
-    } else if (password !== confirmPassword) {
-      if (!isLoginMode) {
+    if (!isLoginMode) {
+      if (
+        username === '' ||
+        email === '' ||
+        password === '' ||
+        confirmPassword === ''
+      ) {
+        setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+        return;
+      } else if (!validateEmail(email)) {
+        setError('Email không hợp lệ');
+        return;
+      } else if (password.length < 3 || password.length > 6) {
+        setError('Độ dài password chưa hợp lệ');
+        return;
+      } else if (password !== confirmPassword) {
         setError('Confirm Password chưa chính xác');
+        return;
+      }
+    } else {
+      if (email === '' || password === '') {
+        setError('Oops... Có vẻ bạn thiếu thông tin nào đó');
+        return;
+      } else if (!validateEmail(email)) {
+        setError('Email không hợp lệ');
+        return;
+      } else if (password.length < 3 || password.length > 6) {
+        setError('Độ dài password chưa hợp lệ');
         return;
       }
     }
@@ -145,7 +156,7 @@ const Authentication = () => {
       }
     >
       <ErrorModal error={error} onClear={clearError} />
-      {isLoading && <LoadingSpinner asOverlay />}
+      {isLoading && <LoadingSpinner />}
       <div className="svg-background"></div>
       <div className="wrapper">
         <div className="main-content">
