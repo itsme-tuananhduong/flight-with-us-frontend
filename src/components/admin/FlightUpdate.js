@@ -118,7 +118,7 @@ function FlightUpdate({
         triggerLoading();
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err.response.data.message);
         triggerLoading();
       });
   };

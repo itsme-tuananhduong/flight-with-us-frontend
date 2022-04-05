@@ -37,7 +37,7 @@ const InvoiceDetail = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
         setShowUpdate(false);
       });
   };
@@ -62,7 +62,7 @@ const InvoiceDetail = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
         // setShowFilter(false);
       });
   };
@@ -88,7 +88,7 @@ const InvoiceDetail = () => {
         },
       })
         .then((res) => setPassenger(res.data))
-        .catch((err) => setError(err.message));
+        .catch((err) => setError(err.response.data.message));
     };
     fetchData();
     setIsLoading(false);

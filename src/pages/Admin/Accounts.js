@@ -38,7 +38,7 @@ const Accounts = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 
@@ -62,17 +62,17 @@ const Accounts = () => {
         <td>{item.Username}</td>
         <td>Người sử dụng</td>
         <td>
-          <span className='addAdmin' onClick={() => handleUpdate(item.id, 1)}>
+          <span className="addAdmin" onClick={() => handleUpdate(item.id, 1)}>
             Thêm nhân viên
           </span>
         </td>
         <td>
-          <span className='addAdmin' onClick={() => handleUpdate(item.id, 2)}>
+          <span className="addAdmin" onClick={() => handleUpdate(item.id, 2)}>
             Thêm quản trị viên
           </span>
         </td>
         <td>
-          <span className='delete-admin' onClick={() => handleDelete(item.id)}>
+          <span className="delete-admin" onClick={() => handleDelete(item.id)}>
             Xóa
           </span>
         </td>
@@ -84,20 +84,20 @@ const Accounts = () => {
         <td>{item.Username}</td>
         <td>Nhân viên</td>
         <td>
-          <span className='addAdmin' onClick={() => handleUpdate(item.id, 2)}>
+          <span className="addAdmin" onClick={() => handleUpdate(item.id, 2)}>
             Thêm quản trị viên
           </span>
         </td>
         <td>
           <span
-            className='delete-admin'
+            className="delete-admin"
             onClick={() => handleUpdate(item.id, 0)}
           >
             Xóa nhân viên
           </span>
         </td>
         <td>
-          <span className='delete-admin' onClick={() => handleDelete(item.id)}>
+          <span className="delete-admin" onClick={() => handleDelete(item.id)}>
             Xóa
           </span>
         </td>
@@ -110,7 +110,7 @@ const Accounts = () => {
         <td>Quản trị viên</td>
         <td>
           <span
-            className='delete-admin'
+            className="delete-admin"
             onClick={() => handleUpdate(item.id, 0)}
           >
             Xóa quản trị viên
@@ -118,7 +118,7 @@ const Accounts = () => {
         </td>
         <td></td>
         <td>
-          <span className='delete-admin' onClick={() => handleDelete(item.id)}>
+          <span className="delete-admin" onClick={() => handleDelete(item.id)}>
             Xóa
           </span>
         </td>
@@ -143,7 +143,7 @@ const Accounts = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 
@@ -165,7 +165,7 @@ const Accounts = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 
@@ -189,7 +189,7 @@ const Accounts = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 
@@ -204,7 +204,7 @@ const Accounts = () => {
         },
       })
         .then((res) => setAccountList(res.data))
-        .catch((err) => setError(err.message));
+        .catch((err) => setError(err.response.data.message));
     };
     fetchData();
     setIsLoading(false);
@@ -224,46 +224,45 @@ const Accounts = () => {
     <Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <div>
-
         <h2 className="page-header">Thông Tin Tài Khoản</h2>
         <div className="row heading">
           <div className="search-id">
             <input
-              className='admin-input'
-              type='text'
-              placeholder='Nhập ID'
+              className="admin-input"
+              type="text"
+              placeholder="Nhập ID"
               onKeyUp={onInputKeyUp}
             />
-            <i className='bx bx-search'></i>
+            <i className="bx bx-search"></i>
           </div>
-          <div className=''>
-            <div className='page-card'>
-              <div className='page-card__body '>
-                <div className='select'>
+          <div className="">
+            <div className="page-card">
+              <div className="page-card__body ">
+                <div className="select">
                   <select
-                    name='ticket-type'
-                    id='ticket-type'
-                    className='ticket-option'
+                    name="ticket-type"
+                    id="ticket-type"
+                    className="ticket-option"
                     onChange={onClickHandler}
                   >
-                    <option value=''>Tất cả</option>
-                    <option value='2'>Quản trị viên</option>
-                    <option value='1'>Nhân viên</option>
-                    <option value='0'>Người sử dụng</option>
+                    <option value="">Tất cả</option>
+                    <option value="2">Quản trị viên</option>
+                    <option value="1">Nhân viên</option>
+                    <option value="0">Người sử dụng</option>
                   </select>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='col-12'>
-            <div className='page-card'>
-              <div className='page-card__body'>
+        <div className="row">
+          <div className="col-12">
+            <div className="page-card">
+              <div className="page-card__body">
                 {isLoading && <LoadingSpinner />}
                 {!isLoading && accountList && (
                   <Table
-                    limit='10'
+                    limit="10"
                     headData={customerTableHead}
                     renderHead={(item, index) => renderHead(item, index)}
                     bodyData={accountList}

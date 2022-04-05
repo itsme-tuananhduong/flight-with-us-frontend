@@ -87,7 +87,7 @@ function SearchByWeek({ setIsLoading, setError }) {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 
@@ -352,7 +352,7 @@ function SearchByWeek({ setIsLoading, setError }) {
       .catch((err) => {
         setShowFilter(false);
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 

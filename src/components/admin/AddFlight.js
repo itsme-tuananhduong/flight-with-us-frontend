@@ -123,7 +123,7 @@ function AddFlight({ setIsLoading }) {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
   const clearError = () => {
