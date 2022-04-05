@@ -40,7 +40,7 @@ const Flights = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
         setShowFlightUpdate(false);
       });
   };
@@ -76,7 +76,7 @@ const Flights = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
         setShowFilter(false);
       });
   };
@@ -111,7 +111,7 @@ const Flights = () => {
         },
       })
         .then((res) => setFlight(res.data))
-        .catch((err) => setError(err.message));
+        .catch((err) => setError(err.response.data.message));
     };
     fetchData();
     setIsLoading(false);
@@ -172,7 +172,7 @@ const Flights = () => {
         setFlightInfo(e);
         setShowTicketList(true);
       })
-      .catch((err) => setError(err.message));
+      .catch((err) => setError(err.response.data.message));
   };
   const HandleData3 = (e) => {
     axios({
@@ -187,7 +187,7 @@ const Flights = () => {
         triggerLoading();
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 

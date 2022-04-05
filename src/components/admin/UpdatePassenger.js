@@ -69,7 +69,7 @@ function UpdatePassenger({
       })
       .catch((err) => {
         setShowUpdate(false);
-        setError(err.message);
+        setError(err.response.data.message);
         triggerLoading();
       });
   };

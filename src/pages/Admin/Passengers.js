@@ -37,7 +37,7 @@ const Passengers = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
         setShowUpdate(false);
       });
   };
@@ -62,7 +62,7 @@ const Passengers = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
         // setShowFilter(false);
       });
   };
@@ -89,7 +89,7 @@ const Passengers = () => {
         },
       })
         .then((res) => setPassenger(res.data))
-        .catch((err) => setError(err.message));
+        .catch((err) => setError(err.response.data.message));
     };
     fetchData();
     setIsLoading(false);
@@ -132,7 +132,7 @@ const Passengers = () => {
         triggerLoading();
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 

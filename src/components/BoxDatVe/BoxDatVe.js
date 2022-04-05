@@ -331,7 +331,10 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
       },
     })
       .then((res) => {
-        IdNguoiLienHe = res.data.id;
+        // PostgreSQL
+        IdNguoiLienHe = res.data.IdNguoiLienHe;
+        // SQL Server
+        // IdNguoiLienHe = res.data.id;
         return axios({
           method: 'post',
           baseURL: process.env.REACT_APP_BACKEND_URL,
@@ -360,12 +363,18 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
           },
           data: {
             TongTien: tongTien,
-            IdNguoiThanhToan: res.data.id,
+            // PostgreSQL
+            IdNguoiThanhToan: res.data.IdNguoiThanhToan,
+            // SQL Server
+            // IdNguoiThanhToan: res.data.id,
           },
         });
       })
       .then((res) => {
-        IdHoaDon = res.data.id;
+        // PostgreSQL
+        IdHoaDon = res.data.IdHoaDon;
+        // SQL Server
+        // IdHoaDon = res.data.id;
         return axios({
           method: 'put',
           baseURL: process.env.REACT_APP_BACKEND_URL,
@@ -438,7 +447,10 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
                     Thue: Thue,
                     ThanhTien: GiaVe + GiaVe * (Thue / 100),
                     IdVeMayBay: IdVeMayBay,
-                    IdHanhKhach: res.data.id,
+                    // PostgreSQL
+                    IdHanhKhach: res.data.IdHanhKhach,
+                    // SQL Server
+                    // IdHanhKhach: res.data.id,
                     IdHoaDon: IdHoaDon,
                   },
                 });
@@ -469,7 +481,7 @@ const BoxDatVe = ({ setIsLoading, setError }) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 

@@ -58,7 +58,7 @@ function FormInsertSticker({
         setShowTicket(false);
       })
       .catch((err) => {
-        setError(err.message);
+        setError(err.response.data.message);
         triggerLoading();
         setShowTicket(false);
       });

@@ -88,7 +88,7 @@ function SearchByMonth({
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 
@@ -148,7 +148,7 @@ function SearchByMonth({
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(err.message);
+        setError(err.response.data.message);
       });
   };
 

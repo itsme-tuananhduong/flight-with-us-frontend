@@ -112,7 +112,7 @@ const Authentication = () => {
         })
         .catch((err) => {
           setIsLoading(false);
-          setError(err.message);
+          setError(err.response.data.message);
         });
     } else {
       setIsLoading(true);
@@ -140,7 +140,7 @@ const Authentication = () => {
         })
         .catch((err) => {
           setIsLoading(false);
-          setError(err.message);
+          setError(err.response.data.message);
         });
     }
   };
